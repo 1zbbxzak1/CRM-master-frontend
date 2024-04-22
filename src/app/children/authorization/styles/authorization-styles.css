@@ -1,0 +1,49 @@
+.pop-up {
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-up-title {
+    color: var(--text-white);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    text-align: center;
+    margin-bottom: 18px;
+    margin-top: 21px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+.email {
+    color: var(--text-light-grey);
+    padding-top: 8px;
+}
+
+.pass {
+    padding-top: 8px;
+    padding-bottom: 0;
+    color: var(--text-light-grey);
+}
+
+.arrow {
+    padding-left: 10px;
+}
+
+.stroke {
+    stroke-width: 2px;
+    stroke: var(--stroke-dark-grey);
+    padding-top: 48px;
+}
+
+.socials-btn {
+    background: transparent;
+    border: transparent;
+    width: 40px;
+    height: auto;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}

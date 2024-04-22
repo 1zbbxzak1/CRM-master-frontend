@@ -3,6 +3,24 @@
 
 @import '@taiga-ui/core/styles/taiga-ui-local.scss';
 
+[tuiWrapper][data-appearance='custom'] {
+    background: #0082F5;
+    color: #fff;
+    margin-top: 24px;
+
+    .wrapper-hover {
+        background: #0082F5;
+    }
+
+    .wrapper-active {
+        background: #0082F5;
+    }
+
+    .wrapper-disabled {
+        background: #eaecee;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
