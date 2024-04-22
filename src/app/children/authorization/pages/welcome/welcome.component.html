@@ -13,7 +13,12 @@
                 мастеров!
             </li>
         </ul>
-        <button class="first-section-start-btn">Начните сейчас
-        </button>
+        <button (click)="openDialogRegistration(registration)" class="first-section-start-btn">Начните сейчас</button>
     </section>
+
+    <ng-template #registration>
+        <app-registration></app-registration>
+    </ng-template>
 </div>
+
+<app-registration class="hidden-auth"></app-registration>

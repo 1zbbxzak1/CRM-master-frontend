@@ -1,1 +1,111 @@
-<p>registration works!</p>
+<form [formGroup]="formRegistration" class="pop-up">
+    <div class="pop-up-title">
+        Регистрация
+    </div>
+    <div>
+        <p class="email">ФИО</p>
+        <tui-input
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldLabelOutside]="true"
+            formControlName="fullName"
+            tuiTextfieldSize="m"
+        >
+            <input
+                autocomplete="fullName"
+                tuiTextfield
+                type="text"
+            />
+        </tui-input>
+        <div *ngIf="isControlError('fullName')" class="error-message">
+            <div *ngIf="isCorrectFullName('fullName')" class="error-message">
+                Введите полное ФИО через пробел.
+            </div>
+        </div>
+    </div>
+    <div>
+        <p class="email">Электронная почта</p>
+        <tui-input
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldLabelOutside]="true"
+            formControlName="email"
+            tuiTextfieldSize="m"
+        >
+            <input
+                autocomplete="email"
+                tuiTextfield
+                type="email"
+            />
+        </tui-input>
+        <div *ngIf="isControlError('email')" class="error-message">
+            <div *ngIf="isControlRequired('email')">
+                Email обязателен.
+            </div>
+            <div *ngIf="isEmailInvalid('email')">
+                Некорректный email.
+            </div>
+        </div>
+    </div>
+    <div>
+        <p class="email">Номер телефона</p>
+        <tui-input
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldLabelOutside]="true"
+            formControlName="phoneNumber"
+            tuiTextfieldSize="m"
+        >
+            <input
+                autocomplete="phoneNumber"
+                tuiTextfield
+                type="text"
+            />
+        </tui-input>
+        <div *ngIf="isControlError('phoneNumber')" class="error-message">
+            <div *ngIf="isCorrectPhoneNumber('phoneNumber')" class="error-message">
+                Номер телефона должен:<br/>начинаться с +7;<br/>содержать 10 цифр.
+            </div>
+        </div>
+    </div>
+    <div>
+        <p class="pass">Пароль</p>
+        <tui-input-password
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldLabelOutside]="true"
+            formControlName="password"
+            tuiTextfieldSize="m"
+        >
+            <input
+                autocomplete="password"
+                tuiTextfield
+                type="password"
+            />
+        </tui-input-password>
+        <div *ngIf="isControlError('password')" class="error-message">
+            <div *ngIf="isControlRequired('password')">
+                Пароль обязателен.
+            </div>
+            <div *ngIf="isPasswordInvalid('password')">
+                Пароль должен быть длиннее 6 символов.
+            </div>
+        </div>
+    </div>
+
+    <button [disabled]="formRegistration.invalid"
+            appearance="custom"
+            size="m" tuiButton
+            type="button">
+        Зарегистрироваться
+        <svg class="arrow" fill="none" height="24" viewBox="0 0 24 24" width="24"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.25 8.25L21 12M21 12L17.25 15.75M21 12H3" stroke="white" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-width="1.5"/>
+        </svg>
+    </button>
+
+    <svg class="stroke" fill="none" height="2" viewBox="0 0 351 2" width="351" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L349 1.00003" stroke="#2E313A" stroke-linecap="round" stroke-width="2"/>
+    </svg>
+
+    <button class="socials-btn">
+        <img alt="вк" class="socials" height="40" ngSrc="assets/socials.svg" width="40">
+    </button>
+</form>

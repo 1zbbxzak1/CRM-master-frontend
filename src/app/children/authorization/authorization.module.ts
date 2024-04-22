@@ -11,27 +11,20 @@ import {
 import {TuiDialogFormService, TuiInputModule, TuiInputPasswordModule} from "@taiga-ui/kit";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
-import {RouterModule, Routes} from "@angular/router";
 import {HeaderComponent} from "./pages/components/header/header.component";
 import {WelcomeComponent} from "./pages/welcome/welcome.component";
 import {TuiActiveZoneModule} from "@taiga-ui/cdk";
 import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
-
-const routes: Routes = [
-    {
-        path: "",
-        component: WelcomeComponent,
-    },
-];
+import {RegistrationComponent} from "./components/registration/registration.component";
 
 @NgModule({
     declarations: [
-        LoginComponent,
         HeaderComponent,
         WelcomeComponent,
+        LoginComponent,
+        RegistrationComponent,
     ],
     imports: [
-        RouterModule.forRoot(routes),
         TuiRootModule,
         TuiDialogModule,
         TuiAlertModule,
@@ -49,6 +42,7 @@ const routes: Routes = [
     ],
     exports: [
         LoginComponent,
+        RegistrationComponent,
     ],
     providers: [
         TuiDialogFormService

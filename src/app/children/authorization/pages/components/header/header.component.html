@@ -8,12 +8,17 @@
     </ul>
     <div class="navigation-container">
         <button (click)="openDialogLogIn(login)" class="authorization-btn">ВОЙТИ</button>
-        <button class="registration-btn">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        <button (click)="openDialogRegistration(registration)" class="registration-btn">ЗАРЕГИСТРИРОВАТЬСЯ</button>
     </div>
 
     <ng-template #login>
         <app-login></app-login>
     </ng-template>
+
+    <ng-template #registration>
+        <app-registration></app-registration>
+    </ng-template>
 </header>
 
 <app-login class="hidden-auth"></app-login>
+<app-registration class="hidden-auth"></app-registration>
