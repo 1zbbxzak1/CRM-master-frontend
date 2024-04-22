@@ -1,0 +1,158 @@
+.navigation {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+
+    background: #14181e;
+    border-bottom: 1px solid #2e313a;
+}
+
+.menu-list {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 0;
+    margin: auto 0;
+    list-style: none;
+}
+
+.menu-list-item {
+    margin-top: 7px;
+}
+
+.navigation-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.authorization-btn,
+.registration-btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.authorization-btn {
+    margin-right: 10px;
+    border: 2px solid #0082f5;
+    background: transparent;
+    color: white;
+}
+
+.registration-btn {
+    background: #0082F5;
+    border: 2px solid #0082F5;
+    color: white;
+}
+
+.mobile-menu {
+    display: flex;
+    margin-left: auto;
+    background: none;
+    border: none;
+    height: 100%;
+}
+
+.mobile-menu-close {
+    display: flex;
+    margin-left: auto;
+    background: none;
+    border: none;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.mobile-menu-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.mobile-menu-list-item {
+    margin-bottom: 20px;
+}
+
+.mobile-menu-list-item:last-child {
+    margin-bottom: 0;
+}
+
+.mobile-a {
+    font-size: 20px;
+    color: #6acfc8;
+}
+
+.mobile-navigation-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    margin-top: 50px;
+}
+
+.mobile-authorization-btn {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    border: 1px solid rgb(106, 207, 200);
+    background: transparent;
+    max-width: 80px;
+    margin-bottom: 10px;
+    margin-top: auto;
+}
+
+.mobile-registration-btn {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    background: rgb(106, 207, 200);
+    border: 1px solid rgb(106, 207, 200);
+    color: white;
+    max-width: 220px;
+}
+
+.hidden-auth {
+    display: none;
+}
+
+@media (min-width: 1100px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .menu-list,
+    .navigation-container {
+        display: none;
+    }
+}
+
+@media (min-width: 1920px) {
+    .menu-list {
+        padding-left: 360px;
+        padding-right: 360px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .menu-list {
+        padding-left: 240px;
+        padding-right: 240px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .menu-list {
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+}

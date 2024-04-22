@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@import '@taiga-ui/core/styles/taiga-ui-local.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans';
+}
+
+:root {
+    --text-black: #212121;
+    --text-white: #fff;
+    --text-light-grey: #c3c7cd;
+    --main-blue: #0082f5;
+    --bg-dark-blue-1: #0f1319;
+    --bg-dark-blue-2: #14181e;
+    --stroke-dark-grey: #2e313a;
+    --fields-stroke-input: #383b44;
+    --fields-form: #1e2228;
+    --tui-elevation-01: #0f1319;
+    --tui-base-01: #1e2228;
+    --tui-text-01: #fff;
+    --tui-base-03: #2e313a;
+}
