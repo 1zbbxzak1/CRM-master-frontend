@@ -102,6 +102,14 @@ export class RegistrationComponent {
                         if (data) {
                             console.log('Registered successfully');
                             this._dialogForm.markAsDirty();
+
+                            this._userManagerService.getUserInfo()
+                                .pipe(
+                                    takeUntilDestroyed(this._destroyRef)
+                                )
+                                .subscribe((): void => {
+                                    this._router.navigate(["profile"]);
+                                });
                         }
                     }
                 );
