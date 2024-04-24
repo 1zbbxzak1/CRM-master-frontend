@@ -6,6 +6,9 @@ import {Router} from "@angular/router";
 import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {ValidAuth} from "../../../../validators/auth.validator";
+import {ILoginRequestModel} from "../../../../data/request-models/auth/ILogin.request-model";
+import {IdentityService} from "../../../../data/services/auth/identity.service";
+import {UserManagerService} from "../../../../data/services/user/user.manager.service";
 
 @Component({
     selector: 'app-login',
@@ -22,8 +25,12 @@ export class LoginComponent {
     private readonly _controlValidator: ValidAuth = new ValidAuth(this.formLogin);
 
     constructor(
-        @Inject(TuiDialogFormService) private readonly _dialogForm: TuiDialogFormService,
-        @Inject(TuiDialogService) private readonly _dialogs: TuiDialogService,
+        @Inject(TuiDialogFormService)
+        private readonly _dialogForm: TuiDialogFormService,
+        @Inject(TuiDialogService)
+        private readonly _dialogs: TuiDialogService,
+        private _identityService: IdentityService,
+        private _userManagerService: UserManagerService,
         private _destroyRef: DestroyRef,
         private _router: Router,
     ) {
@@ -63,5 +70,28 @@ export class LoginComponent {
 
     protected isPasswordInvalid(controlName: string): boolean {
         return this._controlValidator.isPasswordInvalid(controlName);
+    }
+
+    protected logInUser(): void {
+        const email: string = this.formLogin.get('email')?.value;
+        const password: string = this.formLogin.get('password')?.value;
+
+        if (email && password) {
+            const user: ILoginRequestModel = {email, password};
+            this._identityService.loginUser(user)
+                .pipe(
+                    takeUntilDestroyed(this._destroyRef)
+                )
+                .subscribe(
+                    (data: boolean): void => {
+                        if (data) {
+                            console.log('Login successfully');
+                            this._dialogForm.markAsDirty();
+                        }
+                    }
+                );
+        } else {
+            console.error('Not all fields are filled in correctly');
+        }
     }
 }

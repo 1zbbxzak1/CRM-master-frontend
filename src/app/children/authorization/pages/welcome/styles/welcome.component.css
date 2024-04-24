@@ -73,6 +73,10 @@
     width: 30%;
 }
 
+.hidden-auth {
+    display: none;
+}
+
 @media (min-width: 1920px) {
     .container {
         padding-left: 360px;

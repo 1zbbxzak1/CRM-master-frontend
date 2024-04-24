@@ -45,7 +45,7 @@ import {RegistrationComponent} from "./components/registration/registration.comp
         RegistrationComponent,
     ],
     providers: [
-        TuiDialogFormService
+        TuiDialogFormService,
     ],
 })
 export class AuthorizationModule {

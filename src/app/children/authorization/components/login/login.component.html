@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <button [disabled]="formLogin.invalid"
+    <button (click)="logInUser()" [disabled]="formLogin.invalid"
             appearance="custom"
             size="m" tuiButton
             type="button">

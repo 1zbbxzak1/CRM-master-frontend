@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <button [disabled]="formRegistration.invalid"
+    <button (click)="registrationNewUser()" [disabled]="formRegistration.invalid"
             appearance="custom"
             size="m" tuiButton
             type="button">

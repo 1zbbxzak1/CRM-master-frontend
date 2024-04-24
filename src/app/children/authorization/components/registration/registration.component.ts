@@ -5,6 +5,10 @@ import {TuiDialogContext, TuiDialogService} from "@taiga-ui/core";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {TuiDialogFormService} from "@taiga-ui/kit";
 import {fullNameValidator, phoneNumberValidator, ValidAuth} from "../../../../validators/auth.validator";
+import {IRegistrationRequestModel} from "../../../../data/request-models/auth/IRegistration.request-model";
+import {IdentityService} from "../../../../data/services/auth/identity.service";
+import {Router} from "@angular/router";
+import {UserManagerService} from "../../../../data/services/user/user.manager.service";
 
 @Component({
     selector: 'app-registration',
@@ -23,9 +27,14 @@ export class RegistrationComponent {
     private readonly _controlValidator: ValidAuth = new ValidAuth(this.formRegistration);
 
     constructor(
-        @Inject(TuiDialogFormService) private readonly _dialogForm: TuiDialogFormService,
-        @Inject(TuiDialogService) private readonly _dialogs: TuiDialogService,
+        @Inject(TuiDialogFormService)
+        private readonly _dialogForm: TuiDialogFormService,
+        @Inject(TuiDialogService)
+        private readonly _dialogs: TuiDialogService,
+        private _identityService: IdentityService,
+        private _userManagerService: UserManagerService,
         private _destroyRef: DestroyRef,
+        private _router: Router,
     ) {
     }
 
@@ -71,5 +80,33 @@ export class RegistrationComponent {
 
     protected isPasswordInvalid(controlName: string): boolean {
         return this._controlValidator.isPasswordInvalid(controlName);
+    }
+
+    protected registrationNewUser(): void {
+        const fullName: string = this.formRegistration.get('fullName')?.value;
+        const email: string = this.formRegistration.get('email')?.value;
+        const phone: string = this.formRegistration.get('phoneNumber')?.value;
+        const password: string = this.formRegistration.get('password')?.value;
+        const vkLink: string = "";
+        const telegramLink: string = "";
+
+        if (email && password) {
+            const user: IRegistrationRequestModel = {email, password, fullName, phone, vkLink, telegramLink};
+
+            this._identityService.registerUser(user)
+                .pipe(
+                    takeUntilDestroyed(this._destroyRef)
+                )
+                .subscribe(
+                    (data: boolean): void => {
+                        if (data) {
+                            console.log('Registered successfully');
+                            this._dialogForm.markAsDirty();
+                        }
+                    }
+                );
+        } else {
+            console.error('Not all fields are filled in correctly');
+        }
     }
 }
