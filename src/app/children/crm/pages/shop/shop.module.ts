@@ -20,6 +20,7 @@ import {
 import {
     ConstructorHeaderComponent
 } from './children/templates/children/template-preview/children/constructor/components/constructor-header/constructor-header.component';
+import {CrmModule} from "../../crm.module";
 
 @NgModule({
     declarations: [
@@ -33,7 +34,9 @@ import {
         EditGeneralComponent,
         EditContentComponent,
     ],
-    imports: [],
+    imports: [
+        CrmModule,
+    ],
     providers: []
 })
 export class ShopModule {

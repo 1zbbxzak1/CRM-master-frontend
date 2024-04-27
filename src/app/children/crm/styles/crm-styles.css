@@ -1,0 +1,48 @@
+.main-content-crm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content-crm-second {
+    width: 80%;
+    height: 80%;
+    display: flex;
+}
+
+.main-content-crm-full {
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--bg-dark-blue-2);
+}
+
+.content-crm {
+    margin-left: 26px;
+    margin-right: 26px;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.content-crm-header {
+    display: grid;
+    width: 100%;
+    align-items: center;
+
+    padding-top: 32px;
+}
+
+.content-crm-title {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    color: var(--text-white);
+}

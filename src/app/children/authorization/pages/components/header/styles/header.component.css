@@ -12,6 +12,22 @@
     border-bottom: 1px solid #2e313a;
 }
 
+.header-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    color: var(--text-white);
+
+    text-decoration: none;
+
+    align-items: center;
+}
+
+.header-title span {
+    color: var(--main-blue);
+    text-transform: uppercase;
+}
+
 .menu-list {
     display: grid;
     grid-template-columns: auto;

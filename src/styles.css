@@ -21,10 +21,25 @@
     }
 }
 
+[tuiWrapper][data-appearance='textfield'] {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-white);
+}
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Nunito Sans';
+}
+
+body {
+    background: var(--bg-dark-blue-1);
+}
+
+img {
+    display: block;
 }
 
 :root {
@@ -41,4 +56,5 @@
     --tui-base-01: #1e2228;
     --tui-text-01: #fff;
     --tui-base-03: #2e313a;
+    --text-disabled: #464a50;
 }

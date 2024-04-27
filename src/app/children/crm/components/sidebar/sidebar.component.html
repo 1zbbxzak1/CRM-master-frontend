@@ -1,1 +1,60 @@
-<p>sidebar works!</p>
+<nav class="sidebar">
+    <ul class="sidebar-menu-list">
+        <li class="sidebar-menu-list-item">
+            <div class="sidebar-header">
+                <p class="sidebar-title">Мастерска<span>Я</span></p>
+            </div>
+        </li>
+        <li class="sidebar-menu-list-item">
+            <button (click)="toggleState('isOrdersClicked', 'orders')" [class.active]="states['isOrdersClicked']"
+                    class="sidebar-router">
+                <img [src]="states['isOrdersClicked'] ? 'assets/orders-active.svg' : 'assets/orders-disabled.svg'"
+                     alt="Заказы"
+                     height="24"
+                     width="24">
+                <p class="sidebar-item">Заказы</p>
+            </button>
+        </li>
+        <li class="sidebar-menu-list-item">
+            <button (click)="toggleState('isClientsClicked', 'clients')" [class.active]="states['isClientsClicked']"
+                    class="sidebar-router">
+                <img [src]="states['isClientsClicked'] ? 'assets/clients-active.svg' : 'assets/clients-disabled.svg'"
+                     alt="Клиенты"
+                     height="24"
+                     width="24">
+                <p class="sidebar-item">Клиенты</p>
+            </button>
+        </li>
+        <li class="sidebar-menu-list-item">
+            <button (click)="toggleState('isProductsClicked', 'products')" [class.active]="states['isProductsClicked']"
+                    class="sidebar-router">
+                <img
+                    [src]="states['isProductsClicked'] ? 'assets/products-active.svg' : 'assets/products-disabled.svg'"
+                    alt="Товары"
+                    height="24"
+                    width="24">
+                <p class="sidebar-item">Товары</p>
+            </button>
+        </li>
+        <li class="sidebar-menu-list-item">
+            <button (click)="toggleState('isShopClicked', 'shop')" [class.active]="states['isShopClicked']"
+                    class="sidebar-router">
+                <img [src]="states['isShopClicked'] ? 'assets/shop-active.svg' : 'assets/shop-disabled.svg'"
+                     alt="Магазин"
+                     height="24" width="24">
+                <p class="sidebar-item">Магазин</p>
+            </button>
+        </li>
+    </ul>
+
+    <div class="sidebar-menu-list-item-profile">
+        <button (click)="toggleState('isProfileClicked', 'profile')" [class.active]="states['isProfileClicked']"
+                class="sidebar-router profile">
+            <img [src]="states['isProfileClicked'] ? 'assets/user-active.svg' : 'assets/user-disabled.svg'"
+                 alt="Профиль"
+                 class="sidebar-img"
+                 height="24" width="24">
+            <p class="sidebar-item">Профиль</p>
+        </button>
+    </div>
+</nav>

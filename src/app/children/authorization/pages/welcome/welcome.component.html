@@ -1,24 +1,29 @@
-<app-header/>
-<div class="container">
-    <section class="first-section">
-        <h1 class="first-section-main-title">Создание интернет-магазина<br/>для <span>индивидуальных</span> мастеров
-        </h1>
-        <ul class="first-section-description-list">
-            <li class="first-section-description-list-item-first">Здесь каждый мастер сможет найти надежного партнера
-                в управлении своим бизнесом. Наша CRM-платформа сочетает в себе функциональность системы управления
-                взаимоотношениями с клиентами и возможности интернет-магазина, обеспечивая вам полный контроль и
-                эффективное ведение вашего дела.
-            </li>
-            <li class="first-section-description-list-item-second">Управляйте своим бизнесом с легкостью с нашей CRM для
-                мастеров!
-            </li>
-        </ul>
-        <button (click)="openDialogRegistration(registration)" class="first-section-start-btn">Начните сейчас</button>
-    </section>
+<tui-root>
+    <app-header/>
+    <div class="container">
+        <section class="first-section">
+            <h1 class="first-section-main-title">Создание интернет-магазина<br/>для <span>индивидуальных</span> мастеров
+            </h1>
+            <ul class="first-section-description-list">
+                <li class="first-section-description-list-item-first">Здесь каждый мастер сможет найти надежного
+                    партнера
+                    в управлении своим бизнесом. Наша CRM-платформа сочетает в себе функциональность системы управления
+                    взаимоотношениями с клиентами и возможности интернет-магазина, обеспечивая вам полный контроль и
+                    эффективное ведение вашего дела.
+                </li>
+                <li class="first-section-description-list-item-second">Управляйте своим бизнесом с легкостью с нашей CRM
+                    для
+                    мастеров!
+                </li>
+            </ul>
+            <button (click)="openDialogRegistration(registration)" class="first-section-start-btn">Начните сейчас
+            </button>
+        </section>
 
-    <ng-template #registration>
-        <app-registration></app-registration>
-    </ng-template>
-</div>
+        <ng-template #registration>
+            <app-registration></app-registration>
+        </ng-template>
+    </div>
 
-<app-registration class="hidden-auth"></app-registration>
+    <app-registration class="hidden-auth"></app-registration>
+</tui-root>
