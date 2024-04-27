@@ -15,10 +15,14 @@ export class AuthService {
     }
 
     public registerUser(user: IRegistrationRequestModel): Observable<any> {
-        return this.http.post('http://localhost:8080/api/auth/register', user, {withCredentials: true});
+        return this.http.post('http://localhost:8080/auth/register', user, {withCredentials: true});
     }
 
     public loginUser(user: ILoginRequestModel): Observable<any> {
-        return this.http.post('http://localhost:8080/api/auth/login', user, {withCredentials: true});
+        return this.http.post('http://localhost:8080/auth/login', user, {withCredentials: true});
+    }
+
+    public logoutUser(): Observable<any> {
+        return this.http.post('http://localhost:8080/auth/logout', {withCredentials: true});
     }
 }

@@ -34,4 +34,10 @@ export class IdentityService {
             })
         );
     }
+
+    public logoutUser(): Observable<void> {
+        localStorage.removeItem('id');
+
+        return this._authService.logoutUser();
+    }
 }
