@@ -5,8 +5,30 @@
 
 [tuiWrapper][data-appearance='custom'] {
     background: #0082F5;
+    border: 2px solid var(--main-blue);
     color: #fff;
     margin-top: 24px;
+
+    .wrapper-hover {
+        background: #0082F5;
+    }
+
+    .wrapper-active {
+        background: #0082F5;
+    }
+
+    .wrapper-disabled {
+        background: #eaecee;
+    }
+}
+
+[tuiWrapper][data-appearance='custom-cancel'] {
+    border: 2px solid var(--main-blue);
+    border-radius: 8px;
+    padding: 10px 24px;
+    background: none;
+    margin-top: 24px;
+    margin-left: 12px;
 
     .wrapper-hover {
         background: #0082F5;

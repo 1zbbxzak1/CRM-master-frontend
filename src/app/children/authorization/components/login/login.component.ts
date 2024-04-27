@@ -13,7 +13,7 @@ import {UserManagerService} from "../../../../data/services/user/user.manager.se
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrl: '../../styles/authorization-styles.scss',
+    styleUrl: '../../../styles/dialog-styles.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {

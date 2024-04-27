@@ -1,4 +1,4 @@
-import {Component, DestroyRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef} from '@angular/core';
 import {Observable} from "rxjs";
 import {IUserResponseModel} from "../../../../../../data/response-models/user/IUser.response-model";
 import {UserManagerService} from "../../../../../../data/services/user/user.manager.service";
@@ -10,7 +10,8 @@ import {IUserRequestModel} from "../../../../../../data/request-models/user/IUse
 @Component({
     selector: 'app-profile-edit',
     templateUrl: './profile-edit.component.html',
-    styleUrls: ['../../../../styles/crm-styles.css', '../../styles/profile-styles.css', './styles/profile-edit.component.css']
+    styleUrls: ['../../../../styles/crm-styles.css', '../../styles/profile-styles.css', './styles/profile-edit.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileEditComponent {
     protected formUserInfo: FormGroup = new FormGroup({

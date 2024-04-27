@@ -3,6 +3,7 @@ import {UserService} from "./user.service";
 import {IUserResponseModel} from "../../response-models/user/IUser.response-model";
 import {catchError, map, NEVER, Observable} from "rxjs";
 import {IUserRequestModel} from "../../request-models/user/IUser.request-model";
+import {IPasswordRequestModel} from "../../request-models/user/IPassword.request-model";
 
 @Injectable({
     providedIn: 'root'
@@ -40,6 +41,16 @@ export class UserManagerService {
 
     public updateUserInfo(user: IUserRequestModel): Observable<boolean> {
         return this._userService.updateUserInfo(user).pipe(
+            map((): boolean => true),
+            catchError(err => {
+                this._errorHandler.handleError(err);
+                return NEVER;
+            })
+        )
+    }
+
+    public updateUserPassword(password: IPasswordRequestModel): Observable<boolean> {
+        return this._userService.updateUserPassword(password).pipe(
             map((): boolean => true),
             catchError(err => {
                 this._errorHandler.handleError(err);

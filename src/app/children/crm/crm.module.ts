@@ -8,9 +8,11 @@ import {ProfileEditComponent} from "./pages/profile/children/profile-edit/profil
 import {ClientDetailsComponent} from "./pages/clients/children/client-details/client-details.component";
 import {AsyncPipe, NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {TuiRootModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
-import {TuiInputModule} from "@taiga-ui/kit";
+import {TuiButtonModule, TuiRootModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {TuiInputModule, TuiInputPasswordModule} from "@taiga-ui/kit";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {PasswordEditComponent} from './pages/profile/children/password-edit/password-edit.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -21,6 +23,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         OrdersComponent,
         ProfileEditComponent,
         ClientDetailsComponent,
+        PasswordEditComponent,
     ],
     imports: [
         NgOptimizedImage,
@@ -28,14 +31,18 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         NgClass,
         NgIf,
         AsyncPipe,
+        BrowserAnimationsModule,
         TuiRootModule,
         TuiInputModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiTextfieldControllerModule
+        TuiTextfieldControllerModule,
+        TuiButtonModule,
+        TuiInputPasswordModule,
     ],
     exports: [
-        SidebarComponent
+        SidebarComponent,
+        PasswordEditComponent,
     ],
     providers: []
 })

@@ -45,14 +45,14 @@
 .profile-data-title-section {
     display: grid;
     width: 100%;
-    grid-template-columns: 220px 220px;
+    grid-template-columns: 320px 320px;
     align-items: center;
     column-gap: 80px;
 }
 
 .profile-data-list {
     display: grid;
-    grid-template-columns: 220px 220px;
+    grid-template-columns: 320px 320px;
     column-gap: 80px;
 }
 
@@ -148,4 +148,8 @@
     font-size: 16px;
     line-height: 125%;
     color: var(--text-white);
+}
+
+.hidden-auth {
+    display: none;
 }

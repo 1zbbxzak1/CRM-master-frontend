@@ -5,10 +5,12 @@
     align-content: center;
     align-items: center;
     justify-content: center;
+
+    background: var(--bg-dark-blue-1);
 }
 
 .main-content-crm-second {
-    width: 80%;
+    width: 72%;
     height: 80%;
     display: flex;
 }

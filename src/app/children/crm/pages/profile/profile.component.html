@@ -30,7 +30,7 @@
                 </section>
 
                 <section class="profile-edit-password-section">
-                    <button class="profile-edit-password">
+                    <button (click)="openDialogPassword(password)" class="profile-edit-password">
                         <p class="profile-edit-pass-title">Изменить пароль</p>
                     </button>
                 </section>
@@ -46,7 +46,16 @@
                         <p class="profile-logout-title">Выйти</p>
                     </button>
                 </section>
+
             </div>
         </div>
     </div>
 </div>
+
+<tui-root>
+    <ng-template #password let-observer>
+        <app-password-edit [observer]="observer"></app-password-edit>
+    </ng-template>
+</tui-root>
+
+<app-password-edit class="hidden-auth"></app-password-edit>

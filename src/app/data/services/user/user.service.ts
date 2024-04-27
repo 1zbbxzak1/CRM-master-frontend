@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {IUserRequestModel} from "../../request-models/user/IUser.request-model";
+import {IPasswordRequestModel} from "../../request-models/user/IPassword.request-model";
 
 @Injectable({
     providedIn: 'root'
@@ -17,5 +18,9 @@ export class UserService {
 
     public updateUserInfo(user: IUserRequestModel): Observable<any> {
         return this.http.put('http://localhost:8080/user', user, {withCredentials: true});
+    }
+
+    public updateUserPassword(password: IPasswordRequestModel): Observable<any> {
+        return this.http.put('http://localhost:8080/password', password, {withCredentials: true});
     }
 }
