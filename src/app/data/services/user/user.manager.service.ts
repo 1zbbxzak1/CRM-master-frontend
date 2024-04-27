@@ -2,6 +2,7 @@ import {ErrorHandler, Injectable} from "@angular/core";
 import {UserService} from "./user.service";
 import {IUserResponseModel} from "../../response-models/user/IUser.response-model";
 import {catchError, map, NEVER, Observable} from "rxjs";
+import {IUserRequestModel} from "../../request-models/user/IUser.request-model";
 
 @Injectable({
     providedIn: 'root'
@@ -35,5 +36,15 @@ export class UserManagerService {
                 return NEVER;
             })
         );
+    }
+
+    public updateUserInfo(user: IUserRequestModel): Observable<boolean> {
+        return this._userService.updateUserInfo(user).pipe(
+            map((): boolean => true),
+            catchError(err => {
+                this._errorHandler.handleError(err);
+                return NEVER;
+            })
+        )
     }
 }

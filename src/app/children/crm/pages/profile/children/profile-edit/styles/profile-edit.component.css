@@ -1,0 +1,56 @@
+.profile-data-list {
+    grid-template-columns: 320px 320px;
+}
+
+.profile-data-title-section {
+    grid-template-columns: 320px 320px;
+}
+
+.tui-input-name {
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+
+.profile-item {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.profile-finish-section {
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+
+    margin-top: auto;
+}
+
+.profile-save {
+    background: var(--main-blue);
+    border-radius: 8px;
+    border: 2px solid var(--main-blue);
+
+    padding: 10px 24px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--text-white);
+
+    margin-bottom: 45px;
+    margin-right: 10px;
+}
+
+.profile-cancel {
+    background: none;
+    border-radius: 8px;
+    border: 2px solid var(--main-blue);
+
+    padding: 10px 24px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--text-white);
+
+    margin-bottom: 45px;
+}

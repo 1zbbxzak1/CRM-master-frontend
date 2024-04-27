@@ -1,1 +1,108 @@
-<p>profile-edit works!</p>
+<div class="main-content-crm">
+    <div class="main-content-crm-second">
+        <app-sidebar></app-sidebar>
+        <div class="main-content-crm-full">
+            <div class="content-crm">
+                <div class="profile-header">
+                    <p class="content-crm-title">Настройки профиля</p>
+                    <button (click)="previousPageWithUserInfo()" class="profile-edit">Отменить</button>
+                </div>
+
+                <form [formGroup]="formUserInfo" class="profile-data">
+                    <div class="profile-data-title-section">
+                        <div class="profile-data-title">Основные данные</div>
+                        <div class="profile-data-title">Соцсети</div>
+                    </div>
+
+                    <div class="profile-data-list">
+                        <div class="profile-data-item-title">ФИО</div>
+                        <p class="profile-data-item-title">Вконтакте</p>
+                        <tui-input
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            class="tui-input-name"
+                            formControlName="fullName"
+                            tuiTextfieldSize="m"
+                        >
+                            <input
+                                autocomplete="fullName"
+                                tuiTextfield
+                                type="text"
+                            />
+                        </tui-input>
+                        <tui-input
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            class="tui-input-name"
+                            formControlName="vkLink"
+                            tuiTextfieldSize="m"
+                        >
+                            <input
+                                autocomplete="vkLink"
+                                tuiTextfield
+                                type="text"
+                            />
+                        </tui-input>
+                        <p class="profile-data-item-title">Электронная почта</p>
+                        <p class="profile-data-item-title">Телеграмм</p>
+                        <tui-input
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            class="tui-input-name"
+                            formControlName="email"
+                            tuiTextfieldSize="m"
+                        >
+                            <input
+                                autocomplete="email"
+                                tuiTextfield
+                                type="text"
+                            />
+                        </tui-input>
+                        <tui-input
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            class="tui-input-name"
+                            formControlName="telegramLink"
+                            tuiTextfieldSize="m"
+                        >
+                            <input
+                                autocomplete="telegramLink"
+                                tuiTextfield
+                                type="text"
+                            />
+                        </tui-input>
+                        <p class="profile-data-item-title">Телефон</p>
+                        <p></p>
+                        <tui-input
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            class="tui-input-name"
+                            formControlName="phone"
+                            tuiTextfieldSize="m"
+                        >
+                            <input
+                                autocomplete="phone"
+                                tuiTextfield
+                                type="text"
+                            />
+                        </tui-input>
+                    </div>
+                </form>
+
+                <section class="profile-connection">
+                    <div class="profile-connection-title">Подключения</div>
+                    <button class="profile-button-vk">Привязать Вконтакте</button>
+                </section>
+
+                <section class="profile-finish-section">
+                    <button (click)="updateUserInfo()" class="profile-save">
+                        <p class="profile-logout-title">Сохранить</p>
+                    </button>
+                    <button (click)="previousPageWithUserInfo()" class="profile-cancel">
+                        <p class="profile-logout-title">Отменить</p>
+                    </button>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
