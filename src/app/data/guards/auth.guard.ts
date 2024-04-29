@@ -1,31 +1,28 @@
-import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
+import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from "@angular/router";
+import {from, map, Observable, of} from "rxjs";
+import {inject} from "@angular/core";
 
-@Injectable({
-    providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
+export class AuthGuard {
 
-    constructor(
-        private router: Router,
-    ) {
-    }
+    private readonly _router: Router = inject(Router);
 
-    async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+    public canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         const isAuthorized: string | null = localStorage.getItem("id");
 
         if (state.url === '/welcome') {
             if (isAuthorized !== null) {
-                this.router.navigate(["profile"]);
-                return false;
+                from(this._router.navigate(["profile"])).pipe(
+                    map((): boolean => false)
+                );
             }
-            return true;
+            return of(true);
         } else {
             if (isAuthorized === null) {
-                this.router.navigate(["welcome"]);
-                return false;
+                from(this._router.navigate(["welcome"])).pipe(
+                    map((): boolean => false)
+                );
             }
-            return true;
+            return of(true);
         }
     }
 }

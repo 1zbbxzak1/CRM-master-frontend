@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-  selector: 'app-client-details',
-  templateUrl: './client-details.component.html',
-  styleUrl: './client-details.component.css'
+    selector: 'app-client-details',
+    templateUrl: './client-details.component.html',
+    styleUrl: './styles/client-details.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientDetailsComponent {
 

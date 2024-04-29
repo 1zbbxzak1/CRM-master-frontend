@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
     selector: 'app-template-preview',
     templateUrl: './template-preview.component.html',
-    styleUrl: './styles/template-preview.component.css'
+    styleUrl: './styles/template-preview.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TemplatePreviewComponent {
 

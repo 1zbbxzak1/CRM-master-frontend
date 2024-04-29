@@ -1,4 +1,4 @@
-import {Routes} from "@angular/router";
+import {ActivatedRouteSnapshot, RouterStateSnapshot, Routes} from "@angular/router";
 import {WelcomeComponent} from "./children/authorization/pages/welcome/welcome.component";
 import {AuthGuard} from "./data/guards/auth.guard";
 import {ProfileComponent} from "./children/crm/pages/profile/profile.component";
@@ -7,6 +7,7 @@ import {OrdersComponent} from "./children/crm/pages/orders/orders.component";
 import {ClientsComponent} from "./children/crm/pages/clients/clients.component";
 import {ProductsComponent} from "./children/crm/pages/products/products.component";
 import {ShopComponent} from "./children/crm/pages/shop/shop.component";
+import {inject} from "@angular/core";
 
 
 export const routes: Routes = [
@@ -18,36 +19,36 @@ export const routes: Routes = [
     {
         path: "welcome",
         component: WelcomeComponent,
-        canActivate: [AuthGuard],
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
         path: "profile",
         component: ProfileComponent,
-        canActivate: [AuthGuard],
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
         path: "profile-edit",
         component: ProfileEditComponent,
-        canActivate: [AuthGuard],
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
         path: 'orders',
         component: OrdersComponent,
-        canActivate: [AuthGuard],
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
         path: 'clients',
         component: ClientsComponent,
-        canActivate: [AuthGuard],
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
         path: 'products',
         component: ProductsComponent,
-        canActivate: [AuthGuard],
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
         path: 'shop',
         component: ShopComponent,
-        canActivate: [AuthGuard],
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
 ];

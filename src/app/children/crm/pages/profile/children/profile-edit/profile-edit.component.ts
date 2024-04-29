@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, DestroyRef} from '@angular/core';
 import {Observable} from "rxjs";
-import {IUserResponseModel} from "../../../../../../data/response-models/user/IUser.response-model";
 import {UserManagerService} from "../../../../../../data/services/user/user.manager.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {IUserRequestModel} from "../../../../../../data/request-models/user/IUser.request-model";
+import {IUserResponseModel} from "../../../../../../data/response-models/user/IUser.response-model";
 
 @Component({
     selector: 'app-profile-edit',
@@ -25,23 +25,27 @@ export class ProfileEditComponent {
     protected user$: Observable<IUserResponseModel>;
 
     constructor(
-        private _userManagerService: UserManagerService,
-        private _destroyRef: DestroyRef,
-        private _router: Router,
+        private readonly _userManagerService: UserManagerService,
+        private readonly _destroyRef: DestroyRef,
+        private readonly _router: Router,
     ) {
         this.user$ = this._userManagerService.getUserInfo();
 
-        this.user$.subscribe(user => {
-            if (user) {
-                this.formUserInfo.patchValue({
-                    fullName: user.fullName,
-                    email: user.email,
-                    phone: user?.phone || 'Не назначен',
-                    vkLink: user?.vkLink || 'Не привязан',
-                    telegramLink: user?.telegramLink || 'Не привязан',
-                });
-            }
-        });
+        this.user$
+            .pipe(
+                takeUntilDestroyed(this._destroyRef)
+            )
+            .subscribe((user: IUserResponseModel): void => {
+                if (user) {
+                    this.formUserInfo.patchValue({
+                        fullName: user.fullName,
+                        email: user.email,
+                        phone: user?.phone || 'Не назначен',
+                        vkLink: user?.vkLink || 'Не привязан',
+                        telegramLink: user?.telegramLink || 'Не привязан',
+                    });
+                }
+            });
     }
 
     protected previousPageWithUserInfo(): void {

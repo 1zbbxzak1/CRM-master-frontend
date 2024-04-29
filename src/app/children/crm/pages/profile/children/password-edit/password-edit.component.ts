@@ -4,7 +4,6 @@ import {ValidAuth} from "../../../../../../validators/auth.validator";
 import {TuiDialogFormService} from "@taiga-ui/kit";
 import {TuiDialogContext, TuiDialogService} from "@taiga-ui/core";
 import {UserManagerService} from "../../../../../../data/services/user/user.manager.service";
-import {Router} from "@angular/router";
 import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {IPasswordRequestModel} from "../../../../../../data/request-models/user/IPassword.request-model";
@@ -31,9 +30,8 @@ export class PasswordEditComponent {
         private readonly _dialogForm: TuiDialogFormService,
         @Inject(TuiDialogService)
         private readonly _dialogs: TuiDialogService,
-        private _userManagerService: UserManagerService,
-        private _destroyRef: DestroyRef,
-        private _router: Router,
+        private readonly _userManagerService: UserManagerService,
+        private readonly _destroyRef: DestroyRef,
     ) {
     }
 

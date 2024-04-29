@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
 import {RegistrationComponent} from "../../components/registration/registration.component";
 import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 import {TuiDialogContext} from "@taiga-ui/core";
@@ -14,9 +13,7 @@ import {TuiDialogContext} from "@taiga-ui/core";
 export class WelcomeComponent {
     @ViewChild(RegistrationComponent) private readonly registrationComponent!: RegistrationComponent;
 
-    constructor(
-        private _router: Router,
-    ) {
+    constructor() {
     }
 
     protected openDialogRegistration(

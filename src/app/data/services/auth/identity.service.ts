@@ -1,19 +1,14 @@
 import {catchError, map, NEVER, Observable} from "rxjs";
-import {ErrorHandler, Injectable} from "@angular/core";
+import {ErrorHandler, inject} from "@angular/core";
 import {IRegistrationRequestModel} from "../../request-models/auth/IRegistration.request-model";
 import {ILoginRequestModel} from "../../request-models/auth/ILogin.request-model";
 import {AuthService} from "./auth.service";
 
-@Injectable({
-    providedIn: 'root'
-})
 export class IdentityService {
 
-    constructor(
-        private _authService: AuthService,
-        private _errorHandler: ErrorHandler,
-    ) {
-    }
+    private readonly _authService: AuthService = inject(AuthService);
+    private readonly _errorHandler: ErrorHandler = inject(ErrorHandler);
+
 
     public registerUser(user: IRegistrationRequestModel): Observable<boolean> {
         return this._authService.registerUser(user).pipe(
@@ -36,8 +31,8 @@ export class IdentityService {
     }
 
     public logoutUser(): Observable<void> {
-        localStorage.removeItem('id');
-
+        localStorage.clear();
+        
         return this._authService.logoutUser();
     }
 }

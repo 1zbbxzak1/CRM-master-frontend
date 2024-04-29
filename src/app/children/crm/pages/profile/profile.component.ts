@@ -15,15 +15,15 @@ import {TuiDialogContext} from "@taiga-ui/core";
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileComponent {
-    public user$: Observable<IUserResponseModel>;
+    protected user$: Observable<IUserResponseModel>;
 
     @ViewChild(PasswordEditComponent)
-    private readonly passwordEditComponent!: PasswordEditComponent;
+    private readonly _passwordEditComponent!: PasswordEditComponent;
 
     constructor(
-        private _userManagerService: UserManagerService,
-        private _authService: IdentityService,
-        private _router: Router,
+        private readonly _userManagerService: UserManagerService,
+        private readonly _authService: IdentityService,
+        private readonly _router: Router,
     ) {
         this.user$ = this._userManagerService.getUserInfo();
     }
@@ -31,7 +31,7 @@ export class ProfileComponent {
     protected openDialogPassword(
         password: PolymorpheusContent<TuiDialogContext>,
     ): void {
-        this.passwordEditComponent.openDialogPassword(password);
+        this._passwordEditComponent.openDialogPassword(password);
     }
 
     protected nextPageWithUpdateInfo(): void {
@@ -40,7 +40,6 @@ export class ProfileComponent {
 
     protected logoutUser(): void {
         this._authService.logoutUser();
-
-        this._router.navigate(['welcome'])
+        this._router.navigate(['welcome']);
     }
 }

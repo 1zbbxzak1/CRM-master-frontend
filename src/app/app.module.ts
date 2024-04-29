@@ -10,6 +10,11 @@ import {HomeModule} from "./children/crm/pages/home/home.module";
 import {ShopModule} from "./children/crm/pages/shop/shop.module";
 import {CrmModule} from "./children/crm/crm.module";
 import {HttpClientModule} from "@angular/common/http";
+import {IdentityService} from "./data/services/auth/identity.service";
+import {AuthService} from "./data/services/auth/auth.service";
+import {AuthGuard} from "./data/guards/auth.guard";
+import {UserService} from "./data/services/user/user.service";
+import {UserManagerService} from "./data/services/user/user.manager.service";
 
 @NgModule({
     declarations: [
@@ -29,6 +34,11 @@ import {HttpClientModule} from "@angular/common/http";
         HttpClientModule,
     ],
     providers: [
+        AuthGuard,
+        AuthService,
+        IdentityService,
+        UserService,
+        UserManagerService,
         provideClientHydration(),
         {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
     ],

@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
     selector: 'app-edit-general',
     templateUrl: './edit-general.component.html',
-    styleUrl: './styles/edit-general.component.css'
+    styleUrl: './styles/edit-general.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditGeneralComponent {
 

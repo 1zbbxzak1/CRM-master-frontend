@@ -1,19 +1,13 @@
-import {ErrorHandler, Injectable} from "@angular/core";
+import {ErrorHandler, inject} from "@angular/core";
 import {UserService} from "./user.service";
 import {IUserResponseModel} from "../../response-models/user/IUser.response-model";
 import {catchError, map, NEVER, Observable} from "rxjs";
 import {IUserRequestModel} from "../../request-models/user/IUser.request-model";
 import {IPasswordRequestModel} from "../../request-models/user/IPassword.request-model";
 
-@Injectable({
-    providedIn: 'root'
-})
 export class UserManagerService {
-    constructor(
-        private _userService: UserService,
-        private _errorHandler: ErrorHandler,
-    ) {
-    }
+    private readonly _userService: UserService = inject(UserService);
+    private readonly _errorHandler: ErrorHandler = inject(ErrorHandler);
 
     public getUserInfo(): Observable<IUserResponseModel> {
         return this._userService.getUserInfo().pipe(

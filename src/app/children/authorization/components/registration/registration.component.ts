@@ -31,10 +31,10 @@ export class RegistrationComponent {
         private readonly _dialogForm: TuiDialogFormService,
         @Inject(TuiDialogService)
         private readonly _dialogs: TuiDialogService,
-        private _identityService: IdentityService,
-        private _userManagerService: UserManagerService,
-        private _destroyRef: DestroyRef,
-        private _router: Router,
+        private readonly _identityService: IdentityService,
+        private readonly _userManagerService: UserManagerService,
+        private readonly _destroyRef: DestroyRef,
+        private readonly _router: Router,
     ) {
     }
 

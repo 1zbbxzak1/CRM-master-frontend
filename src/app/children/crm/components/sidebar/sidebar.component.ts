@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
-    styleUrls: ['./styles/sidebar.component.css']
+    styleUrls: ['./styles/sidebar.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent implements OnInit {
 
@@ -16,17 +17,19 @@ export class SidebarComponent implements OnInit {
         isProfileClicked: false
     };
 
-    constructor(private router: Router) {
+    constructor(private readonly _router: Router) {
     }
 
     ngOnInit(): void {
         const savedStates: string | null = localStorage.getItem('sidebarStates');
         if (savedStates) {
             this.states = JSON.parse(savedStates);
+        } else {
+            this.toggleState('isProfileClicked', 'profile');
         }
     }
 
-    toggleState(stateName: string, route: string): void {
+    protected toggleState(stateName: string, route: string): void {
         const currentState: boolean = this.states[stateName];
         if (currentState) {
             return;
@@ -41,6 +44,6 @@ export class SidebarComponent implements OnInit {
         this.states[stateName] = true;
         localStorage.setItem('sidebarStates', JSON.stringify(this.states));
 
-        this.router.navigate([route]);
+        this._router.navigate([route]);
     }
 }
