@@ -6,54 +6,80 @@
             </div>
         </li>
         <li class="sidebar-menu-list-item">
-            <button (click)="toggleState('isOrdersClicked', 'orders')" [class.active]="states['isOrdersClicked']"
-                    class="sidebar-router">
-                <img [src]="states['isOrdersClicked'] ? 'assets/orders-active.svg' : 'assets/orders-disabled.svg'"
-                     alt="Заказы"
+            <button (click)="toggleStateSidebar('isOrdersClicked')"
+                    [class.active]="statesTabs['isOrdersClicked']"
+                    class="sidebar-router"
+                    routerLink="/crm/orders"
+                    routerLinkActive
+            >
+                <img alt="Заказы"
                      height="24"
+                     ngSrc="{{ statesTabs['isOrdersClicked'] ? 'assets/orders-active.svg' : 'assets/orders-disabled.svg' }}"
                      width="24">
                 <p class="sidebar-item">Заказы</p>
             </button>
         </li>
+
         <li class="sidebar-menu-list-item">
-            <button (click)="toggleState('isClientsClicked', 'clients')" [class.active]="states['isClientsClicked']"
-                    class="sidebar-router">
-                <img [src]="states['isClientsClicked'] ? 'assets/clients-active.svg' : 'assets/clients-disabled.svg'"
-                     alt="Клиенты"
-                     height="24"
-                     width="24">
+            <button (click)="toggleStateSidebar('isClientsClicked')"
+                    [class.active]="statesTabs['isClientsClicked']"
+                    class="sidebar-router"
+                    routerLink="/crm/clients"
+                    routerLinkActive
+            >
+                <img
+                    alt="Клиенты"
+                    height="24"
+                    ngSrc="{{ statesTabs['isClientsClicked'] ? 'assets/clients-active.svg' : 'assets/clients-disabled.svg' }}"
+                    width="24">
                 <p class="sidebar-item">Клиенты</p>
             </button>
         </li>
+
         <li class="sidebar-menu-list-item">
-            <button (click)="toggleState('isProductsClicked', 'products')" [class.active]="states['isProductsClicked']"
-                    class="sidebar-router">
+            <button (click)="toggleStateSidebar('isProductsClicked')"
+                    [class.active]="statesTabs['isProductsClicked']"
+                    class="sidebar-router"
+                    routerLink="/crm/products"
+                    routerLinkActive
+            >
                 <img
-                    [src]="states['isProductsClicked'] ? 'assets/products-active.svg' : 'assets/products-disabled.svg'"
                     alt="Товары"
                     height="24"
+                    ngSrc="{{ statesTabs['isProductsClicked'] ? 'assets/products-active.svg' : 'assets/products-disabled.svg' }}"
                     width="24">
                 <p class="sidebar-item">Товары</p>
             </button>
         </li>
+
         <li class="sidebar-menu-list-item">
-            <button (click)="toggleState('isShopClicked', 'shop')" [class.active]="states['isShopClicked']"
-                    class="sidebar-router">
-                <img [src]="states['isShopClicked'] ? 'assets/shop-active.svg' : 'assets/shop-disabled.svg'"
-                     alt="Магазин"
-                     height="24" width="24">
+            <button (click)="toggleStateSidebar('isShopClicked')"
+                    [class.active]="statesTabs['isShopClicked']"
+                    class="sidebar-router"
+                    routerLink="/crm/shop"
+                    routerLinkActive
+            >
+                <img alt="Магазин"
+                     height="24"
+                     ngSrc="{{ statesTabs['isShopClicked'] ? 'assets/shop-active.svg' : 'assets/shop-disabled.svg' }}"
+                     width="24">
                 <p class="sidebar-item">Магазин</p>
             </button>
         </li>
     </ul>
 
     <div class="sidebar-menu-list-item-profile">
-        <button (click)="toggleState('isProfileClicked', 'profile')" [class.active]="states['isProfileClicked']"
-                class="sidebar-router profile">
-            <img [src]="states['isProfileClicked'] ? 'assets/user-active.svg' : 'assets/user-disabled.svg'"
-                 alt="Профиль"
+        <button (click)="toggleStateSidebar('isProfileClicked')"
+                [class.active]="statesTabs['isProfileClicked']"
+                class="sidebar-router profile"
+                routerLink="/crm/profile"
+                routerLinkActive
+        >
+            <img alt="Профиль"
                  class="sidebar-img"
-                 height="24" width="24">
+                 height="24"
+                 ngSrc="{{ statesTabs['isProfileClicked'] ? 'assets/user-active.svg' : 'assets/user-disabled.svg' }}"
+                 width="24">
             <p class="sidebar-item">Профиль</p>
         </button>
     </div>

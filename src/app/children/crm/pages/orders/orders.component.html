@@ -30,26 +30,26 @@
 
                 <div class="orders">
                     <div class="orders-sort-title">
-                        <button (click)="toggleState('isAllOrders')"
-                                [class.orders-sort-item-click]="states['isAllOrders']"
+                        <button (click)="toggleStateTabs('isAllOrders')"
+                                [class.orders-sort-item-click]="statesTabs['isAllOrders']"
                                 class="orders-sort-item">
                             Все заказы
                         </button>
 
-                        <button (click)="toggleState('isNewOrders')"
-                                [class.orders-sort-item-click]="states['isNewOrders']"
+                        <button (click)="toggleStateTabs('isNewOrders')"
+                                [class.orders-sort-item-click]="statesTabs['isNewOrders']"
                                 class="orders-sort-item">
                             Новый заказ
                         </button>
 
-                        <button (click)="toggleState('isProgressOrders')"
-                                [class.orders-sort-item-click]="states['isProgressOrders']"
+                        <button (click)="toggleStateTabs('isProgressOrders')"
+                                [class.orders-sort-item-click]="statesTabs['isProgressOrders']"
                                 class="orders-sort-item">
                             В работе
                         </button>
 
-                        <button (click)="toggleState('isDeliveryOrders')"
-                                [class.orders-sort-item-click]="states['isDeliveryOrders']"
+                        <button (click)="toggleStateTabs('isDeliveryOrders')"
+                                [class.orders-sort-item-click]="statesTabs['isDeliveryOrders']"
                                 class="orders-sort-item">
                             Доставка
                         </button>
@@ -58,8 +58,8 @@
                     </div>
 
                     <div class="orders-sort-second-title">
-                        <button (click)="toggleState('isArchiveOrders')"
-                                [class.orders-sort-item-click]="states['isArchiveOrders']"
+                        <button (click)="toggleStateTabs('isArchiveOrders')"
+                                [class.orders-sort-item-click]="statesTabs['isArchiveOrders']"
                                 class="orders-sort-item">
                             Архив
                         </button>

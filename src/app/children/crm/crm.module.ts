@@ -7,7 +7,7 @@ import {OrdersComponent} from "./pages/orders/orders.component";
 import {ProfileEditComponent} from "./pages/profile/children/profile-edit/profile-edit.component";
 import {ClientDetailsComponent} from "./pages/clients/children/client-details/client-details.component";
 import {AsyncPipe, NgClass, NgIf, NgOptimizedImage} from "@angular/common";
-import {RouterLink, RouterOutlet} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {TuiButtonModule, TuiRootModule, TuiSvgModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {
     TuiHighlightModule,
@@ -62,6 +62,7 @@ import {SettingsComponent} from './pages/orders/components/settings/settings.com
         TuiMarkerIconModule,
         TuiSvgModule,
         TuiTilesModule,
+        RouterLinkActive,
     ],
     exports: [
         SidebarComponent,

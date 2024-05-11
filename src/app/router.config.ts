@@ -18,7 +18,7 @@ import {ArchiveOrdersComponent} from "./children/crm/pages/orders/children/archi
 export const routes: Routes = [
     {
         path: "",
-        redirectTo: "orders",
+        redirectTo: "crm/orders",
         pathMatch: "full",
     },
 
@@ -28,17 +28,17 @@ export const routes: Routes = [
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
-        path: "profile",
+        path: "crm/profile",
         component: ProfileComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
-        path: "profile-edit",
+        path: "crm/profile-edit",
         component: ProfileEditComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
-        path: 'orders',
+        path: 'crm/orders',
         component: OrdersComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
         children: [
@@ -65,17 +65,17 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'clients',
+        path: 'crm/clients',
         component: ClientsComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
-        path: 'products',
+        path: 'crm/products',
         component: ProductsComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
-        path: 'shop',
+        path: 'crm/shop',
         component: ShopComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },

@@ -101,7 +101,7 @@ export class LoginComponent {
                                     takeUntilDestroyed(this._destroyRef)
                                 )
                                 .subscribe((): void => {
-                                    this._router.navigate(["orders"]);
+                                    this._router.navigate(["crm/orders"]);
                                 });
                         }
                     }
