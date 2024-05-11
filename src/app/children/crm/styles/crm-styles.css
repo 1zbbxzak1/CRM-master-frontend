@@ -36,10 +36,10 @@
 
 .content-crm-header {
     display: grid;
-    width: 100%;
     align-items: center;
+    grid-template-columns: auto auto;
 
-    padding-top: 32px;
+    margin-top: 32px;
 }
 
 .content-crm-title {
@@ -47,4 +47,8 @@
     font-size: 28px;
     line-height: 120%;
     color: var(--text-white);
+}
+
+.hidden-pop {
+    display: none;
 }

@@ -108,7 +108,7 @@ export class RegistrationComponent {
                                     takeUntilDestroyed(this._destroyRef)
                                 )
                                 .subscribe((): void => {
-                                    this._router.navigate(["profile"]);
+                                    this._router.navigate(["orders"]);
                                 });
                         }
                     }

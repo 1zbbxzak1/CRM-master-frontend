@@ -7,12 +7,24 @@ import {OrdersComponent} from "./pages/orders/orders.component";
 import {ProfileEditComponent} from "./pages/profile/children/profile-edit/profile-edit.component";
 import {ClientDetailsComponent} from "./pages/clients/children/client-details/client-details.component";
 import {AsyncPipe, NgClass, NgIf, NgOptimizedImage} from "@angular/common";
-import {RouterLink} from "@angular/router";
-import {TuiButtonModule, TuiRootModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
-import {TuiInputModule, TuiInputPasswordModule} from "@taiga-ui/kit";
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {TuiButtonModule, TuiRootModule, TuiSvgModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {
+    TuiHighlightModule,
+    TuiInputModule,
+    TuiInputPasswordModule,
+    TuiMarkerIconModule,
+    TuiTilesModule
+} from "@taiga-ui/kit";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PasswordEditComponent} from './pages/profile/children/password-edit/password-edit.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AllOrdersComponent} from './pages/orders/children/all-orders/all-orders.component';
+import {NewOrdersComponent} from './pages/orders/children/new-orders/new-orders.component';
+import {ProgressOrdersComponent} from './pages/orders/children/progress-orders/progress-orders.component';
+import {DeliveryOrdersComponent} from './pages/orders/children/delivery-orders/delivery-orders.component';
+import {ArchiveOrdersComponent} from './pages/orders/children/archive-orders/archive-orders.component';
+import {SettingsComponent} from './pages/orders/components/settings/settings.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +36,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         ProfileEditComponent,
         ClientDetailsComponent,
         PasswordEditComponent,
+        AllOrdersComponent,
+        NewOrdersComponent,
+        ProgressOrdersComponent,
+        DeliveryOrdersComponent,
+        ArchiveOrdersComponent,
+        SettingsComponent,
     ],
     imports: [
         NgOptimizedImage,
@@ -39,6 +57,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         TuiTextfieldControllerModule,
         TuiButtonModule,
         TuiInputPasswordModule,
+        TuiHighlightModule,
+        RouterOutlet,
+        TuiMarkerIconModule,
+        TuiSvgModule,
+        TuiTilesModule,
     ],
     exports: [
         SidebarComponent,

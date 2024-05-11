@@ -149,7 +149,3 @@
     line-height: 125%;
     color: var(--text-white);
 }
-
-.hidden-auth {
-    display: none;
-}

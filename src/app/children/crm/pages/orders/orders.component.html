@@ -3,10 +3,82 @@
         <app-sidebar></app-sidebar>
         <div class="main-content-crm-full">
             <div class="content-crm">
-                <div class="content-crm-header">
-                    <p class="content-crm-title">Заказы</p>
+                <div class="orders">
+                    <div class="content-crm-header">
+                        <p class="content-crm-title">Заказы</p>
+                        <tui-input
+                            [(ngModel)]="search"
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            class="input-search"
+                            tuiTextfieldIconLeft="tuiIconSearch"
+                            tuiTextfieldSize="m"
+                        >
+                            <p class="input-search-title">Поиск</p>
+                        </tui-input>
+                    </div>
+
+                    <div class="orders-title">
+                        <button class="add-orders-button">
+                            Добавить заказ
+                        </button>
+                        <p class="all-orders">
+                            Всего заказов: {{ 0 }}
+                        </p>
+                    </div>
                 </div>
+
+                <div class="orders">
+                    <div class="orders-sort-title">
+                        <button (click)="toggleState('isAllOrders')"
+                                [class.orders-sort-item-click]="states['isAllOrders']"
+                                class="orders-sort-item">
+                            Все заказы
+                        </button>
+
+                        <button (click)="toggleState('isNewOrders')"
+                                [class.orders-sort-item-click]="states['isNewOrders']"
+                                class="orders-sort-item">
+                            Новый заказ
+                        </button>
+
+                        <button (click)="toggleState('isProgressOrders')"
+                                [class.orders-sort-item-click]="states['isProgressOrders']"
+                                class="orders-sort-item">
+                            В работе
+                        </button>
+
+                        <button (click)="toggleState('isDeliveryOrders')"
+                                [class.orders-sort-item-click]="states['isDeliveryOrders']"
+                                class="orders-sort-item">
+                            Доставка
+                        </button>
+
+
+                    </div>
+
+                    <div class="orders-sort-second-title">
+                        <button (click)="toggleState('isArchiveOrders')"
+                                [class.orders-sort-item-click]="states['isArchiveOrders']"
+                                class="orders-sort-item">
+                            Архив
+                        </button>
+                        <button (click)="openDialogSettings(settings)" class="settings-orders">
+                            <tui-marker-icon [class.custom-active]="isSettingsClicked" class="custom"
+                                             size="xxs" src="tuiIconSettingsLarge"></tui-marker-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <tui-root>
+                    <router-outlet></router-outlet>
+                </tui-root>
             </div>
         </div>
     </div>
+    <ng-template #settings let-observer>
+        <app-settings [observer]="observer"></app-settings>
+    </ng-template>
 </div>
+
+<app-settings class="hidden-pop"></app-settings>

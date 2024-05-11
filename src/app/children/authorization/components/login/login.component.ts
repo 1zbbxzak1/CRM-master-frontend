@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, Component, DestroyRef, Inject} from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    ElementRef,
+    Inject,
+    ViewChild
+} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TuiDialogFormService} from "@taiga-ui/kit";
 import {TuiDialogContext, TuiDialogService} from "@taiga-ui/core";
@@ -93,7 +101,7 @@ export class LoginComponent {
                                     takeUntilDestroyed(this._destroyRef)
                                 )
                                 .subscribe((): void => {
-                                    this._router.navigate(["profile"]);
+                                    this._router.navigate(["orders"]);
                                 });
                         }
                     }
