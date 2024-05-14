@@ -18,7 +18,7 @@
                         <div class="profile-data-item-title">ФИО</div>
                         <p class="profile-data-item-title">Вконтакте</p>
                         <p class="profile-item">{{ (user$ | async)?.fullName }}</p>
-                        <p class="profile-item">{{ (user$ | async)?.vkLink || 'Не привязан' }}</p>
+                        <p class="profile-item">{{ (user$ | async)?.vkLink || 'Не назначено' }}</p>
                         <p class="profile-data-item-title">Электронная почта</p>
                         <p class="profile-data-item-title">Телеграмм</p>
                         <p class="profile-item">{{ (user$ | async)?.email }}</p>
@@ -37,7 +37,7 @@
 
                 <section class="profile-connection">
                     <div class="profile-connection-title">Подключения</div>
-                    <button class="profile-button-vk">Привязать Вконтакте</button>
+                    <div #vkIdButton class="socials-btn" id="VkIdSdkOneTap"></div>
                 </section>
 
                 <section class="profile-logout-section">

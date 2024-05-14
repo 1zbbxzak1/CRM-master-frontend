@@ -21,12 +21,12 @@ export class HeaderComponent {
     protected openDialogLogIn(
         login: PolymorpheusContent<TuiDialogContext>,
     ): void {
-        this.loginComponent.openDialogLogIn(login);
+        this.loginComponent.openDialogAuth(login, "s");
     }
 
     protected openDialogRegistration(
         registration: PolymorpheusContent<TuiDialogContext>,
     ): void {
-        this.registrationComponent.openDialogRegistration(registration);
+        this.registrationComponent.openDialogAuth(registration, "s");
     }
 }

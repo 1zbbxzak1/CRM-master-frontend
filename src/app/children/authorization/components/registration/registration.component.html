@@ -1,4 +1,4 @@
-<form [formGroup]="formRegistration" class="pop-up">
+<form [formGroup]="formAuth" class="pop-up">
     <div class="pop-up-title">
         Регистрация
     </div>
@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <button (click)="registrationNewUser()" [disabled]="formRegistration.invalid"
+    <button (click)="registrationNewUser()" [disabled]="formAuth.invalid"
             appearance="custom"
             size="m" tuiButton
             type="button">
@@ -104,8 +104,5 @@
     <svg class="stroke" fill="none" height="2" viewBox="0 0 351 2" width="351" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1L349 1.00003" stroke="#2E313A" stroke-linecap="round" stroke-width="2"/>
     </svg>
-
-    <button class="socials-btn">
-        <img alt="вк" class="socials" height="40" ngSrc="assets/socials.svg" width="40">
-    </button>
+    <div #vkIdButton class="socials-btn" id="VkIdSdkOneTap"></div>
 </form>

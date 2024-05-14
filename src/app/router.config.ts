@@ -16,16 +16,17 @@ import {ArchiveOrdersComponent} from "./children/crm/pages/orders/children/archi
 
 
 export const routes: Routes = [
+    // TODO: как только будем выкладывать на хостинг, вернуть пути,
+    //  пока так, потому что VK SDK при локальной разработке работает на стандартном localhost, без /путь
+    // {
+    //     path: "",
+    //     redirectTo: "crm/orders",
+    //     pathMatch: "full",
+    // },
     {
         path: "",
-        redirectTo: "crm/orders",
-        pathMatch: "full",
-    },
-
-    {
-        path: "welcome",
         component: WelcomeComponent,
-        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+        // canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
         path: "crm/profile",
@@ -42,6 +43,11 @@ export const routes: Routes = [
         component: OrdersComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
         children: [
+            {
+                path: "",
+                redirectTo: "all-orders",
+                pathMatch: "full",
+            },
             {
                 path: 'all-orders',
                 component: AllOrdersComponent,

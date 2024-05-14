@@ -9,7 +9,7 @@ export class AuthGuard {
     public canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         const isAuthorized: string | null = localStorage.getItem("id");
 
-        if (state.url === '/welcome') {
+        if (state.url === '') {
             if (isAuthorized !== null) {
                 from(this._router.navigate(["profile"])).pipe(
                     map((): boolean => false)
@@ -18,7 +18,7 @@ export class AuthGuard {
             return of(true);
         } else {
             if (isAuthorized === null) {
-                from(this._router.navigate(["welcome"])).pipe(
+                from(this._router.navigate([""])).pipe(
                     map((): boolean => false)
                 );
             }

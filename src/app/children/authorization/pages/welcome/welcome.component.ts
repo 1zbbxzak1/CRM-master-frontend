@@ -19,6 +19,6 @@ export class WelcomeComponent {
     protected openDialogRegistration(
         registration: PolymorpheusContent<TuiDialogContext>,
     ): void {
-        this.registrationComponent.openDialogRegistration(registration);
+        this.registrationComponent.openDialogAuth(registration, "s");
     }
 }

@@ -15,10 +15,12 @@ import {AuthService} from "./data/services/auth/auth.service";
 import {AuthGuard} from "./data/guards/auth.guard";
 import {UserService} from "./data/services/user/user.service";
 import {UserManagerService} from "./data/services/user/user.manager.service";
+import {AuthBaseComponent} from "./children/services/auth/auth-base-component";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        AuthBaseComponent,
     ],
     imports: [
         BrowserModule,
