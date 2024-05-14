@@ -49,7 +49,7 @@ export class ProfileEditComponent {
     }
 
     protected previousPageWithUserInfo(): void {
-        this._router.navigate(['profile']);
+        this._router.navigate(['crm/profile']);
     }
 
     protected updateUserInfo(): void {
@@ -70,7 +70,7 @@ export class ProfileEditComponent {
                         if (data) {
                             console.log('Update user info successfully');
 
-                            this._router.navigate(['profile']);
+                            this._router.navigate(['crm/profile']);
                         }
                     }
                 );

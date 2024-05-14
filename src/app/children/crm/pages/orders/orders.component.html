@@ -30,27 +30,35 @@
 
                 <div class="orders">
                     <div class="orders-sort-title">
-                        <button (click)="toggleStateTabs('isAllOrders')"
-                                [class.orders-sort-item-click]="statesTabs['isAllOrders']"
-                                class="orders-sort-item">
+                        <button [class.orders-sort-item-click]="statesTabs['isAllOrders']"
+                                class="orders-sort-item"
+                                routerLink="/crm/orders/all-orders"
+                                routerLinkActive
+                        >
                             Все заказы
                         </button>
 
-                        <button (click)="toggleStateTabs('isNewOrders')"
-                                [class.orders-sort-item-click]="statesTabs['isNewOrders']"
-                                class="orders-sort-item">
+                        <button [class.orders-sort-item-click]="statesTabs['isNewOrders']"
+                                class="orders-sort-item"
+                                routerLink="/crm/orders/new-orders"
+                                routerLinkActive
+                        >
                             Новый заказ
                         </button>
 
-                        <button (click)="toggleStateTabs('isProgressOrders')"
-                                [class.orders-sort-item-click]="statesTabs['isProgressOrders']"
-                                class="orders-sort-item">
+                        <button [class.orders-sort-item-click]="statesTabs['isProgressOrders']"
+                                class="orders-sort-item"
+                                routerLink="/crm/orders/progress-orders"
+                                routerLinkActive
+                        >
                             В работе
                         </button>
 
-                        <button (click)="toggleStateTabs('isDeliveryOrders')"
-                                [class.orders-sort-item-click]="statesTabs['isDeliveryOrders']"
-                                class="orders-sort-item">
+                        <button [class.orders-sort-item-click]="statesTabs['isDeliveryOrders']"
+                                class="orders-sort-item"
+                                routerLink="/crm/orders/delivery-orders"
+                                routerLinkActive
+                        >
                             Доставка
                         </button>
 
@@ -58,9 +66,11 @@
                     </div>
 
                     <div class="orders-sort-second-title">
-                        <button (click)="toggleStateTabs('isArchiveOrders')"
-                                [class.orders-sort-item-click]="statesTabs['isArchiveOrders']"
-                                class="orders-sort-item">
+                        <button [class.orders-sort-item-click]="statesTabs['isArchiveOrders']"
+                                class="orders-sort-item"
+                                routerLink="/crm/orders/archive-orders"
+                                routerLinkActive
+                        >
                             Архив
                         </button>
                         <button (click)="openDialogSettings(settings)" class="settings-orders">

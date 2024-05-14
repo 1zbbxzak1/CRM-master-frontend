@@ -36,7 +36,7 @@ export class SettingsComponent {
                 takeUntilDestroyed(this._destroyRef)
             )
             .subscribe({
-                complete: () => {
+                complete: (): void => {
                     this._dialogForm.markAsPristine();
                 },
             });

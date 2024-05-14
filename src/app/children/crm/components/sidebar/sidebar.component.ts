@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {StateBarService} from "../../services/state-bar/state-bar.service";
+import {StateBarService} from "../../../services/state-bar/state-bar.service";
 
 @Component({
     selector: 'app-sidebar',

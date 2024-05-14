@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 import {TuiDialogContext} from "@taiga-ui/core";
 import {SettingsComponent} from "./components/settings/settings.component";
-import {StateBarService} from "../../services/state-bar/state-bar.service";
+import {StateBarService} from "../../../services/state-bar/state-bar.service";
 
 @Component({
     selector: 'app-orders',
@@ -10,17 +10,11 @@ import {StateBarService} from "../../services/state-bar/state-bar.service";
     styleUrls: ['../../styles/crm-styles.css', './styles/orders.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OrdersComponent extends StateBarService implements OnInit {
+export class OrdersComponent extends StateBarService {
     protected search: string = '';
     protected isSettingsClicked: boolean = false;
     @ViewChild(SettingsComponent)
     private readonly _settingsComponent!: SettingsComponent;
-
-    override ngOnInit(): void {
-        this.toggleStateTabs('isAllOrders');
-        this.toggleStateSidebar('isOrdersClicked');
-    }
-
 
     // TODO: фильтрация для поиска
     // get filteredOrders() {
@@ -31,7 +25,7 @@ export class OrdersComponent extends StateBarService implements OnInit {
 
     protected openDialogSettings(
         settings: PolymorpheusContent<TuiDialogContext>,
-    ) {
+    ): void {
         this.isSettingsClicked = !this.isSettingsClicked;
         this._settingsComponent.openDialogSettings(settings);
     }

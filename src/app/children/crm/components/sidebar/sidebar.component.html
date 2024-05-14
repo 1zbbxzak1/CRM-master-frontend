@@ -6,23 +6,21 @@
             </div>
         </li>
         <li class="sidebar-menu-list-item">
-            <button (click)="toggleStateSidebar('isOrdersClicked')"
-                    [class.active]="statesTabs['isOrdersClicked']"
+            <button [class.active]="statesSidebar['isOrdersClicked']"
                     class="sidebar-router"
                     routerLink="/crm/orders"
                     routerLinkActive
             >
                 <img alt="Заказы"
                      height="24"
-                     ngSrc="{{ statesTabs['isOrdersClicked'] ? 'assets/orders-active.svg' : 'assets/orders-disabled.svg' }}"
+                     ngSrc="{{ statesSidebar['isOrdersClicked'] ? 'assets/orders-active.svg' : 'assets/orders-disabled.svg' }}"
                      width="24">
                 <p class="sidebar-item">Заказы</p>
             </button>
         </li>
 
         <li class="sidebar-menu-list-item">
-            <button (click)="toggleStateSidebar('isClientsClicked')"
-                    [class.active]="statesTabs['isClientsClicked']"
+            <button [class.active]="statesSidebar['isClientsClicked']"
                     class="sidebar-router"
                     routerLink="/crm/clients"
                     routerLinkActive
@@ -30,15 +28,14 @@
                 <img
                     alt="Клиенты"
                     height="24"
-                    ngSrc="{{ statesTabs['isClientsClicked'] ? 'assets/clients-active.svg' : 'assets/clients-disabled.svg' }}"
+                    ngSrc="{{ statesSidebar['isClientsClicked'] ? 'assets/clients-active.svg' : 'assets/clients-disabled.svg' }}"
                     width="24">
                 <p class="sidebar-item">Клиенты</p>
             </button>
         </li>
 
         <li class="sidebar-menu-list-item">
-            <button (click)="toggleStateSidebar('isProductsClicked')"
-                    [class.active]="statesTabs['isProductsClicked']"
+            <button [class.active]="statesSidebar['isProductsClicked']"
                     class="sidebar-router"
                     routerLink="/crm/products"
                     routerLinkActive
@@ -46,22 +43,21 @@
                 <img
                     alt="Товары"
                     height="24"
-                    ngSrc="{{ statesTabs['isProductsClicked'] ? 'assets/products-active.svg' : 'assets/products-disabled.svg' }}"
+                    ngSrc="{{ statesSidebar['isProductsClicked'] ? 'assets/products-active.svg' : 'assets/products-disabled.svg' }}"
                     width="24">
                 <p class="sidebar-item">Товары</p>
             </button>
         </li>
 
         <li class="sidebar-menu-list-item">
-            <button (click)="toggleStateSidebar('isShopClicked')"
-                    [class.active]="statesTabs['isShopClicked']"
+            <button [class.active]="statesSidebar['isShopClicked']"
                     class="sidebar-router"
                     routerLink="/crm/shop"
                     routerLinkActive
             >
                 <img alt="Магазин"
                      height="24"
-                     ngSrc="{{ statesTabs['isShopClicked'] ? 'assets/shop-active.svg' : 'assets/shop-disabled.svg' }}"
+                     ngSrc="{{ statesSidebar['isShopClicked'] ? 'assets/shop-active.svg' : 'assets/shop-disabled.svg' }}"
                      width="24">
                 <p class="sidebar-item">Магазин</p>
             </button>
@@ -69,8 +65,7 @@
     </ul>
 
     <div class="sidebar-menu-list-item-profile">
-        <button (click)="toggleStateSidebar('isProfileClicked')"
-                [class.active]="statesTabs['isProfileClicked']"
+        <button [class.active]="statesSidebar['isProfileClicked']"
                 class="sidebar-router profile"
                 routerLink="/crm/profile"
                 routerLinkActive
@@ -78,7 +73,7 @@
             <img alt="Профиль"
                  class="sidebar-img"
                  height="24"
-                 ngSrc="{{ statesTabs['isProfileClicked'] ? 'assets/user-active.svg' : 'assets/user-disabled.svg' }}"
+                 ngSrc="{{ statesSidebar['isProfileClicked'] ? 'assets/user-active.svg' : 'assets/user-disabled.svg' }}"
                  width="24">
             <p class="sidebar-item">Профиль</p>
         </button>
