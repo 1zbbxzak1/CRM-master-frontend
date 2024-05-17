@@ -6,7 +6,6 @@ import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AuthorizationModule} from "./children/authorization/authorization.module";
-import {HomeModule} from "./children/crm/pages/home/home.module";
 import {ShopModule} from "./children/crm/pages/shop/shop.module";
 import {CrmModule} from "./children/crm/crm.module";
 import {HttpClientModule} from "@angular/common/http";
@@ -16,6 +15,8 @@ import {AuthGuard} from "./data/guards/auth.guard";
 import {UserService} from "./data/services/user/user.service";
 import {UserManagerService} from "./data/services/user/user.manager.service";
 import {AuthBaseComponent} from "./children/services/auth/auth-base-component";
+import {ProductsService} from "./data/services/products/products.service";
+import {ProductsManagerService} from "./data/services/products/products.manager.service";
 
 @NgModule({
     declarations: [
@@ -31,7 +32,6 @@ import {AuthBaseComponent} from "./children/services/auth/auth-base-component";
         TuiAlertModule,
         AuthorizationModule,
         CrmModule,
-        HomeModule,
         ShopModule,
         HttpClientModule,
     ],
@@ -41,6 +41,8 @@ import {AuthBaseComponent} from "./children/services/auth/auth-base-component";
         IdentityService,
         UserService,
         UserManagerService,
+        ProductsService,
+        ProductsManagerService,
         provideClientHydration(),
         {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
     ],

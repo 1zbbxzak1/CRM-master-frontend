@@ -4,7 +4,7 @@ import {IRegistrationRequestModel} from "../../request-models/auth/IRegistration
 import {ILoginRequestModel} from "../../request-models/auth/ILogin.request-model";
 import {AuthService} from "./auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {IAuthVkResponseModel} from "../../response-models/iauth-vk.response-model";
+import {IAuthVkResponseModel} from "../../response-models/external-auth/IAuthVk.response-model";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {UserManagerService} from "../user/user.manager.service";
 

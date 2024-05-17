@@ -8,7 +8,13 @@ import {ProfileEditComponent} from "./pages/profile/children/profile-edit/profil
 import {ClientDetailsComponent} from "./pages/clients/children/client-details/client-details.component";
 import {AsyncPipe, NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {TuiButtonModule, TuiRootModule, TuiSvgModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {
+    TuiButtonModule,
+    TuiRootModule,
+    TuiScrollbarModule,
+    TuiSvgModule,
+    TuiTextfieldControllerModule
+} from "@taiga-ui/core";
 import {
     TuiHighlightModule,
     TuiInputModule,
@@ -25,6 +31,8 @@ import {ProgressOrdersComponent} from './pages/orders/children/progress-orders/p
 import {DeliveryOrdersComponent} from './pages/orders/children/delivery-orders/delivery-orders.component';
 import {ArchiveOrdersComponent} from './pages/orders/children/archive-orders/archive-orders.component';
 import {SettingsComponent} from './pages/orders/components/settings/settings.component';
+import {IntersectionObserverModule} from "@ng-web-apis/intersection-observer";
+import {DeleteProductComponent} from './pages/products/components/delete-product/delete-product.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +50,7 @@ import {SettingsComponent} from './pages/orders/components/settings/settings.com
         DeliveryOrdersComponent,
         ArchiveOrdersComponent,
         SettingsComponent,
+        DeleteProductComponent,
     ],
     imports: [
         NgOptimizedImage,
@@ -63,10 +72,14 @@ import {SettingsComponent} from './pages/orders/components/settings/settings.com
         TuiSvgModule,
         TuiTilesModule,
         RouterLinkActive,
+        TuiScrollbarModule,
+        IntersectionObserverModule,
     ],
     exports: [
         SidebarComponent,
         PasswordEditComponent,
+        SettingsComponent,
+        DeleteProductComponent,
     ],
     providers: []
 })

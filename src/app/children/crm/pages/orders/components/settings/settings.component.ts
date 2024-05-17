@@ -8,7 +8,7 @@ import {TuiDialogFormService} from "@taiga-ui/kit";
 @Component({
     selector: 'app-settings',
     templateUrl: './settings.component.html',
-    styleUrl: './settings.component.css'
+    styleUrl: './styles/settings.component.css'
 })
 export class SettingsComponent {
     @Input() observer?: Observer<never>;
