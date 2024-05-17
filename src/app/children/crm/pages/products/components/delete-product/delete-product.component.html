@@ -1,0 +1,20 @@
+<form class="pop-up">
+    <div class="pop-up-delete-title">
+        Удалить товар
+    </div>
+
+    <section class="finish-section">
+        <button (click)="deleteProduct(id)" appearance="delete-custom"
+                class="save-button"
+                size="m" tuiButton
+                type="button">
+            Удалить
+        </button>
+        <button (click)="onCancel()" appearance="custom-cancel"
+                class="cancel-button"
+                size="m" tuiButton
+                type="button">
+            Отменить
+        </button>
+    </section>
+</form>

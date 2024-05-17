@@ -3,10 +3,89 @@
         <app-sidebar></app-sidebar>
         <div class="main-content-crm-full">
             <div class="content-crm">
-                <div class="content-crm-header">
-                    <p class="content-crm-title">Товары</p>
+                <div class="products">
+                    <div class="content-crm-header">
+                        <p class="content-crm-title">Товары</p>
+                        <tui-input
+                            [(ngModel)]="search"
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            class="input-search"
+                            tuiTextfieldIconLeft="tuiIconSearch"
+                            tuiTextfieldSize="m"
+                        >
+                            <p class="input-search-title">Поиск</p>
+                        </tui-input>
+                    </div>
+
+                    <div class="product-title">
+                        <button class="add-product-button">
+                            Добавить товар
+                        </button>
+                        <p class="all-products">
+                            Всего товаров: {{ products.length }}
+                        </p>
+                    </div>
                 </div>
+
+                <tui-scrollbar
+                    [hidden]="true"
+                    class="scrollbar"
+                    waIntersectionRoot
+                >
+                    <div class="all-products-table">
+                        <table class="table">
+                            <thead>
+                            <tr class="table-th-full">
+                                <th class="table-th">Фото</th>
+                                <th>Наименование</th>
+                                <th>Материал</th>
+                                <th>Цена</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let product of searchProducts()" [class.selected-td]="!product.isVisible"
+                                class="table-td-full">
+                                <td class="table-td">
+                                    <img [class.table-td-img]="!product.isVisible" alt="Product Photo"
+                                         class="photo-product"
+                                         height="80"
+                                         ngSrc="{{ product.photos[0]?.url || 'assets/default-img-product.jpg' }}"
+                                         width="80">
+                                </td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.material }}</td>
+                                <td>{{ product.price + ' ₽' }}</td>
+                                <td>
+                                    <button (click)="toggleVisibility(product.id)"
+                                            [class.selected]="!product.isVisible"
+                                            class="product-button">
+                                        <img alt="eye" height="44"
+                                             ngSrc="{{ product.isVisible ? 'assets/eye-icon.svg' : 'assets/eye-icon-disabled.svg' }}"
+                                             width="44">
+                                    </button>
+                                    <button (click)="openDialogDelete(deleteProduct)" class="product-button">
+                                        <img alt="delete" height="44" ngSrc="assets/delete-icon.svg" width="44">
+                                    </button>
+
+                                    <tui-root>
+                                        <ng-template #deleteProduct let-observer>
+                                            <app-delete-product [id]="product.id"
+                                                                [observer]="observer"></app-delete-product>
+                                        </ng-template>
+                                    </tui-root>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </tui-scrollbar>
             </div>
         </div>
     </div>
 </div>
+
+<app-delete-product class="hidden-pop"></app-delete-product>
+

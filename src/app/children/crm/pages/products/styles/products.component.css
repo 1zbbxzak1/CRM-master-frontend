@@ -1,0 +1,137 @@
+.products {
+    display: flex;
+    width: 100%;
+
+    margin-bottom: 75px;
+}
+
+.product-title {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    width: 100%;
+    justify-content: end;
+
+    padding-top: 32px;
+}
+
+.input-search {
+    width: 20vw;
+    padding-left: 40px;
+}
+
+.input-search-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--text-disabled);
+}
+
+.add-product-button {
+    background: var(--main-blue);
+    border-radius: 8px;
+    padding: 10px 24px;
+    margin-right: 20px;
+
+    border: none;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--text-white);
+}
+
+.all-products {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-light-grey);
+}
+
+.table {
+    width: 100%;
+}
+
+.table-th-full {
+    text-align: left;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--text-white);
+}
+
+.table thead {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+
+    background: var(--fields-form);
+}
+
+.table-th {
+    padding: 22px 16px;
+    border-radius: 10px 0 0 10px;
+}
+
+.table th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.photo-product {
+    border-radius: 10px !important;
+}
+
+.table-td-full {
+    align-content: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-light-grey);
+
+    border-bottom: 1px solid var(--stroke-dark-grey);
+}
+
+.table-td {
+    padding: 16px;
+}
+
+
+.product-button {
+    background: none;
+    border: none;
+    gap: 10px;
+}
+
+.product-button:hover {
+    border: 1px solid var(--main-blue);
+    border-radius: 10px;
+}
+
+.selected {
+    background: none;
+    border: none;
+}
+
+.selected-td {
+    align-content: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-light-grey);
+    filter: brightness(0.5);
+
+    border-bottom: 1px solid var(--stroke-dark-grey);
+}
+
+.table-td-img {
+    filter: brightness(0.5); /* Darken the image */
+}
+
+td:last-child {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.table-td-full:hover {
+    background: rgba(0, 130, 245, 0.1);
+}

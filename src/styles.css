@@ -22,6 +22,25 @@
     }
 }
 
+[tuiWrapper][data-appearance='delete-custom'] {
+    background: #C70803;
+    border: 2px solid #C70803;
+    color: #fff;
+    margin-top: 24px;
+
+    .wrapper-hover {
+        background: #0082F5;
+    }
+
+    .wrapper-active {
+        background: #0082F5;
+    }
+
+    .wrapper-disabled {
+        background: #eaecee;
+    }
+}
+
 [tuiWrapper][data-appearance='custom-cancel'] {
     border: 2px solid var(--main-blue);
     border-radius: 8px;
