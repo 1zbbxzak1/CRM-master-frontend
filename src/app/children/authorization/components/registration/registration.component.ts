@@ -17,7 +17,7 @@ export class RegistrationComponent extends AuthBaseComponent {
             fullName: new FormControl("", [Validators.required, fullNameValidator()]),
             email: new FormControl("", [Validators.required, Validators.email]),
             phoneNumber: new FormControl("", [Validators.required, phoneNumberValidator()]),
-            password: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
+            password: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
         }));
     }
 

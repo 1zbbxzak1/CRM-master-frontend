@@ -57,20 +57,19 @@
 .first-section-start-btn {
     grid-area: button;
 
-    color: #ffffff;
+    font-weight: 400;
     font-size: 16px;
-    font-weight: 600;
-    line-height: normal;
+    line-height: 125%;
+    color: var(--text-white);
     text-align: center;
-    text-transform: uppercase;
 
     box-sizing: border-box;
     border: 2px solid #0082f5;
     border-radius: 8px;
-    padding: 10px;
+    padding: 10px 24px;
     background: transparent;
 
-    width: 30%;
+    width: 20%;
 }
 
 .hidden-pop {

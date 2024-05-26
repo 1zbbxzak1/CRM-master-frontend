@@ -20,6 +20,10 @@
     position: relative;
 }
 
+.profile-edit:hover {
+    color: var(--text-white);
+}
+
 .profile-edit::after {
     position: absolute;
     content: '';
@@ -28,13 +32,6 @@
     height: 1px;
     background: var(--text-white);
     width: 0;
-    transition: 0.3s;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.profile-edit:hover:after {
-    width: 100%;
 }
 
 .profile-data-title {

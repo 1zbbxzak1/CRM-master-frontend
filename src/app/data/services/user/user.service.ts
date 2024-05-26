@@ -17,6 +17,6 @@ export class UserService {
     }
 
     public updateUserPassword(password: IPasswordRequestModel): Observable<any> {
-        return this._http.put('http://localhost:8080/password', password, {withCredentials: true});
+        return this._http.patch('http://localhost:8080/user/password', password, {withCredentials: true});
     }
 }
