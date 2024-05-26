@@ -28,17 +28,29 @@
 }
 
 .add-product-button {
-    background: var(--main-blue);
+    background: none;
+    border: 2px solid var(--main-blue);
     border-radius: 8px;
     padding: 10px 24px;
     margin-right: 20px;
-
-    border: none;
 
     font-weight: 400;
     font-size: 16px;
     line-height: 125%;
     color: var(--text-white);
+
+    cursor: pointer;
+}
+
+.add-product-button:hover {
+    background: var(--main-blue);
+    border-radius: 8px;
+    padding: 10px 24px;
+}
+
+.add-product-button:active {
+    background: #005acd;
+    border: 2px solid #005acd;
 }
 
 .all-products {
@@ -82,6 +94,7 @@
 }
 
 .table-td-full {
+    display: table-row;
     align-content: center;
     font-weight: 400;
     font-size: 16px;
@@ -93,18 +106,30 @@
 
 .table-td {
     padding: 16px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
+.product-button-section {
+    width: 140px;
+    text-align: center;
+}
 
 .product-button {
     background: none;
-    border: none;
-    gap: 10px;
+    border: 1px solid transparent;
+
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 .product-button:hover {
     border: 1px solid var(--main-blue);
     border-radius: 10px;
+}
+
+.product-button:active {
+    background: var(--main-blue);
 }
 
 .selected {
@@ -124,12 +149,7 @@
 }
 
 .table-td-img {
-    filter: brightness(0.5); /* Darken the image */
-}
-
-td:last-child {
-    margin-right: 0;
-    padding-right: 0;
+    filter: brightness(0.5);
 }
 
 .table-td-full:hover {

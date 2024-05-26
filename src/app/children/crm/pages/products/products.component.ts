@@ -5,6 +5,7 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 import {TuiDialogContext} from "@taiga-ui/core";
 import {DeleteProductComponent} from "./components/delete-product/delete-product.component";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-products',
@@ -15,6 +16,8 @@ import {DeleteProductComponent} from "./components/delete-product/delete-product
 export class ProductsComponent implements OnInit {
     protected products: IProductsResponseModel[] = [];
     protected search: string = '';
+    protected clickedInside: boolean = false;
+
     @ViewChild(DeleteProductComponent)
     private readonly _deleteProductComponent!: DeleteProductComponent;
 
@@ -22,6 +25,7 @@ export class ProductsComponent implements OnInit {
         private readonly _productsManagerService: ProductsManagerService,
         private readonly _destroyRef: DestroyRef,
         private readonly _changeDetectorRef: ChangeDetectorRef,
+        private readonly _router: Router,
     ) {
     }
 
@@ -43,13 +47,26 @@ export class ProductsComponent implements OnInit {
         return this.products.filter(product => product.name.toLowerCase().includes(this.search.toLowerCase()));
     }
 
+    protected navigateToInfoProductPage(id: string): void {
+        if (!this.clickedInside) {
+            this._router.navigate(['crm/products/info-product', id]);
+        }
+        this.clickedInside = false;
+    }
+
+    protected navigateToAddProductPage(): void {
+        this._router.navigate(['crm/products/add-product']);
+    }
+
     protected openDialogDelete(
         deleteProduct: PolymorpheusContent<TuiDialogContext>,
     ): void {
+        this.clickedInside = true;
         this._deleteProductComponent.openDialogDelete(deleteProduct);
     }
 
     protected toggleVisibility(id: string): void {
+        this.clickedInside = true;
         this._productsManagerService.toggleVisibility(id).pipe(
             takeUntilDestroyed(this._destroyRef),
         ).subscribe(

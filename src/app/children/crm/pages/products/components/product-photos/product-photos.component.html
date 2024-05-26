@@ -1,0 +1,33 @@
+<tui-scrollbar>
+    <div>
+        <p class="product-add-title">Фотографии</p>
+        <div (drop)="onDrop($event)" class="photos-list">
+            <div
+                (dragenter)="onDragEnter($event)"
+                (dragleave)="onDragLeave($event)"
+                (dragover)="onDragOver($event)"
+                (dragstart)="onDragStart($event, i)"
+                (drop)="onDragDrop($event, i)"
+                *ngFor="let photo of product?.photos; let i = index"
+                [class.dragging]="isDragging"
+                [class.first-item]="i === 0"
+                class="photo-item"
+                draggable="true">
+                <img [src]="photo.url" alt="Product Image">
+                <button (click)="deleteProductPhoto(product.id, photo.id)" class="delete-button">
+                    <img alt="Удалить" height="44" ngSrc="assets/delete-icon.svg" width="44">
+                </button>
+            </div>
+        </div>
+        <div (dragleave)="onDragLeave($event)" (dragover)="onDragOver($event)"
+             (drop)="onDrop($event)"
+             class="file-drop-area">
+            <input (change)="onFileSelected($event)" hidden id="file-input" multiple type="file">
+            <label for="file-input">
+                <img alt="Загрузка файлов" class="img-load" height="24" ngSrc="assets/load.svg"
+                     width="25">
+                Перетащите файлы сюда или нажмите, чтобы загрузить.
+            </label>
+        </div>
+    </div>
+</tui-scrollbar>

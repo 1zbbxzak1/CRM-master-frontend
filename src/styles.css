@@ -98,4 +98,7 @@ img {
     --tui-text-01: #fff;
     --tui-base-03: #2e313a;
     --text-disabled: #464a50;
+    --tui-elevation-02: var(--bg-dark-blue-2);
+    --tui-base-04: var(--stroke-dark-grey);
+    --tui-shadow-dropdown: 0 4px 8px 0 rgba(46, 49, 58, 0.2);
 }

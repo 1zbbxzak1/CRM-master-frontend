@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="product-title">
-                        <button class="add-product-button">
+                        <button (click)="navigateToAddProductPage()" class="add-product-button">
                             Добавить товар
                         </button>
                         <p class="all-products">
@@ -45,27 +45,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let product of searchProducts()" [class.selected-td]="!product.isVisible"
+                            <tr (click)="navigateToInfoProductPage(product.id)" *ngFor="let product of searchProducts()"
+                                [class.selected-td]="!product.isVisible"
                                 class="table-td-full">
                                 <td class="table-td">
-                                    <img [class.table-td-img]="!product.isVisible" alt="Product Photo"
+                                    <img [class.table-td-img]="!product.isVisible"
+                                         [src]="product.photos?.[0]?.url || 'assets/cap.svg'"
+                                         alt="Product Photo"
                                          class="photo-product"
                                          height="80"
-                                         ngSrc="{{ product.photos[0]?.url || 'assets/default-img-product.jpg' }}"
                                          width="80">
                                 </td>
                                 <td>{{ product.name }}</td>
                                 <td>{{ product.material }}</td>
                                 <td>{{ product.price + ' ₽' }}</td>
-                                <td>
-                                    <button (click)="toggleVisibility(product.id)"
+                                <td class="product-button-section">
+                                    <button (click)="toggleVisibility(product.id); $event.stopPropagation()"
                                             [class.selected]="!product.isVisible"
                                             class="product-button">
                                         <img alt="eye" height="44"
                                              ngSrc="{{ product.isVisible ? 'assets/eye-icon.svg' : 'assets/eye-icon-disabled.svg' }}"
                                              width="44">
                                     </button>
-                                    <button (click)="openDialogDelete(deleteProduct)" class="product-button">
+                                    <button (click)="openDialogDelete(deleteProduct); $event.stopPropagation()"
+                                            class="product-button">
                                         <img alt="delete" height="44" ngSrc="assets/delete-icon.svg" width="44">
                                     </button>
 

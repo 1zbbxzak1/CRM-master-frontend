@@ -13,6 +13,7 @@ import {NewOrdersComponent} from "./children/crm/pages/orders/children/new-order
 import {ProgressOrdersComponent} from "./children/crm/pages/orders/children/progress-orders/progress-orders.component";
 import {DeliveryOrdersComponent} from "./children/crm/pages/orders/children/delivery-orders/delivery-orders.component";
 import {ArchiveOrdersComponent} from "./children/crm/pages/orders/children/archive-orders/archive-orders.component";
+import {AddProductComponent} from "./children/crm/pages/products/children/add-product/add-product.component";
 
 
 export const routes: Routes = [
@@ -78,6 +79,11 @@ export const routes: Routes = [
     {
         path: 'crm/products',
         component: ProductsComponent,
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+    },
+    {
+        path: 'crm/products/add-product',
+        component: AddProductComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
