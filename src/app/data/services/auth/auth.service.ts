@@ -22,7 +22,7 @@ export class AuthService {
         return this._http.post('http://localhost:8080/auth/externalLogin/vk', {payload}, {withCredentials: true});
     }
 
-    public externalGet(payload: string) {
+    public externalGet(payload: string): Observable<any> {
         return this._http.get<any>(`http://localhost:8080/auth/externalLogin/vk?payload=${payload}`, {withCredentials: true});
     }
 

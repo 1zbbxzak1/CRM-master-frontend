@@ -6,6 +6,8 @@
     align-items: center;
     justify-content: center;
 
+    overflow: hidden;
+
     background: var(--bg-dark-blue-1);
 }
 
@@ -13,11 +15,16 @@
     width: 80%;
     height: 100%;
     display: flex;
+
+    overflow: hidden;
 }
 
 .main-content-crm-full {
-    width: 100%;
+    width: calc(100% - 220px);
+    margin-left: 220px;
     min-height: 100%;
+
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
@@ -29,6 +36,8 @@
     margin-left: 26px;
     margin-right: 26px;
     min-height: 100%;
+
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;

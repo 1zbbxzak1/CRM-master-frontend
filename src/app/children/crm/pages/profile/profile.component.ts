@@ -4,7 +4,7 @@ import {IUserResponseModel} from '../../../../data/response-models/user/IUser.re
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {IdentityService} from "../../../../data/services/auth/identity.service";
-import {PasswordEditComponent} from "./children/password-edit/password-edit.component";
+import {PasswordEditComponent} from "./components/password-edit/password-edit.component";
 import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 import {TuiDialogContext} from "@taiga-ui/core";
 import * as VKID from "@vkid/sdk";

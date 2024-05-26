@@ -17,6 +17,8 @@ import {UserManagerService} from "./data/services/user/user.manager.service";
 import {AuthBaseComponent} from "./children/services/auth/auth-base-component";
 import {ProductsService} from "./data/services/products/products.service";
 import {ProductsManagerService} from "./data/services/products/products.manager.service";
+import {ProductPhotoManagerService} from "./data/services/product-photo/product-photo.manager.service";
+import {ProductPhotoService} from "./data/services/product-photo/product-photo.service";
 
 @NgModule({
     declarations: [
@@ -43,6 +45,8 @@ import {ProductsManagerService} from "./data/services/products/products.manager.
         UserManagerService,
         ProductsService,
         ProductsManagerService,
+        ProductPhotoService,
+        ProductPhotoManagerService,
         provideClientHydration(),
         {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
     ],
