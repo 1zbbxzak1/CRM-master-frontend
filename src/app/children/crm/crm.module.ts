@@ -41,6 +41,7 @@ import {DeleteProductComponent} from './pages/products/components/delete-product
 import {AddProductComponent} from "./pages/products/children/add-product/add-product.component";
 import {InfoProductComponent} from './pages/products/children/info-product/info-product.component';
 import {ProductPhotosComponent} from './pages/products/components/product-photos/product-photos.component';
+import {UpdateProductComponent} from './pages/products/children/update-product/update-product.component';
 
 @NgModule({
     declarations: [
@@ -62,6 +63,7 @@ import {ProductPhotosComponent} from './pages/products/components/product-photos
         AddProductComponent,
         InfoProductComponent,
         ProductPhotosComponent,
+        UpdateProductComponent,
     ],
     imports: [
         NgOptimizedImage,
