@@ -42,6 +42,7 @@ import {AddProductComponent} from "./pages/products/children/add-product/add-pro
 import {InfoProductComponent} from './pages/products/children/info-product/info-product.component';
 import {ProductPhotosComponent} from './pages/products/components/product-photos/product-photos.component';
 import {UpdateProductComponent} from './pages/products/children/update-product/update-product.component';
+import {UpdateClientsComponent} from './pages/clients/children/update-clients/update-clients.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import {UpdateProductComponent} from './pages/products/children/update-product/u
 
         ClientsComponent,
         ClientDetailsComponent,
+        UpdateClientsComponent,
 
         ProductsComponent,
         DeleteProductComponent,

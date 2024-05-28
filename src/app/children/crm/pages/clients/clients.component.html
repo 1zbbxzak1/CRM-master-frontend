@@ -41,7 +41,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr (click)="navigateToInfoClientPage(client.id)" *ngFor="let client of clients?.clients"
+                            <tr (click)="navigateToInfoClientPage(client.id)" *ngFor="let client of searchClients()"
                                 class="table-td-full">
                                 <td class="table-td">
                                     {{ client.fullName }}

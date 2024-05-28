@@ -3,93 +3,69 @@
         <app-sidebar></app-sidebar>
         <div class="main-content-crm-full">
             <div class="content-crm">
-                <div class="content-product-header">
-                    <button (click)="navigateToPreviousPage(product.id)" class="back-to-products">
+                <div class="content-client-header">
+                    <button (click)="navigateToPreviousPage(client!.id)" class="back-to-client">
                         <img alt="back" height="24" ngSrc="assets/chevron_left.svg" width="24">
                     </button>
-                    <p class="content-crm-title">{{ product?.name }}</p>
+                    <p class="content-crm-title">{{ 'Клиент ' + shortenFullName(client?.fullName) }}</p>
                 </div>
 
-                <div class="product-add-table">
+                <div class="client-add-table">
                     <div>
-                        <p class="product-add-title">Основное</p>
+                        <p class="client-add-title">Основное</p>
                         <tui-root>
-                            <form [formGroup]="formProductInfo" class="profile-data">
+                            <form [formGroup]="formClientInfo" class="profile-data">
                                 <div class="profile-data-list">
-                                    <div class="profile-data-item-title">Название</div>
+                                    <div class="profile-data-item-title">ФИО</div>
                                     <tui-input
                                         [tuiTextfieldCleaner]="true"
                                         [tuiTextfieldLabelOutside]="true"
                                         class="tui-input-name"
-                                        formControlName="name"
+                                        formControlName="fullName"
                                         tuiTextfieldSize="m"
                                     >
                                         <input
-                                            autocomplete="name"
+                                            autocomplete="fullName"
                                             tuiTextfield
                                             type="text"
                                         />
                                     </tui-input>
-                                    <p class="profile-data-item-title">Цена</p>
+                                    <p class="profile-data-item-title">Телефон</p>
                                     <tui-input
                                         [tuiTextfieldCleaner]="true"
                                         [tuiTextfieldLabelOutside]="true"
                                         class="tui-input-name"
-                                        formControlName="price"
+                                        formControlName="phone"
                                         tuiTextfieldSize="m"
                                     >
                                         <input
-                                            autocomplete="price"
+                                            autocomplete="phone"
                                             tuiTextfield
                                             type="text"
                                         />
                                     </tui-input>
-                                    <p class="profile-data-item-title">Материал</p>
-                                    <tui-combo-box
-                                        [(ngModel)]="material"
-                                        [tuiTextfieldCleaner]="true"
-                                        [tuiTextfieldLabelOutside]="true"
-                                        class="tui-input-name"
-                                        formControlName="material"
-                                        tuiTextfieldSize="m"
-                                    >
-                                        <tui-data-list-wrapper
-                                            *tuiDataList
-                                            [items]="materials | tuiFilterByInput"
-                                            class="tui-data-list"
-                                        ></tui-data-list-wrapper>
-                                    </tui-combo-box>
-                                    <p class="profile-data-item-title">Размер (ДхШхВ), см</p>
+                                    <p class="profile-data-item-title">Электронная почта</p>
                                     <tui-input
                                         [tuiTextfieldCleaner]="true"
                                         [tuiTextfieldLabelOutside]="true"
                                         class="tui-input-name"
-                                        formControlName="dimensions"
+                                        formControlName="email"
                                         tuiTextfieldSize="m"
                                     >
                                         <input
-                                            autocomplete="dimensions"
+                                            autocomplete="email"
                                             tuiTextfield
                                             type="text"
                                         />
                                     </tui-input>
-                                    <p class="profile-data-item-title">Описание</p>
-                                    <p></p>
-                                    <tui-textarea
-                                        [tuiTextfieldCleaner]="true"
-                                        [tuiTextfieldLabelOutside]="true"
-                                        class="tui-space_bottom-4 field-large tui-input-name"
-                                        formControlName="description"
-                                    >
-                                    </tui-textarea>
                                 </div>
                             </form>
                         </tui-root>
                         <section class="profile-finish-section">
-                            <button (click)="updateProduct()" class="profile-save">
+                            <button (click)="updateClientInfo()" class="profile-save">
                                 <p class="profile-logout-title">Сохранить</p>
                             </button>
-                            <button (click)="navigateToPreviousPage(product.id)" class="profile-cancel">
+                            <button (click)="navigateToPreviousPage(client!.id)" class="profile-cancel">
                                 <p class="profile-logout-title">Отменить</p>
                             </button>
                         </section>
@@ -97,11 +73,13 @@
 
                     <div>
                         <svg class="stroke" fill="none" width="2" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L1.00003 606" stroke="#2E313A" stroke-linecap="round"/>
+                            <path d="M1 1L1.00003 800" stroke="#2E313A" stroke-linecap="round"/>
                         </svg>
                     </div>
 
-                    <app-product-photos></app-product-photos>
+                    <tui-scrollbar>
+                        <app-order-history [clientId]="clientId"></app-order-history>
+                    </tui-scrollbar>
                 </div>
             </div>
         </div>

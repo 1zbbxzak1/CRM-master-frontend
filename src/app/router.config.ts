@@ -17,6 +17,7 @@ import {AddProductComponent} from "./children/crm/pages/products/children/add-pr
 import {InfoProductComponent} from "./children/crm/pages/products/children/info-product/info-product.component";
 import {UpdateProductComponent} from "./children/crm/pages/products/children/update-product/update-product.component";
 import {ClientDetailsComponent} from "./children/crm/pages/clients/children/client-details/client-details.component";
+import {UpdateClientsComponent} from "./children/crm/pages/clients/children/update-clients/update-clients.component";
 
 
 export const routes: Routes = [
@@ -82,6 +83,11 @@ export const routes: Routes = [
     {
         path: 'crm/clients/info-client/:id',
         component: ClientDetailsComponent,
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+    },
+    {
+        path: 'crm/clients/update-client/:id',
+        component: UpdateClientsComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {
