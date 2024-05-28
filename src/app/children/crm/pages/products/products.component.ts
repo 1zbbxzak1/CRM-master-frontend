@@ -17,6 +17,7 @@ export class ProductsComponent implements OnInit {
     protected products: IProductsResponseModel[] = [];
     protected search: string = '';
     protected clickedInside: boolean = false;
+    protected selectedProductId!: string;
 
     @ViewChild(DeleteProductComponent)
     private readonly _deleteProductComponent!: DeleteProductComponent;
@@ -38,13 +39,13 @@ export class ProductsComponent implements OnInit {
             takeUntilDestroyed(this._destroyRef)
         ).subscribe((products: IProductsResponseModel[]): void => {
             this.products = products;
-            console.log('Products received:', products);
+
             this._changeDetectorRef.detectChanges();
         });
     }
 
     protected searchProducts(): IProductsResponseModel[] {
-        return this.products.filter(product => product.name.toLowerCase().includes(this.search.toLowerCase()));
+        return this.products.filter((product: IProductsResponseModel) => product.name.toLowerCase().includes(this.search.toLowerCase()));
     }
 
     protected navigateToInfoProductPage(id: string): void {
@@ -60,8 +61,10 @@ export class ProductsComponent implements OnInit {
 
     protected openDialogDelete(
         deleteProduct: PolymorpheusContent<TuiDialogContext>,
+        productId: string,
     ): void {
         this.clickedInside = true;
+        this.selectedProductId = productId;
         this._deleteProductComponent.openDialogDelete(deleteProduct);
     }
 

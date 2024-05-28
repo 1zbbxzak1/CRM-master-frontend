@@ -67,18 +67,11 @@
                                              ngSrc="{{ product.isVisible ? 'assets/eye-icon.svg' : 'assets/eye-icon-disabled.svg' }}"
                                              width="44">
                                     </button>
-                                    <button (click)="openDialogDelete(deleteProduct); $event.stopPropagation()"
-                                            class="product-button">
+                                    <button
+                                        (click)="openDialogDelete(deleteProduct, product.id); $event.stopPropagation()"
+                                        class="product-button">
                                         <img alt="delete" height="44" ngSrc="assets/delete-icon.svg" width="44">
                                     </button>
-
-                                    <tui-root>
-                                        <ng-template #deleteProduct let-observer>
-                                            <app-delete-product [id]="product.id"
-                                                                [observer]="observer"></app-delete-product>
-                                        </ng-template>
-                                    </tui-root>
-
                                 </td>
                             </tr>
                             </tbody>
@@ -89,6 +82,12 @@
         </div>
     </div>
 </div>
+
+<tui-root>
+    <ng-template #deleteProduct let-observer>
+        <app-delete-product [id]="selectedProductId" [observer]="observer"></app-delete-product>
+    </ng-template>
+</tui-root>
 
 <app-delete-product class="hidden-pop"></app-delete-product>
 

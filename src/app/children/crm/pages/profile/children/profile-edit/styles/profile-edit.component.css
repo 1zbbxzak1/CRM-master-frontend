@@ -38,6 +38,18 @@
 
     margin-bottom: 45px;
     margin-right: 10px;
+
+    cursor: pointer;
+}
+
+.profile-save:hover {
+    background: #28aaff;
+    border: 2px solid #28aaff;
+}
+
+.profile-save:active {
+    background: #005acd;
+    border: 2px solid #005acd;
 }
 
 .profile-cancel {
@@ -53,4 +65,16 @@
     color: var(--text-white);
 
     margin-bottom: 45px;
+
+    cursor: pointer;
+}
+
+.profile-cancel:hover {
+    background: #28aaff;
+    border: 2px solid #28aaff;
+}
+
+.profile-cancel:active {
+    background: #005acd;
+    border: 2px solid #005acd;
 }

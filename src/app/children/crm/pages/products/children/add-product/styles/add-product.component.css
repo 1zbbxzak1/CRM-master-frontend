@@ -204,7 +204,23 @@
     background: var(--main-blue);
 }
 
-.add-product-button:active {
+
+.profile-save:hover {
+    background: #28aaff;
+    border: 2px solid #28aaff;
+}
+
+.profile-save:active {
+    background: #005acd;
+    border: 2px solid #005acd;
+}
+
+.profile-cancel:hover {
+    background: #28aaff;
+    border: 2px solid #28aaff;
+}
+
+.profile-cancel:active {
     background: #005acd;
     border: 2px solid #005acd;
 }

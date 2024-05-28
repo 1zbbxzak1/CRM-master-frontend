@@ -26,7 +26,7 @@ export class ProductsService {
     }
 
     public updateProduct(id: string, product: IProductsRequestModel): Observable<any> {
-        return this._http.put(`${this.apiUrl}/${id}`, {product}, {withCredentials: true});
+        return this._http.put(`${this.apiUrl}/${id}`, product, {withCredentials: true});
     }
 
     public deleteProduct(id: string): Observable<any> {

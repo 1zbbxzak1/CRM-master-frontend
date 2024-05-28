@@ -18,6 +18,8 @@
     background: none;
 
     position: relative;
+
+    cursor: pointer;
 }
 
 .profile-edit:hover {
@@ -82,6 +84,14 @@
     color: var(--text-white);
 }
 
+.profile-button-vk:hover {
+    background: #28aaff;
+}
+
+.profile-button-vk:active {
+    background: #005acd;
+}
+
 .profile-connection-title {
     margin-top: 40px;
     margin-bottom: 20px;
@@ -109,6 +119,18 @@
     padding: 4px 16px;
 
     background: none;
+
+    cursor: pointer;
+}
+
+.profile-edit-password:hover {
+    background: #28aaff;
+    border: 2px solid #28aaff;
+}
+
+.profile-edit-password:active {
+    background: #005acd;
+    border: 2px solid #005acd;
 }
 
 .profile-edit-pass-title {
@@ -138,6 +160,18 @@
     align-items: center;
 
     margin-bottom: 45px;
+
+    cursor: pointer;
+}
+
+.profile-logout:hover {
+    background: #28aaff;
+    border: 2px solid #28aaff;
+}
+
+.profile-logout:active {
+    background: #005acd;
+    border: 2px solid #005acd;
 }
 
 .profile-logout-title {

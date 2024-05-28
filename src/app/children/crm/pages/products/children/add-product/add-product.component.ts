@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef} from 
 import {FormControl, FormGroup} from "@angular/forms";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {IProductsRequestModel} from "../../../../../../data/request-models/products/IProducts.request-model";
-import {IProductsResponseModel} from "../../../../../../data/response-models/products/IProducts.response-model";
 import {ProductsManagerService} from "../../../../../../data/services/products/products.manager.service";
 import {Router} from "@angular/router";
 
@@ -125,14 +124,10 @@ export class AddProductComponent {
             this._productManagerService.addProduct(product, files).pipe(
                 takeUntilDestroyed(this._destroyRef)
             ).subscribe({
-                next: (response: IProductsResponseModel): void => {
-                    console.log('Product created successfully:', response);
+                next: (): void => {
                     this.navigateToPreviousPage();
                 },
-                error: (error) => console.error('Error creating product:', error)
             });
-        } else {
-            console.error('Not all fields are filled in correctly');
         }
     }
 
@@ -163,7 +158,6 @@ export class AddProductComponent {
                 resolve();
             };
             reader.onerror = (): void => {
-                console.error('Error reading file:', file.name);
                 reject();
             };
             reader.readAsDataURL(file);

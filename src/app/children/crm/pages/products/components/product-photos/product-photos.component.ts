@@ -35,8 +35,7 @@ export class ProductPhotosComponent {
                 takeUntilDestroyed(this._destroyRef)
             ).subscribe((products: IProductsResponseModel): void => {
                 this.product = products;
-
-                console.log('Products received:', products);
+                
                 this._changeDetectorRef.detectChanges();
             });
         });
@@ -111,10 +110,6 @@ export class ProductPhotosComponent {
                 next: (): void => {
                     this.product.photos = this.product.photos.filter((photo: IProductPhotoResponseModel): boolean => photo.id !== photoId);
                     this._changeDetectorRef.detectChanges();
-                    console.log('Product photo deleted successfully');
-                },
-                error: (error): void => {
-                    console.error('Error deleting product photo:', error);
                 }
             });
     }
@@ -138,10 +133,6 @@ export class ProductPhotosComponent {
         this._productPhotoManagerService.updateProductPhoto(this.productId, updatedOrder).subscribe({
                 next: () => {
                     this._changeDetectorRef.detectChanges();
-                    console.log('Photo order updated successfully');
-                },
-                error: (error) => {
-                    console.error('Error updating photo order:', error);
                 }
             }
         );
@@ -156,7 +147,6 @@ export class ProductPhotosComponent {
                 resolve();
             };
             reader.onerror = (): void => {
-                console.error('Error reading file:', file.name);
                 reject();
             };
             reader.readAsDataURL(file);
@@ -177,14 +167,8 @@ export class ProductPhotosComponent {
                     this.product = product;
                     this.selectedFiles = [];
                     this._changeDetectorRef.detectChanges();
-                    console.log('Product photo added successfully');
-                },
-                error: (error): void => {
-                    console.error('Error adding product photo:', error);
                 }
             });
-        } else {
-            console.error('Not all fields are filled in correctly');
         }
     }
 }

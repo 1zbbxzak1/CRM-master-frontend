@@ -51,16 +51,6 @@ export class DeleteProductComponent {
             });
     }
 
-    fetchProducts(): void {
-        this._productsManagerService.getAllProducts().pipe(
-            takeUntilDestroyed(this._destroyRef)
-        ).subscribe((products: IProductsResponseModel[]): void => {
-            this.products = products;
-            console.log('Products received:', products);
-            this._changeDetectorRef.detectChanges();
-        });
-    }
-
     protected deleteProduct(id: string): void {
         this._productsManagerService.deleteProduct(id).pipe(
             takeUntilDestroyed(this._destroyRef),
