@@ -39,6 +39,7 @@ import {SettingsComponent} from './pages/orders/components/settings/settings.com
 import {IntersectionObserverModule} from "@ng-web-apis/intersection-observer";
 import {DeleteProductComponent} from './pages/products/components/delete-product/delete-product.component';
 import {AddProductComponent} from "./pages/products/children/add-product/add-product.component";
+import {InfoProductComponent} from './pages/products/children/info-product/info-product.component';
 import {ProductPhotosComponent} from './pages/products/components/product-photos/product-photos.component';
 
 @NgModule({
@@ -59,6 +60,7 @@ import {ProductPhotosComponent} from './pages/products/components/product-photos
         SettingsComponent,
         DeleteProductComponent,
         AddProductComponent,
+        InfoProductComponent,
         ProductPhotosComponent,
     ],
     imports: [
