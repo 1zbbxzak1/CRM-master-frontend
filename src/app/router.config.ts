@@ -8,11 +8,6 @@ import {ClientsComponent} from "./children/crm/pages/clients/clients.component";
 import {ProductsComponent} from "./children/crm/pages/products/products.component";
 import {ShopComponent} from "./children/crm/pages/shop/shop.component";
 import {inject} from "@angular/core";
-import {AllOrdersComponent} from "./children/crm/pages/orders/children/all-orders/all-orders.component";
-import {NewOrdersComponent} from "./children/crm/pages/orders/children/new-orders/new-orders.component";
-import {ProgressOrdersComponent} from "./children/crm/pages/orders/children/progress-orders/progress-orders.component";
-import {DeliveryOrdersComponent} from "./children/crm/pages/orders/children/delivery-orders/delivery-orders.component";
-import {ArchiveOrdersComponent} from "./children/crm/pages/orders/children/archive-orders/archive-orders.component";
 import {AddProductComponent} from "./children/crm/pages/products/children/add-product/add-product.component";
 import {InfoProductComponent} from "./children/crm/pages/products/children/info-product/info-product.component";
 import {UpdateProductComponent} from "./children/crm/pages/products/children/update-product/update-product.component";
@@ -47,33 +42,6 @@ export const routes: Routes = [
         path: 'crm/orders',
         component: OrdersComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
-        children: [
-            {
-                path: "",
-                redirectTo: "all-orders",
-                pathMatch: "full",
-            },
-            {
-                path: 'all-orders',
-                component: AllOrdersComponent,
-            },
-            {
-                path: 'new-orders',
-                component: NewOrdersComponent,
-            },
-            {
-                path: 'progress-orders',
-                component: ProgressOrdersComponent,
-            },
-            {
-                path: 'delivery-orders',
-                component: DeliveryOrdersComponent,
-            },
-            {
-                path: 'archive-orders',
-                component: ArchiveOrdersComponent,
-            },
-        ]
     },
     {
         path: 'crm/clients',
