@@ -1,22 +1,22 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef} from '@angular/core';
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, Input} from '@angular/core';
 import {ClientDto} from "../../../../../../data/response-models/clients/IClients.response-model";
+import {ActivatedRoute, Params} from "@angular/router";
 import {ClientsManagerService} from "../../../../../../data/services/clients/clients.manager.service";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {FormatterService} from "../../services/formatter.service";
+import {GetOrderItemResponse} from "../../../../../../data/request-models/orders/IOrders.response-model";
 
 @Component({
-    selector: 'app-client-details',
-    templateUrl: './client-details.component.html',
-    styleUrls: ['../../../../styles/crm-styles.css', './styles/client-details.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-order-history',
+    templateUrl: './order-history.component.html',
+    styleUrl: './styles/order-history.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ClientDetailsComponent extends FormatterService {
-    protected clientId!: string;
+export class OrderHistoryComponent extends FormatterService {
+    @Input() clientId!: string;
     protected client!: ClientDto | null;
 
     constructor(
-        private readonly _router: Router,
         private readonly _route: ActivatedRoute,
         protected readonly _destroyRef: DestroyRef,
         private readonly _changeDetectorRef: ChangeDetectorRef,
@@ -29,18 +29,15 @@ export class ClientDetailsComponent extends FormatterService {
             this._clientsManagerService.getClientById(this.clientId).pipe(
                 takeUntilDestroyed(this._destroyRef)
             ).subscribe((client: ClientDto | null): void => {
+                if (client) {
+                    client.orders.sort((a: GetOrderItemResponse, b: GetOrderItemResponse) => {
+                        return new Date(b.date).getTime() - new Date(a.date).getTime();
+                    });
+                }
                 this.client = client;
 
                 this._changeDetectorRef.detectChanges();
             });
         });
-    }
-
-    protected navigateToPreviousPage(): void {
-        this._router.navigate(['crm/clients']);
-    }
-
-    protected navigateToUpdateInfoPage(id: string | undefined): void {
-        this._router.navigate(['crm/clients/update-client', id]);
     }
 }

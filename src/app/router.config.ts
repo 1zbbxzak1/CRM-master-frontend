@@ -14,6 +14,9 @@ import {ProgressOrdersComponent} from "./children/crm/pages/orders/children/prog
 import {DeliveryOrdersComponent} from "./children/crm/pages/orders/children/delivery-orders/delivery-orders.component";
 import {ArchiveOrdersComponent} from "./children/crm/pages/orders/children/archive-orders/archive-orders.component";
 import {AddProductComponent} from "./children/crm/pages/products/children/add-product/add-product.component";
+import {InfoProductComponent} from "./children/crm/pages/products/children/info-product/info-product.component";
+import {UpdateProductComponent} from "./children/crm/pages/products/children/update-product/update-product.component";
+import {ClientDetailsComponent} from "./children/crm/pages/clients/children/client-details/client-details.component";
 
 
 export const routes: Routes = [
@@ -74,6 +77,11 @@ export const routes: Routes = [
     {
         path: 'crm/clients',
         component: ClientsComponent,
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+    },
+    {
+        path: 'crm/clients/info-client/:id',
+        component: ClientDetailsComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {

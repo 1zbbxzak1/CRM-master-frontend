@@ -1,0 +1,24 @@
+<div>
+    <p class="product-add-title">Заказы</p>
+
+    <div class="client-order-section">
+        <div *ngFor="let order of client?.orders">
+            <div class="date-container">
+                <div class="lines">
+                    <div class="history-date">{{ order.date | date: 'dd MMMM yyyy' }}</div>
+                </div>
+            </div>
+
+            <div class="orders-container">
+                <div class="first-section-order">
+                    <div class="client-fullName">{{ shortenFullName(client?.fullName) }}</div>
+                    <div class="order-totalAmount">{{ order.totalAmount + ' ₽' }}</div>
+                </div>
+                <div class="order-stage"><span
+                    class="order-stage-prev">Статус: </span>{{ order.stage }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

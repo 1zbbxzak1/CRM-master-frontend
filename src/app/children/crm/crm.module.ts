@@ -46,24 +46,29 @@ import {UpdateProductComponent} from './pages/products/children/update-product/u
 @NgModule({
     declarations: [
         SidebarComponent,
+
         ClientsComponent,
-        ProductsComponent,
-        ProfileComponent,
-        OrdersComponent,
-        ProfileEditComponent,
         ClientDetailsComponent,
+
+        ProductsComponent,
+        DeleteProductComponent,
+        ProductPhotosComponent,
+        AddProductComponent,
+        InfoProductComponent,
+        UpdateProductComponent,
+
+        ProfileComponent,
+        ProfileEditComponent,
         PasswordEditComponent,
+
+        OrdersComponent,
+        SettingsComponent,
+        OrderHistoryComponent,
         AllOrdersComponent,
         NewOrdersComponent,
         ProgressOrdersComponent,
         DeliveryOrdersComponent,
         ArchiveOrdersComponent,
-        SettingsComponent,
-        DeleteProductComponent,
-        AddProductComponent,
-        InfoProductComponent,
-        ProductPhotosComponent,
-        UpdateProductComponent,
     ],
     imports: [
         NgOptimizedImage,

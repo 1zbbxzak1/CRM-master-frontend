@@ -1,1 +1,58 @@
-<p>client-details works!</p>
+<div class="main-content-crm">
+    <div class="main-content-crm-second">
+        <app-sidebar></app-sidebar>
+        <div class="main-content-crm-full">
+            <div class="content-crm">
+                <div class="content-product-header">
+                    <button (click)="navigateToPreviousPage()" class="back-to-products">
+                        <img alt="back" height="24" ngSrc="assets/chevron_left.svg" width="24">
+                    </button>
+                    <p class="content-crm-title">{{ 'Клиент ' + shortenFullName(client?.fullName) }}</p>
+                </div>
+
+
+                <div class="product-add-table">
+                    <div>
+                        <div class="header-info">
+                            <p class="product-add-title">Основное</p>
+                            <button (click)="navigateToUpdateInfoPage(client?.id)" class="info-product-button">Изменить
+                            </button>
+                        </div>
+
+                        <div class="profile-data">
+                            <div class="profile-data-list">
+                                <div class="data-client">Данные клиента</div>
+                                <div class="profile-data-item-title">ФИО</div>
+                                <p class="info-product">
+                                    {{ client?.fullName }}
+                                </p>
+                                <p class="profile-data-item-title">Телефон</p>
+                                <p class="info-product">
+                                    {{ formatPhoneNumber(client?.phone) }}
+                                </p>
+                                <p class="profile-data-item-title">Электронная почта</p>
+                                <p class="info-product">
+                                    {{ client?.email }}
+                                </p>
+                                <p class="profile-data-item-title">Последний заказ</p>
+                                <p class="info-product">
+                                    {{ client?.lastOrderDate | date: 'dd.MM.yyyy' }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <svg class="stroke" fill="none" width="2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L1.00003 900" stroke="#2E313A" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <tui-scrollbar>
+                        <app-order-history [clientId]="clientId"></app-order-history>
+                    </tui-scrollbar>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
