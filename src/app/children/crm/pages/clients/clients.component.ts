@@ -40,13 +40,4 @@ export class ClientsComponent {
     protected navigateToInfoClientPage(id: string): void {
         this._router.navigate(['crm/clients/info-client', id]);
     }
-
-    protected formatDate(date: Date): string {
-        const day: string = String(date.getDate()).padStart(2, '0');
-        const month: string = String(date.getMonth() + 1).padStart(2, '0');
-        const year: number = date.getFullYear();
-
-        return `${day}.${month}.${year}`;
-    }
-
 }
