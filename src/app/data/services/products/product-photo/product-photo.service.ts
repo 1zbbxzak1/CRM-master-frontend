@@ -1,8 +1,8 @@
 import {inject} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {IProductPhotoResponseModel} from "../../response-models/product-photo/IProductPhoto.response-model";
-import {IProductPhotoRequestModel} from "../../request-models/product-photo/IProductPhoto.request-model";
+import {IProductPhotoResponseModel} from "../../../response-models/product-photo/IProductPhoto.response-model";
+import {IProductPhotoRequestModel} from "../../../request-models/product-photo/IProductPhoto.request-model";
 
 export class ProductPhotoService {
 

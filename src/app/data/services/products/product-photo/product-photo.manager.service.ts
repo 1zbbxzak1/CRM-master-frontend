@@ -1,8 +1,8 @@
 import {ErrorHandler, inject} from '@angular/core';
 import {ProductPhotoService} from "./product-photo.service";
 import {catchError, NEVER, Observable} from "rxjs";
-import {IProductPhotoResponseModel} from "../../response-models/product-photo/IProductPhoto.response-model";
-import {IProductPhotoRequestModel} from "../../request-models/product-photo/IProductPhoto.request-model";
+import {IProductPhotoResponseModel} from "../../../response-models/product-photo/IProductPhoto.response-model";
+import {IProductPhotoRequestModel} from "../../../request-models/product-photo/IProductPhoto.request-model";
 
 export class ProductPhotoManagerService {
 
