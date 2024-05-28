@@ -16,12 +16,16 @@ import {UserService} from "./data/services/user/user.service";
 import {UserManagerService} from "./data/services/user/user.manager.service";
 import {ProductsService} from "./data/services/products/products.service";
 import {ProductsManagerService} from "./data/services/products/products.manager.service";
-import {ProductPhotoManagerService} from "./data/services/product-photo/product-photo.manager.service";
-import {ProductPhotoService} from "./data/services/product-photo/product-photo.service";
+import {ProductPhotoManagerService} from "./data/services/products/product-photo/product-photo.manager.service";
+import {ProductPhotoService} from "./data/services/products/product-photo/product-photo.service";
 import {ClientsService} from "./data/services/clients/clients.service";
 import {ClientsManagerService} from "./data/services/clients/clients.manager.service";
+import {OrderHistoryService} from "./data/services/order/order-history/order-history.service";
+import {OrderHistoryManagerService} from "./data/services/order/order-history/order-history.manager.service";
 import {registerLocaleData} from "@angular/common";
 import localeRu from '@angular/common/locales/ru';
+import {StageOrderService} from "./data/services/order/stage-order/stage-order.service";
+import {StageOrderManagerService} from "./data/services/order/stage-order/stage-order.manager.service";
 
 registerLocaleData(localeRu);
 
@@ -45,14 +49,24 @@ registerLocaleData(localeRu);
         AuthGuard,
         AuthService,
         IdentityService,
+
         UserService,
         UserManagerService,
+
         ProductsService,
         ProductsManagerService,
         ProductPhotoService,
         ProductPhotoManagerService,
+
         ClientsService,
         ClientsManagerService,
+
+        StageOrderService,
+        StageOrderManagerService,
+
+        OrderHistoryService,
+        OrderHistoryManagerService,
+
         provideClientHydration(),
         {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
         {provide: LOCALE_ID, useValue: 'ru'}

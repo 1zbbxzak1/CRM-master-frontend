@@ -30,11 +30,6 @@ import {
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PasswordEditComponent} from './pages/profile/components/password-edit/password-edit.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {AllOrdersComponent} from './pages/orders/children/all-orders/all-orders.component';
-import {NewOrdersComponent} from './pages/orders/children/new-orders/new-orders.component';
-import {ProgressOrdersComponent} from './pages/orders/children/progress-orders/progress-orders.component';
-import {DeliveryOrdersComponent} from './pages/orders/children/delivery-orders/delivery-orders.component';
-import {ArchiveOrdersComponent} from './pages/orders/children/archive-orders/archive-orders.component';
 import {SettingsComponent} from './pages/orders/components/settings/settings.component';
 import {IntersectionObserverModule} from "@ng-web-apis/intersection-observer";
 import {DeleteProductComponent} from './pages/products/components/delete-product/delete-product.component';
@@ -42,6 +37,7 @@ import {AddProductComponent} from "./pages/products/children/add-product/add-pro
 import {InfoProductComponent} from './pages/products/children/info-product/info-product.component';
 import {ProductPhotosComponent} from './pages/products/components/product-photos/product-photos.component';
 import {UpdateProductComponent} from './pages/products/children/update-product/update-product.component';
+import {OrderHistoryComponent} from './pages/clients/components/order-history/order-history.component';
 import {UpdateClientsComponent} from './pages/clients/children/update-clients/update-clients.component';
 
 @NgModule({
@@ -66,11 +62,6 @@ import {UpdateClientsComponent} from './pages/clients/children/update-clients/up
         OrdersComponent,
         SettingsComponent,
         OrderHistoryComponent,
-        AllOrdersComponent,
-        NewOrdersComponent,
-        ProgressOrdersComponent,
-        DeliveryOrdersComponent,
-        ArchiveOrdersComponent,
     ],
     imports: [
         NgOptimizedImage,
