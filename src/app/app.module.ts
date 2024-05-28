@@ -1,7 +1,6 @@
 import {NgDompurifySanitizer} from "@tinkoff/ng-dompurify";
 import {TUI_SANITIZER, TuiAlertModule, TuiDialogModule, TuiRootModule} from "@taiga-ui/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {NgModule} from '@angular/core';
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
@@ -15,11 +14,12 @@ import {AuthService} from "./data/services/auth/auth.service";
 import {AuthGuard} from "./data/guards/auth.guard";
 import {UserService} from "./data/services/user/user.service";
 import {UserManagerService} from "./data/services/user/user.manager.service";
-import {AuthBaseComponent} from "./children/services/auth/auth-base-component";
 import {ProductsService} from "./data/services/products/products.service";
 import {ProductsManagerService} from "./data/services/products/products.manager.service";
 import {ProductPhotoManagerService} from "./data/services/product-photo/product-photo.manager.service";
 import {ProductPhotoService} from "./data/services/product-photo/product-photo.service";
+import {ClientsService} from "./data/services/clients/clients.service";
+import {ClientsManagerService} from "./data/services/clients/clients.manager.service";
 import {registerLocaleData} from "@angular/common";
 import localeRu from '@angular/common/locales/ru';
 
@@ -28,7 +28,6 @@ registerLocaleData(localeRu);
 @NgModule({
     declarations: [
         AppComponent,
-        AuthBaseComponent,
     ],
     imports: [
         BrowserModule,
@@ -52,6 +51,8 @@ registerLocaleData(localeRu);
         ProductsManagerService,
         ProductPhotoService,
         ProductPhotoManagerService,
+        ClientsService,
+        ClientsManagerService,
         provideClientHydration(),
         {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
         {provide: LOCALE_ID, useValue: 'ru'}

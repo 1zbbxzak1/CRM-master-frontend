@@ -16,6 +16,7 @@ import {WelcomeComponent} from "./pages/welcome/welcome.component";
 import {TuiActiveZoneModule} from "@taiga-ui/cdk";
 import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
 import {RegistrationComponent} from "./components/registration/registration.component";
+import {AuthBaseComponent} from "../services/auth/auth-base-component";
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import {RegistrationComponent} from "./components/registration/registration.comp
         WelcomeComponent,
         LoginComponent,
         RegistrationComponent,
+        AuthBaseComponent,
     ],
     imports: [
         TuiRootModule,
