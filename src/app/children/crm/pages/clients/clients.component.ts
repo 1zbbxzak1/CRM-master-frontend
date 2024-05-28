@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef} from '@angular/core';
+import {Router} from '@angular/router';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ClientsManagerService} from '../../../../data/services/clients/clients.manager.service';
+import {
+    ClientItemResponse,
+    IClientsResponseModel
+} from '../../../../data/response-models/clients/IClients.response-model';
 
 @Component({
     selector: 'app-clients',
@@ -7,5 +14,39 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientsComponent {
+    protected clients!: IClientsResponseModel;
+    protected search: string = '';
+
+    constructor(
+        private readonly _router: Router,
+        private readonly _destroyRef: DestroyRef,
+        private readonly _changeDetectorRef: ChangeDetectorRef,
+        private readonly _clientsManagerService: ClientsManagerService,
+    ) {
+        this._clientsManagerService.getAllClients().pipe(
+            takeUntilDestroyed(this._destroyRef)
+        )
+            .subscribe((clients: IClientsResponseModel): void => {
+                this.clients = clients;
+
+                this._changeDetectorRef.detectChanges();
+            });
+    }
+
+    protected searchClients(): ClientItemResponse[] {
+        return this.clients.clients.filter((client: ClientItemResponse) => client.fullName.toLowerCase().includes(this.search.toLowerCase()));
+    }
+
+    protected navigateToInfoClientPage(id: string): void {
+        this._router.navigate(['crm/clients/info-client', id]);
+    }
+
+    protected formatDate(date: Date): string {
+        const day: string = String(date.getDate()).padStart(2, '0');
+        const month: string = String(date.getMonth() + 1).padStart(2, '0');
+        const year: number = date.getFullYear();
+
+        return `${day}.${month}.${year}`;
+    }
 
 }

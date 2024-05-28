@@ -1,0 +1,89 @@
+.clients {
+    display: flex;
+    width: 100%;
+
+    margin-bottom: 75px;
+}
+
+.client-title {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    width: 100%;
+    justify-content: end;
+
+    padding-top: 32px;
+}
+
+.input-search {
+    width: 20vw;
+    padding-left: 40px;
+}
+
+.input-search-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--text-disabled);
+}
+
+.all-clients {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-light-grey);
+}
+
+.table {
+    width: 100%;
+
+    margin-bottom: 40px;
+}
+
+.table-th-full {
+    text-align: left;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--text-white);
+}
+
+.table thead {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+
+    background: var(--fields-form);
+}
+
+.table-th {
+    padding: 22px 16px;
+    border-radius: 10px 0 0 10px;
+}
+
+.table th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.table-td-full {
+    display: table-row;
+    align-content: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-light-grey);
+
+    border-bottom: 1px solid var(--stroke-dark-grey);
+}
+
+.table-td {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    padding-left: 16px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.table-td-full:hover {
+    background: rgba(0, 130, 245, 0.1);
+}

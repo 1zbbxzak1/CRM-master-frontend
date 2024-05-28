@@ -3,11 +3,58 @@
         <app-sidebar></app-sidebar>
         <div class="main-content-crm-full">
             <div class="content-crm">
-                <div class="content-crm-header">
-                    <p class="content-crm-title">Клиенты</p>
+                <div class="clients">
+                    <div class="content-crm-header">
+                        <p class="content-crm-title">Клиенты</p>
+                        <tui-input
+                            [(ngModel)]="search"
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            class="input-search"
+                            tuiTextfieldIconLeft="tuiIconSearch"
+                            tuiTextfieldSize="m"
+                        >
+                            <p class="input-search-title">Поиск</p>
+                        </tui-input>
+                    </div>
+
+                    <div class="client-title">
+                        <p class="all-clients">
+                            Всего контактов: {{ clients?.count }}
+                        </p>
+                    </div>
                 </div>
+
+                <tui-scrollbar
+                    [hidden]="true"
+                    class="scrollbar"
+                    waIntersectionRoot
+                >
+                    <div class="all-products-table">
+                        <table class="table">
+                            <thead>
+                            <tr class="table-th-full">
+                                <th class="table-th">ФИО</th>
+                                <th>Электронная почта</th>
+                                <th>Телефон</th>
+                                <th>Последний заказ</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr (click)="navigateToInfoClientPage(client.id)" *ngFor="let client of clients?.clients"
+                                class="table-td-full">
+                                <td class="table-td">
+                                    {{ client.fullName }}
+                                </td>
+                                <td>{{ client.email }}</td>
+                                <td>{{ client.phone }}</td>
+                                <td>{{ client.lastOrderDate | date: 'dd.MM.yyyy' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </tui-scrollbar>
             </div>
         </div>
     </div>
 </div>
-
