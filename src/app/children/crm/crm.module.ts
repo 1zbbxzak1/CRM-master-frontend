@@ -41,8 +41,8 @@ import {UpdateProductComponent} from './pages/products/children/update-product/u
 import {OrderHistoryComponent} from './pages/clients/components/order-history/order-history.component';
 import {UpdateClientsComponent} from './pages/clients/children/update-clients/update-clients.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import {DeleteStageComponent} from './pages/orders/components/delete-stage/delete-stage.component';
-import {AddOrderComponent} from './pages/orders/components/add-order/add-order.component';
+// import {DeleteStageComponent} from './pages/orders/components/delete-stage/delete-stage.component';
+// import {AddOrderComponent} from './pages/orders/components/add-order/add-order.component';
 import {TuiActiveZoneModule} from "@taiga-ui/cdk";
 import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
 
