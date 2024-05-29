@@ -1,7 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
 
 [tuiWrapper][data-appearance='custom'] {
     background: #0082F5;
@@ -69,10 +66,14 @@
     color: var(--text-white);
 }
 
+.t-wrapper[_ngcontent-ng-c3323831375] {
+    width: 35% !important;
+}
+
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Nunito Sans';
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 body {
@@ -85,7 +86,7 @@ img {
 
 :root {
     --text-black: #212121;
-    --text-white: #fff;
+    --text-white: #ffffff;
     --text-light-grey: #c3c7cd;
     --main-blue: #0082f5;
     --bg-dark-blue-1: #0f1319;
@@ -95,10 +96,14 @@ img {
     --fields-form: #1e2228;
     --tui-elevation-01: #0f1319;
     --tui-base-01: #1e2228;
-    --tui-text-01: #fff;
+    --tui-text-01: var(--text-light-grey);
     --tui-base-03: #2e313a;
     --text-disabled: #464a50;
     --tui-elevation-02: var(--bg-dark-blue-2);
     --tui-base-04: var(--stroke-dark-grey);
     --tui-shadow-dropdown: 0 4px 8px 0 rgba(46, 49, 58, 0.2);
+    --sample-grey: rgba(33, 33, 33, 0.7);
+    --sample-lightgrey-hover: rgba(33, 33, 33, 0.1);
+
+    --tui-font-text-s: 'Nunito Sans';
 }
