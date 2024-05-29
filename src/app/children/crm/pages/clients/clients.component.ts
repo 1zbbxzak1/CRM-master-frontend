@@ -34,7 +34,7 @@ export class ClientsComponent {
     }
 
     protected searchClients(): ClientItemResponse[] {
-        return this.clients.clients.filter((client: ClientItemResponse) => client.fullName.toLowerCase().includes(this.search.toLowerCase()));
+        return this.clients?.clients?.filter((client: ClientItemResponse) => client.fullName.toLowerCase().includes(this.search.toLowerCase()));
     }
 
     protected navigateToInfoClientPage(id: string): void {
