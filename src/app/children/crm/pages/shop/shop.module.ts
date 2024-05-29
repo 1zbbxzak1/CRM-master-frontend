@@ -11,15 +11,6 @@ import {
 import {
     MainComponent
 } from "./children/templates/children/template-preview/children/constructor/pages/main/main.component";
-import {
-    EditGeneralComponent
-} from "./children/templates/children/template-preview/children/constructor/edit/edit-general/edit-general.component";
-import {
-    EditContentComponent
-} from "./children/templates/children/template-preview/children/constructor/edit/edit-content/edit-content.component";
-import {
-    ConstructorHeaderComponent
-} from './children/templates/children/template-preview/children/constructor/components/constructor-header/constructor-header.component';
 import {CrmModule} from "../../crm.module";
 
 @NgModule({
@@ -27,12 +18,9 @@ import {CrmModule} from "../../crm.module";
         ShopComponent,
         TemplatesComponent,
         TemplatePreviewComponent,
-        ConstructorHeaderComponent,
         ConstructorCardComponent,
         ConstructorCartComponent,
         MainComponent,
-        EditGeneralComponent,
-        EditContentComponent,
     ],
     imports: [
         CrmModule,
