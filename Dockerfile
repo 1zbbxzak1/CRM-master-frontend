@@ -1,8 +1,16 @@
-# Используем node для сборки фронтенда
 FROM node:20.12.2 as build
-WORKDIR /app
+WORKDIR /app/src
 COPY package*.json ./
+
+RUN npm install -g @angular/cli
 RUN npm install
-ADD . .
+
+COPY . ./
+
 RUN npm run build
 
+FROM node:20.12.2
+WORKDIR /usr/app
+COPY --from=build /app/src/dist/crm-master-frontend/ ./
+CMD node server/server.mjs
+EXPOSE 4200
