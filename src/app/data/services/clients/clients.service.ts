@@ -7,12 +7,13 @@ import {
 } from "../../response-models/clients/IClients.response-model";
 import {Observable} from "rxjs";
 import {IClientsRequestModel} from "../../request-models/clients/IClients.request-model";
+import {environment} from "../../../../environments/environment";
 
 export class ClientsService {
 
     private readonly _http: HttpClient = inject(HttpClient);
 
-    private apiUrl: string = 'http://localhost:8080/clients';
+    private apiUrl: string = `${environment.apiUrl}/clients`;
 
     public getAllClients(): Observable<IClientsResponseModel> {
         return this._http.get<IClientsResponseModel>(`${this.apiUrl}`, {withCredentials: true});

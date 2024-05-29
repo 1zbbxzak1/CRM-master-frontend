@@ -70,7 +70,13 @@
                         },
                         "development": {
                             "optimization": false,
-                            "extractLicenses": false
+                            "extractLicenses": false,
+                            "fileReplacements": [
+                              {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.development.ts"
+                              }
+                            ]
                         }
                     },
                     "defaultConfiguration": "production"

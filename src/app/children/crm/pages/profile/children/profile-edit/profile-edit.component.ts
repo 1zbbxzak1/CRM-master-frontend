@@ -40,9 +40,9 @@ export class ProfileEditComponent {
                     this.formUserInfo.patchValue({
                         fullName: user.fullName,
                         email: user.email,
-                        phone: user?.phone || 'Не назначен',
-                        vkLink: user?.vkLink || 'Не привязан',
-                        telegramLink: user?.telegramLink || 'Не привязан',
+                        phone: user?.phone || 'Не назначено',
+                        vkLink: user?.vkLink || 'Не привязано',
+                        telegramLink: user?.telegramLink || 'Не привязано',
                     });
                 }
             });

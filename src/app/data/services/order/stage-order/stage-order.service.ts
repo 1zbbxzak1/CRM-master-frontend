@@ -3,11 +3,12 @@ import {inject} from "@angular/core";
 import {IStageOrderResponseModel} from "../../../response-models/stage-order/IStage-order.response-model";
 import {Observable} from "rxjs";
 import {UpdateStageRequest} from "../../../request-models/stage-order/IStage-order.request-model";
+import {environment} from "../../../../../environments/environment";
 
 export class StageOrderService {
 
     private readonly _http: HttpClient = inject(HttpClient);
-    private readonly _apiUrl: string = 'http://localhost:8080/orders/stages';
+    private readonly _apiUrl: string = `${environment.apiUrl}/orders/stages`;
 
     public getStages(): Observable<IStageOrderResponseModel[]> {
         return this._http.get<IStageOrderResponseModel[]>(`${this._apiUrl}`, {withCredentials: true});

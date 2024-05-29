@@ -34,7 +34,7 @@ export class ProfileComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         VKID.Config.set({
             app: 51908355,
-            redirectUrl: 'http://localhost:4200',
+            redirectUrl: 'http://websites.2984145-zs33262.twc1.net',
         });
 
         const oneTap: VKID.OneTap = new VKID.OneTap();
