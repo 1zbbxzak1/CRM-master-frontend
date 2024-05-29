@@ -4,7 +4,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {ClientsManagerService} from "../../../../../../data/services/clients/clients.manager.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {FormatterService} from "../../services/formatter.service";
-import {GetOrderItemResponse} from "../../../../../../data/request-models/orders/IOrders.response-model";
+import {GetOrderItemResponse} from "../../../../../../data/response-models/orders/IOrders.response-model";
 
 @Component({
     selector: 'app-order-history',

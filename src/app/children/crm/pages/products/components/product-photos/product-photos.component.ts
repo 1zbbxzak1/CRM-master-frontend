@@ -2,7 +2,9 @@ import {ChangeDetectorRef, Component, DestroyRef} from '@angular/core';
 import {IProductsResponseModel} from "../../../../../../data/response-models/products/IProducts.response-model";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ProductsManagerService} from "../../../../../../data/services/products/products.manager.service";
-import {ProductPhotoManagerService} from "../../../../../../data/services/product-photo/product-photo.manager.service";
+import {
+    ProductPhotoManagerService
+} from "../../../../../../data/services/products/product-photo/product-photo.manager.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {
     IProductPhotoResponseModel
@@ -35,7 +37,7 @@ export class ProductPhotosComponent {
                 takeUntilDestroyed(this._destroyRef)
             ).subscribe((products: IProductsResponseModel): void => {
                 this.product = products;
-                
+
                 this._changeDetectorRef.detectChanges();
             });
         });

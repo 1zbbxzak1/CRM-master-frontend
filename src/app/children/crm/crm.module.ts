@@ -11,6 +11,7 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {
     TuiButtonModule,
     TuiDataListModule,
+    TuiHostedDropdownModule,
     TuiRootModule,
     TuiScrollbarModule,
     TuiSvgModule,
@@ -39,6 +40,11 @@ import {ProductPhotosComponent} from './pages/products/components/product-photos
 import {UpdateProductComponent} from './pages/products/children/update-product/update-product.component';
 import {OrderHistoryComponent} from './pages/clients/components/order-history/order-history.component';
 import {UpdateClientsComponent} from './pages/clients/children/update-clients/update-clients.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {DeleteStageComponent} from './pages/orders/components/delete-stage/delete-stage.component';
+import {AddOrderComponent} from './pages/orders/components/add-order/add-order.component';
+import {TuiActiveZoneModule} from "@taiga-ui/cdk";
+import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
 
 @NgModule({
     declarations: [
@@ -96,6 +102,7 @@ import {UpdateClientsComponent} from './pages/clients/children/update-clients/up
         PasswordEditComponent,
         SettingsComponent,
         DeleteProductComponent,
+        ProductPhotosComponent,
     ],
     providers: []
 })

@@ -1,4 +1,4 @@
-import {GetOrderItemResponse} from "../../request-models/orders/IOrders.response-model";
+import {GetOrderItemResponse} from "../orders/IOrders.response-model";
 
 export interface IClientsResponseModel {
     count: number;
