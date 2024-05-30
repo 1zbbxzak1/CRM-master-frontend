@@ -1,1 +1,124 @@
-<p>constructor-card works!</p>
+<tui-root>
+    <tui-scrollbar>
+        <div class="template">
+            <div class="template-header">
+                <div class="template-title">
+                    {{ website?.title }}
+                </div>
+                <div (click)="navigateToCartPage()" class="cart">
+                    <p class="badge">{{ countProduct }}</p>
+                    <img alt="корзина" height="24" ngSrc="assets/shopping_bag.svg" width="24">
+                </div>
+            </div>
+
+            <div (click)="navigateToPreviousPage()" class="back-to-shop">
+                <img alt="назад" src="assets/chevron_left.svg">
+                <p>Назад</p>
+            </div>
+
+            <div class="product-shop-title">
+                {{ product?.name }}
+            </div>
+
+            <div class="product-section">
+                <div class="preview-thumbnails">
+                    <div class="thumbnails-container">
+                        <div *ngFor="let photo of product.photos; let i = index"
+                             [ngClass]="{'active-thumb': i === currentSlideIndex}" class="thumbnail">
+                            <img (click)="showSlide(i)" [src]="photo.url">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slideshow-container">
+                    <div *ngFor="let photo of product.photos; let i = index"
+                         [ngClass]="{'active': i === currentSlideIndex}"
+                         class="mySlides fade">
+                        <img *ngIf="i === currentSlideIndex" [src]="photo.url" style="width:100%">
+                    </div>
+                </div>
+
+                <div class="product-desc">
+                    <div class="first-section-desc">
+                        <div class="product-info">
+                            <div class="product-info-t">О товаре</div>
+                            <div class="product-info-price">{{ product.price | number:'1.0-0' }} ₽</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-info-column">
+                                <div class="product-info-row">
+                                    <div class="product-info-m">Основной материал</div>
+                                    <div class="product-info-material">{{ product.material }}</div>
+                                </div>
+                                <div class="product-info-row">
+                                    <div class="product-info-dim">Размер (ДхШхВ), см</div>
+                                    <div class="product-info-material">{{ product.dimensions }}</div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <button (click)="addToCart(product)" *ngIf="countProduct <= 0" class="add-cart">
+                                    Добавить в корзину
+                                </button>
+                                <button
+                                    (click)="navigateToCartPage()"
+                                    *ngIf="countProduct > 0"
+                                    class="go-cart">
+                                    Перейти в корзину
+                                </button>
+                                <div *ngIf="countProduct > 0" class="count-pr">
+                                    <img (click)="removeFromCart(product.id)" class="pr-icon" src="assets/min_icon.svg">
+                                    <div class="count-product">{{ countProduct }}</div>
+                                    <img (click)="addToCart(product)" class="pr-icon" src="assets/plus_icon.svg">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="second-section-desc">
+                        <p class="second-title">Описание</p>
+                        <div class="second-desc">
+                            {{ product.description }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider">
+                <div [style.transform]="'translateX(-' + currentIndex * (100 / visibleItems) + '%)'" class="slides">
+                    <div *ngFor="let chunk of chunkedProducts" class="slide">
+                        <div class="last-section-product">
+                            <ng-container *ngFor="let product of chunk">
+                                <div
+                                    (click)="_router.navigate(['crm/shop/shop-templates/templates-preview/constructor/card', product?.id])"
+                                    class="product-item">
+                                    <img [src]="product.photos?.[0]?.url || 'assets/cap.svg'"
+                                         alt="Product Photo"
+                                         class="photo-product"
+                                         height="282"
+                                         width="282">
+                                    <p class="product-price">{{ product.price | number:'1.0-0' }} ₽</p>
+                                    <p class="product-title">{{ product.name }}</p>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="prevSlide()" class="button-slider">
+                    <img src="assets/left_slider.svg">
+                </button>
+                <button (click)="nextSlide()" class="button-slider">
+                    <img src="assets/right_slider.svg">
+                </button>
+            </div>
+
+            <div class="last-section-template">
+                <div class="template-last-title">
+                    {{ website?.title }}
+                </div>
+            </div>
+        </div>
+    </tui-scrollbar>
+</tui-root>

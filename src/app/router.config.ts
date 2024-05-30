@@ -17,6 +17,9 @@ import {TemplatesComponent} from "./children/crm/pages/shop/children/templates/t
 import {
     MainComponent
 } from "./children/crm/pages/shop/children/templates/children/template-preview/children/constructor/pages/main/main.component";
+import {
+    ConstructorCardComponent
+} from "./children/crm/pages/shop/children/templates/children/template-preview/children/constructor/pages/constructor-card/constructor-card.component";
 
 
 export const routes: Routes = [
@@ -95,6 +98,11 @@ export const routes: Routes = [
     {
         path: 'crm/shop/shop-templates/templates-preview/constructor/main',
         component: MainComponent,
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+    },
+    {
+        path: 'crm/shop/shop-templates/templates-preview/constructor/card/:id',
+        component: ConstructorCardComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
 ];
