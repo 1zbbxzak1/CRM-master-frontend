@@ -14,6 +14,9 @@ import {UpdateProductComponent} from "./children/crm/pages/products/children/upd
 import {ClientDetailsComponent} from "./children/crm/pages/clients/children/client-details/client-details.component";
 import {UpdateClientsComponent} from "./children/crm/pages/clients/children/update-clients/update-clients.component";
 import {TemplatesComponent} from "./children/crm/pages/shop/children/templates/templates.component";
+import {
+    MainComponent
+} from "./children/crm/pages/shop/children/templates/children/template-preview/children/constructor/pages/main/main.component";
 
 
 export const routes: Routes = [
@@ -87,6 +90,11 @@ export const routes: Routes = [
     {
         path: 'crm/shop/shop-templates',
         component: TemplatesComponent,
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+    },
+    {
+        path: 'crm/shop/shop-templates/templates-preview/constructor/main',
+        component: MainComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
 ];

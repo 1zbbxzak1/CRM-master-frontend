@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {ShopComponent} from "./shop.component";
 import {TemplatesComponent} from "./children/templates/templates.component";
 import {TemplatePreviewComponent} from "./children/templates/children/template-preview/template-preview.component";
+import {ConstructorMainComponent} from "./children/templates/children/template-preview/constructor-main.component";
 import {
     ConstructorCardComponent
 } from "./children/templates/children/template-preview/children/constructor/pages/constructor-card/constructor-card.component";
@@ -23,12 +24,12 @@ import {FirstTemplateComponent} from "./children/templates/components/first-temp
     declarations: [
         ShopComponent,
         TemplatesComponent,
-        TemplatePreviewComponent,
         FirstTemplateComponent,
 
+        MainComponent,
+        ConstructorMainComponent,
         ConstructorCardComponent,
         ConstructorCartComponent,
-        MainComponent,
     ],
     imports: [
         CrmModule,
