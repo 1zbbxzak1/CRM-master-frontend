@@ -1,0 +1,251 @@
+.add-shop {
+    border: 1px solid var(--fields-stroke-input);
+    border-radius: 10px;
+
+    background: var(--fields-form);
+
+    max-width: 380px;
+    height: 348px;
+
+    margin-top: 70px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-shop-not-found {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--text-light-grey);
+
+    margin-bottom: 24px;
+}
+
+.create-shop {
+    background: var(--main-blue);
+    border: 1px solid transparent;
+
+    border-radius: 8px;
+    padding: 10px 24px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--text-white);
+
+    cursor: pointer;
+}
+
+.create-shop:hover {
+    background: #28aaff;
+    border: 1px solid #28aaff;
+}
+
+.create-shop:active {
+    background: #005acd;
+    border: 1px solid #005acd;
+}
+
+.pop-up-shop-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: center;
+    color: var(--text-white);
+
+    align-self: center;
+
+    margin-bottom: 18px;
+
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.input-title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+    color: var(--text-light-grey);
+
+    margin-bottom: 4px;
+}
+
+.pop-up-stage-item {
+    margin-bottom: 16px;
+}
+
+.save-button {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.address-start {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--text-light-grey);
+
+    margin-top: 12px;
+}
+
+.shop-view {
+    border: 1px solid var(--fields-stroke-input);
+    border-radius: 10px;
+    padding-top: 20px;
+
+    background: var(--fields-form);
+    width: 376px;
+    min-height: 348px;
+
+    margin-top: 70px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.miniature-container {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.template {
+    border-radius: 10px;
+}
+
+.shop-data-list {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    height: 100%;
+    margin-top: 8px;
+    margin-bottom: 20px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.shop-data-item {
+    display: inline-flex;
+
+    align-items: start;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.shop-data-item-icon {
+    align-self: center;
+
+    margin-top: 8px;
+}
+
+.shop-data-item-title {
+    margin-left: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--text-white);
+
+    align-self: center;
+
+    margin-top: 8px;
+}
+
+.shop-data-item-button {
+    margin-left: auto;
+    border: 1px solid transparent;
+
+    cursor: pointer;
+
+    margin-top: 8px;
+}
+
+.shop-data-item-button:hover {
+    border: 1px solid var(--main-blue);
+    border-radius: 8px;
+}
+
+.shop-data-item-button:active {
+    background: var(--main-blue);
+    border-radius: 10px;
+    border: 1px solid var(--main-blue);
+}
+
+.shop-data-item-url {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--text-white);
+
+    align-self: center;
+
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+.shop-data-item-copy {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 167%;
+    color: var(--text-white);
+
+    border: 1px solid var(--main-blue);
+    border-radius: 8px;
+    padding: 4px 16px;
+    background: none;
+
+    width: 80%;
+
+    margin-left: 6px;
+
+    align-self: center;
+
+    cursor: pointer;
+
+    margin-top: 8px;
+}
+
+.shop-data-item-copy:hover {
+    background: #28aaff;
+    border-radius: 8px;
+    border: 1px solid #28aaff;
+}
+
+.shop-data-item-copy:active {
+    background: #005acd;
+    border-radius: 8px;
+    border: 1px solid #005acd;
+}
+
+.shop-template-open {
+    background: var(--main-blue);
+    border: none;
+
+    width: 100%;
+
+    border-radius: 8px;
+    padding: 10px 24px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--text-white);
+
+    cursor: pointer;
+
+    margin-top: 20px;
+}
+
+.shop-template-open:hover {
+    background: #28aaff;
+}
+
+.shop-template-open:active {
+    background: #005acd;
+}

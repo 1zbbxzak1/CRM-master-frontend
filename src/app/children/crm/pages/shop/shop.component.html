@@ -4,9 +4,128 @@
         <div class="main-content-crm-full">
             <div class="content-crm">
                 <div class="content-crm-header">
-                    <p class="content-crm-title">Интернет-магазин</p>
+                    <p class="content-crm-title">Мой магазин</p>
                 </div>
+
+                <ng-container *ngIf="websiteFound; else noWebsite">
+                    <div class="shop-view">
+                        <div class="miniature-container">
+                            <div class="template">
+                                <img [src]="'assets/miniature.svg'" alt="миниатюра">
+                            </div>
+                        </div>
+
+                        <div class="shop-data-list">
+                            <div class="shop-data-item">
+                                <div class="shop-data-item-icon">
+                                    <svg *ngIf="website?.url === null" fill="none" height="12" viewBox="0 0 12 12"
+                                         width="12"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="6" cy="6" fill="#24D661" r="6"/>
+                                    </svg>
+
+                                    <svg *ngIf="website?.url !== null" fill="none" height="12" viewBox="0 0 12 12"
+                                         width="12" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="6" cy="6" fill="#EF302B" r="6"/>
+                                    </svg>
+                                </div>
+
+                                <div class="shop-data-item-title">
+                                    {{ website?.title }}
+                                </div>
+
+                                <div class="shop-data-item-button">
+                                    <img [src]="'assets/more_icon.svg'" alt="больше">
+                                </div>
+                            </div>
+
+                            <div class="shop-data-item">
+                                <div #urlToCopy class="shop-data-item-url">
+                                    websites.2984145-zs33262.twc1.net/{{ website?.addressName }}
+                                </div>
+
+                                <button (click)="copyUrlToClipboard(urlToCopy)" class="shop-data-item-copy">
+                                    Копировать ссылку
+                                </button>
+                            </div>
+
+                            <div class="shop-data-item">
+                                <button
+                                    (click)="_router.navigate(['crm/shop/shop-templates/templates-preview/constructor/main'])"
+                                    class="shop-template-open">
+                                    Открыть редактор
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-template #noWebsite>
+                    <div class="add-shop">
+                        <div class="add-shop-not-found">Создайте свой первый сайт, чтобы его могли просматривать ваши
+                            клиенты
+                        </div>
+                        <button (click)="openDialogCreateShop(createShop)" class="create-shop">
+                            Создать
+                        </button>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </div>
 </div>
+
+<tui-root>
+    <ng-template #createShop>
+        <form [formGroup]="formCreateShop" class="pop-up">
+            <div class="pop-up-shop-title">Придумайте название<br/>для магазина</div>
+            <div>
+                <div class="pop-up-stage-item">
+                    <p class="input-title">Название</p>
+                    <tui-input
+                        [tuiTextfieldCleaner]="true"
+                        [tuiTextfieldLabelOutside]="true"
+                        formControlName="title"
+                        tuiTextfieldSize="m"
+                    >
+                        <input
+                            autocomplete="title"
+                            tuiTextfield
+                            type="text"
+                        />
+                    </tui-input>
+                </div>
+
+                <div>
+                    <p class="input-title">Адрес сайта</p>
+                    <tui-input
+                        [tuiTextfieldCleaner]="true"
+                        [tuiTextfieldLabelOutside]="true"
+                        formControlName="addressName"
+                        tuiTextfieldSize="m"
+                    >
+                        <input
+                            autocomplete="addressName"
+                            tuiTextfield
+                            type="text"
+                        />
+                    </tui-input>
+                </div>
+
+                <div class="address-start">
+                    websites.2984145-zs33262.twc1.net/{{ formCreateShop.get('addressName')?.value }}
+                </div>
+            </div>
+
+            <button
+                (click)="nextPage()"
+                appearance="custom"
+                class="save-button" size="m"
+                tuiButton
+                type="button">
+                Продолжить
+            </button>
+        </form>
+    </ng-template>
+</tui-root>
+

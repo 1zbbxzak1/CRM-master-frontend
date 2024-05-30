@@ -12,6 +12,11 @@ import {
     MainComponent
 } from "./children/templates/children/template-preview/children/constructor/pages/main/main.component";
 import {CrmModule} from "../../crm.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {TuiButtonModule, TuiRootModule, TuiScrollbarModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {TuiInputCopyModule, TuiInputModule} from "@taiga-ui/kit";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -24,6 +29,17 @@ import {CrmModule} from "../../crm.module";
     ],
     imports: [
         CrmModule,
+        ReactiveFormsModule,
+        TuiButtonModule,
+        TuiInputCopyModule,
+        TuiInputModule,
+        TuiTextfieldControllerModule,
+        BrowserAnimationsModule,
+        TuiRootModule,
+        CommonModule,
+        NgOptimizedImage,
+        TuiScrollbarModule,
+        FormsModule,
     ],
     providers: []
 })
