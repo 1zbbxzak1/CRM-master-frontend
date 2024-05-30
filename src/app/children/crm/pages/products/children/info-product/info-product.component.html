@@ -38,8 +38,7 @@
                                     {{ product?.dimensions }}
                                 </p>
                                 <p class="profile-data-item-title">Описание</p>
-                                <p class="info-product">
-                                    {{ product?.description }}
+                                <p [innerHTML]="product?.description" class="info-product">
                                 </p>
                             </div>
                         </div>

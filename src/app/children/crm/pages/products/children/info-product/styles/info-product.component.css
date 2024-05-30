@@ -11,7 +11,12 @@
     line-height: 130%;
     color: var(--text-white);
 
+    white-space: normal;
+    word-wrap: break-word;
+
     margin-bottom: 16px;
+
+    margin-right: 60px;
 }
 
 .header-info {
