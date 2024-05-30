@@ -20,6 +20,9 @@ import {
 import {
     ConstructorCardComponent
 } from "./children/crm/pages/shop/children/templates/children/template-preview/children/constructor/pages/constructor-card/constructor-card.component";
+import {
+    ConstructorCartComponent
+} from "./children/crm/pages/shop/children/templates/children/template-preview/children/constructor/pages/constructor-cart/constructor-cart.component";
 
 
 export const routes: Routes = [
@@ -103,6 +106,11 @@ export const routes: Routes = [
     {
         path: 'crm/shop/shop-templates/templates-preview/constructor/card/:id',
         component: ConstructorCardComponent,
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+    },
+    {
+        path: 'crm/shop/shop-templates/templates-preview/constructor/cart',
+        component: ConstructorCartComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
 ];
