@@ -17,12 +17,15 @@ import {TuiButtonModule, TuiRootModule, TuiScrollbarModule, TuiTextfieldControll
 import {TuiInputCopyModule, TuiInputModule} from "@taiga-ui/kit";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FirstTemplateComponent} from "./children/templates/components/first-template/first-template.component";
 
 @NgModule({
     declarations: [
         ShopComponent,
         TemplatesComponent,
         TemplatePreviewComponent,
+        FirstTemplateComponent,
+
         ConstructorCardComponent,
         ConstructorCartComponent,
         MainComponent,

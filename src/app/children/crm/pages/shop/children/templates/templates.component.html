@@ -1,1 +1,32 @@
-<p>templates works!</p>
+<div class="main-content-crm">
+    <div class="main-content-crm-second">
+        <div class="main-content-crm-full">
+            <div class="content-crm">
+                <div class="content-crm-header">
+                    <p class="content-crm-title">Выбор шаблона</p>
+                </div>
+
+                <tui-scrollbar>
+                    <div class="template-grid">
+                        <div class="template-list">
+                            <img alt="первый шаблон" src="assets/template_1.svg">
+                            <img alt="второй шаблон" src="assets/template_2.svg">
+
+                            <button
+                                (click)="_router.navigate(['crm/shop/shop-templates/templates-preview/constructor/main'])"
+                                class="button-next">Продолжить
+                            </button>
+                            <button (click)="backToShop()" class="button-prev">Назад</button>
+                        </div>
+
+                        <div class="template-preview">
+                            <app-first-template></app-first-template>
+                        </div>
+                    </div>
+                </tui-scrollbar>
+            </div>
+        </div>
+    </div>
+</div>
+
+

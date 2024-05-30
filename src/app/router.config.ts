@@ -13,6 +13,7 @@ import {InfoProductComponent} from "./children/crm/pages/products/children/info-
 import {UpdateProductComponent} from "./children/crm/pages/products/children/update-product/update-product.component";
 import {ClientDetailsComponent} from "./children/crm/pages/clients/children/client-details/client-details.component";
 import {UpdateClientsComponent} from "./children/crm/pages/clients/children/update-clients/update-clients.component";
+import {TemplatesComponent} from "./children/crm/pages/shop/children/templates/templates.component";
 
 
 export const routes: Routes = [
@@ -81,6 +82,11 @@ export const routes: Routes = [
     {
         path: 'crm/shop',
         component: ShopComponent,
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+    },
+    {
+        path: 'crm/shop/shop-templates',
+        component: TemplatesComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
 ];

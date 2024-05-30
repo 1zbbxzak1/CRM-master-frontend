@@ -1,0 +1,134 @@
+<div *ngIf="loading; else loadedContent" class="loading">
+    Loading...
+</div>
+
+<ng-template #loadedContent>
+
+    <div class="template">
+        <div class="template-header">
+            <div class="template-title">
+                {{ website?.title }}
+            </div>
+            <div>
+                <img (click)="this._router.navigate(['crm/shop/shop-templates/templates-preview/constructor/cart'])"
+                     height="24" ngSrc="assets/shopping_bag.svg" width="24">
+            </div>
+        </div>
+
+        <div *ngIf="blocks[1]" class="first-section-template">
+            <div class="image-container">
+                <img [src]="getBlockImageUrl(blocks[1]?.id!)"
+                     alt="Фото блока" class="responsive-img">
+                <div class="inner-div">
+                    <p class="template-title">
+                        {{ getBlockPropertyValue(blocks[1]?.id!, 'h1Text') }}
+                    </p>
+                    <p class="inner-div-desc">
+                        {{ getBlockPropertyValue(blocks[1]?.id!, 'pText') }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="second-section-template">
+            <div class="catalog-title" contenteditable="true">
+                Каталог
+            </div>
+
+            <div class="search-product">
+                <img alt="поиск" height="24" src="../../../../../../../../../assets/search.svg" width="24">
+                <input (ngModelChange)="searchProducts()" [(ngModel)]="search" class="search-input"
+                       placeholder="Найти товар" type="text">
+            </div>
+
+            <div (click)="toggleSort()" class="sort-product">
+                <img [src]="isSortedAsc ? 'assets/sort_product_down.svg' : 'assets/sort_product_top.svg'"
+                     alt="сортировка"
+                     height="24" width="24">
+                <p class="sort-product-title">По цене</p>
+            </div>
+
+            <div *ngIf="products.length < 1" class="products">
+                <div class="products-null">
+                    <div class="product-not-found">Создайте свой первый сайт, чтобы его могли просматривать ваши
+                        клиенты
+                    </div>
+
+                    <button (click)="_router.navigate(['crm/products'])" class="add-products">
+                        Добавить товары
+                    </button>
+                </div>
+            </div>
+
+            <div *ngIf="products.length > 0" class="products-list">
+                <div
+                    (click)="_router.navigate(['crm/shop/shop-templates/templates-preview/constructor/card', product?.id])"
+                    *ngFor="let product of searchProducts()" class="product-item">
+                    <img [src]="product.photos?.[0]?.url || 'assets/cap.svg'"
+                         alt="Product Photo"
+                         class="photo-product"
+                         height="282"
+                         width="282">
+
+                    <p class="product-price">{{ product.price | number:'1.0-0' }} ₽</p>
+                    <p class="product-title">{{ product.name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="third-section-template">
+            <div class="advantages-title">
+                Преимущества
+            </div>
+
+            <div *ngIf="blocks[3]" class="advantages-list">
+                <div *ngFor="let section of textSections" class="advantages-item">
+                    <div class="advantages-item-title">
+                        {{ section.title }}
+                    </div>
+                    <div class="advantages-item-text">
+                        {{ section.text }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fourth-section-template">
+            <div class="advantages-title">
+                Свяжитесь со мной
+            </div>
+
+            <div class="data-list">
+                <div class="data-item">
+                    {{ (user | async)?.fullName }}
+                </div>
+
+                <div class="data-item-info">
+                    <div>
+                        <span>Телефон: </span>
+                        {{ (user | async)?.phone }}
+                    </div>
+                    <div>
+                        <span>Почта: </span>
+                        {{ (user | async)?.email }}
+                    </div>
+                </div>
+
+                <div class="data-item-socials">
+                    <a href="{{ (user | async)?.vkLink || '' }}" target="_blank">
+                        <img [src]="'assets/socials_vk.svg'" alt="ВКонтакте">
+                    </a>
+                    <a href="{{ 'https://t.me/' + ((user | async)?.telegramLink | slice:1) || '' }}" target="_blank">
+                        <img [src]="'assets/socials_tg.svg'" alt="Telegram">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="last-section-template">
+            <div class="template-last-title">
+                {{ website?.title }}
+            </div>
+        </div>
+    </div>
+</ng-template>
