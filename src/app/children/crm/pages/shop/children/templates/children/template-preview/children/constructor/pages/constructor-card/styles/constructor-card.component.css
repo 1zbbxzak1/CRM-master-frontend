@@ -1,3 +1,23 @@
+.btn-section {
+    background: var(--bg-dark-blue-2);
+    padding: 34px 10%;
+}
+
+.btn-back {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: var(--text-white);
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+.btn-back:hover {
+    color: var(--main-blue);
+}
+
 .template {
     height: 100%;
     background: #f0eef0;
@@ -243,8 +263,17 @@
     background: var(--text-black);
     border-radius: 10px;
     padding: 12px 24px;
+    border: none;
 
     align-self: center;
+}
+
+.add-cart:hover {
+    background: #3f3f3f;
+}
+
+.add-cart:active {
+    background: #030303;
 }
 
 .go-cart {
@@ -258,6 +287,14 @@
     border-radius: 10px;
     padding: 12px 24px;
     background: var(--sample-lightgrey-hover);
+}
+
+.go-cart:hover {
+    background: rgba(33, 33, 33, 0.25);
+}
+
+.go-cart:active {
+    background: rgba(33, 33, 33, 0.25);
 }
 
 .second-section-desc {

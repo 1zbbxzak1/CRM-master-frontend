@@ -9,16 +9,16 @@ export class AuthGuard {
     public canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         const isAuthorized: string | null = localStorage.getItem("id");
 
-        if (state.url === '') {
+        if (state.url === '/welcome') {
             if (isAuthorized !== null) {
-                from(this._router.navigate(["profile"])).pipe(
+                from(this._router.navigate(["crm/orders"])).pipe(
                     map((): boolean => false)
                 );
             }
             return of(true);
         } else {
             if (isAuthorized === null) {
-                from(this._router.navigate([""])).pipe(
+                from(this._router.navigate(["welcome"])).pipe(
                     map((): boolean => false)
                 );
             }

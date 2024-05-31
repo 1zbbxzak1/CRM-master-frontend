@@ -21,6 +21,7 @@ export interface OrderProduct {
     id: string;
     productId: string;
     quantity: number;
+    unitPrice: number,
     name: string;
     photo?: string;
 }

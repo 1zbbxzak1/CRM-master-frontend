@@ -1,3 +1,23 @@
+.btn-section {
+    background: var(--bg-dark-blue-2);
+    padding: 34px 20%;
+}
+
+.btn-back {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: var(--text-white);
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+.btn-back:hover {
+    color: var(--main-blue);
+}
+
 .template {
     height: 100%;
     background: #f0eef0;

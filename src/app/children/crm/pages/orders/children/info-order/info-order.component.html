@@ -74,7 +74,7 @@
                                     <div class="data-client">Товары</div>
                                     <div *ngFor="let product of order!.products">
                                         <div class="profile-data-item-title">
-                                            {{ product.quantity }} на сумму {{ order!.totalAmount }}
+                                            {{ product.quantity }} на сумму {{ product.unitPrice | number:'1.0-0' }} ₽
                                         </div>
                                         <div class="info-product-sec">
                                             <img [src]="product!.photo || 'assets/cap.svg'"
@@ -84,7 +84,7 @@
                                                  width="80">
                                             <div class="info-product-sec-two">
                                                 <p class="info-sec-title">{{ product!.name }}</p>
-                                                <p class="info-sec-desc">{{ product.quantity }}</p>
+                                                <p class="info-sec-desc">{{ product.unitPrice | number:'1.0-0' }} ₽</p>
                                             </div>
                                         </div>
                                     </div>

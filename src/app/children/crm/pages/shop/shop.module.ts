@@ -15,9 +15,16 @@ import {
 import {CrmModule} from "../../crm.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TuiButtonModule, TuiRootModule, TuiScrollbarModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
-import {TuiInputCopyModule, TuiInputModule} from "@taiga-ui/kit";
+import {
+    TuiComboBoxModule,
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule,
+    TuiInputCopyModule,
+    TuiInputModule
+} from "@taiga-ui/kit";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
+import {TuiValueChangesModule} from "@taiga-ui/cdk";
 
 
 @NgModule({
@@ -44,6 +51,10 @@ import {CommonModule, NgOptimizedImage} from "@angular/common";
         NgOptimizedImage,
         TuiScrollbarModule,
         FormsModule,
+        TuiComboBoxModule,
+        TuiDataListWrapperModule,
+        TuiFilterByInputPipeModule,
+        TuiValueChangesModule,
     ],
     providers: []
 })

@@ -34,6 +34,8 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 export class ConstructorMainComponent implements OnInit, OnDestroy {
     countProduct = 0;
     loading: boolean = true;
+    selectedItem: string = "Главная";
+    pagesList = ['Page 1', 'Page 2', 'Page 3'];
     @ViewChild('h1Text')
     protected h1V!: ElementRef;
     @ViewChild('pText')
@@ -46,6 +48,7 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
     protected textSections: TextSectionDto[] = [];
     protected uploadedImageUrl: string = '';
     protected products: IProductsResponseModel[] = [];
+    protected pageUrls: Record<string, string> = {};
     protected search: string = '';
     protected isSortedAsc: boolean = true;
     protected blocks: BlockDto[] = [];
@@ -80,6 +83,13 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
             });
         } else {
             this.loadMainSection();
+        }
+    }
+
+    onPageChange(selectedItem: string): void {
+        const url = this.pageUrls[selectedItem];
+        if (url) {
+            this._router.navigate([url]);
         }
     }
 
@@ -224,6 +234,12 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
             })
         ).subscribe((products: IProductsResponseModel[]): void => {
             this.products = products;
+
+            this.pageUrls = {
+                'Главная': 'crm/shop/shop-templates/templates-preview/constructor/main',
+                'Товар': `crm/shop/shop-templates/templates-preview/constructor/card${this.products?.[0].id}`,
+                'Корзина': 'crm/shop/shop-templates/templates-preview/constructor/cart'
+            };
             this.sortProducts();
             this._changeDetectorRef.detectChanges();
         });

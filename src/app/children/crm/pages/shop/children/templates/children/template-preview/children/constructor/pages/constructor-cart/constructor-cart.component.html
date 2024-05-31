@@ -1,3 +1,25 @@
+<div class="btn-section">
+    <button (click)="_router.navigate(['crm/shop'])" class="btn-back">Назад</button>
+    <!--        <tui-root>-->
+    <!--            <tui-combo-box-->
+    <!--                (tuiValueChanges)="onPageChange($event)"-->
+    <!--                [(ngModel)]="selectedItem"-->
+    <!--                [tuiTextfieldCleaner]="true"-->
+    <!--                [tuiTextfieldLabelOutside]="true"-->
+    <!--                class="tui-input-name"-->
+    <!--                formControlName="stage"-->
+    <!--                tuiTextfieldSize="m"-->
+    <!--            >-->
+    <!--                <tui-data-list-wrapper-->
+    <!--                    *tuiDataList-->
+    <!--                    [items]="pagesList | tuiFilterByInput"-->
+    <!--                    class="tui-data-list"-->
+    <!--                    size="m"-->
+    <!--                ></tui-data-list-wrapper>-->
+    <!--            </tui-combo-box>-->
+    <!--        </tui-root>-->
+</div>
+
 <tui-root>
     <tui-scrollbar>
         <div class="template">
@@ -44,15 +66,15 @@
                                         <div class="product-title">{{ item.product.name }}</div>
                                         <div class="cart-item-price">{{ item.product.price | number:'1.0-0' }} ₽</div>
                                         <button (click)="clearCart()" class="delete_icon">
-                                            <img src="assets/delete_icon_cart.svg">
+                                            <img alt="delete" src="assets/delete_icon_cart.svg">
                                         </button>
                                     </div>
                                     <div *ngIf="countProduct > 0" class="count-pr">
-                                        <img (click)="removeFromCart(item.product.id)" class="pr-icon"
-                                             src="assets/min_icon.svg">
+                                        <img (click)="removeFromCart(item.product.id)" alt="min-count"
+                                             class="pr-icon" src="assets/min_icon.svg">
                                         <div class="count-product">{{ countProduct }}</div>
-                                        <img (click)="addToCart(item.product)" class="pr-icon"
-                                             src="assets/plus_icon.svg">
+                                        <img (click)="addToCart(item.product)" alt="max-count"
+                                             class="pr-icon" src="assets/plus_icon.svg">
                                     </div>
                                 </div>
                             </div>

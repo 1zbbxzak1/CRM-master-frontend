@@ -44,7 +44,7 @@ export class ConstructorCartComponent implements OnInit, OnDestroy {
         private cartService: CartService,
         private productCountService: ProductCountService,
         private readonly _destroyRef: DestroyRef,
-        private readonly _router: Router,
+        protected readonly _router: Router,
         private readonly _changeDetectorRef: ChangeDetectorRef,
         private readonly _shopService: ShopService,
     ) {
