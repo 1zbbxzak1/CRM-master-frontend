@@ -235,13 +235,11 @@
 }
 
 .add-products:hover {
-    background: #28aaff;
-    border: 1px solid #28aaff;
+    background: rgba(33, 33, 33, 0.25);
 }
 
 .add-products:active {
-    background: #005acd;
-    border: 1px solid #005acd;
+    background: rgba(33, 33, 33, 0.25);
 }
 
 .products-list {

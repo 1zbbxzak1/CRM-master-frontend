@@ -85,6 +85,7 @@
                                     <tui-root>
                                         <form [formGroup]="getOrderForm(order)" class="profile-data">
                                             <tui-combo-box
+                                                (click)="$event.stopPropagation()"
                                                 [(ngModel)]="order.stage"
                                                 [tuiTextfieldCleaner]="true"
                                                 [tuiTextfieldLabelOutside]="true"
