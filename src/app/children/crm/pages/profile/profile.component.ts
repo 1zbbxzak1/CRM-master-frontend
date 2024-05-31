@@ -8,6 +8,7 @@ import {PasswordEditComponent} from "./components/password-edit/password-edit.co
 import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 import {TuiDialogContext} from "@taiga-ui/core";
 import * as VKID from "@vkid/sdk";
+import {FormatterService} from "../clients/services/formatter.service";
 
 @Component({
     selector: 'app-profile',
@@ -15,7 +16,7 @@ import * as VKID from "@vkid/sdk";
     styleUrls: ['../../styles/crm-styles.css', './styles/profile-styles.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileComponent implements AfterViewInit {
+export class ProfileComponent extends FormatterService implements AfterViewInit {
     protected user$: Observable<IUserResponseModel>;
 
     @ViewChild(PasswordEditComponent)
@@ -28,6 +29,7 @@ export class ProfileComponent implements AfterViewInit {
         private readonly _authService: IdentityService,
         private readonly _router: Router,
     ) {
+        super();
         this.user$ = this._userManagerService.getUserInfo();
     }
 

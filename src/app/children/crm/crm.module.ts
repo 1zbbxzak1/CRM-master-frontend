@@ -45,6 +45,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 // import {AddOrderComponent} from './pages/orders/components/add-order/add-order.component';
 import {TuiActiveZoneModule} from "@taiga-ui/cdk";
 import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
+import { OrderHistoryStageComponent } from './pages/orders/components/order-history-stage/order-history-stage.component';
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
         OrdersComponent,
         SettingsComponent,
         DeleteStageComponent,
+        OrderHistoryStageComponent,
     ],
     imports: [
         NgOptimizedImage,

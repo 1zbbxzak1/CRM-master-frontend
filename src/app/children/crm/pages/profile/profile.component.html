@@ -25,7 +25,7 @@
                         <p class="profile-item">{{ (user$ | async)?.telegramLink || 'Не назначено' }}</p>
                         <p class="profile-data-item-title">Телефон</p>
                         <p></p>
-                        <p class="profile-item">{{ (user$ | async)?.phone || 'Не назначено' }}</p>
+                        <p class="profile-item">{{ formatPhoneNumber((user$ | async)?.phone || 'Не назначено') }}</p>
                     </div>
                 </section>
 
