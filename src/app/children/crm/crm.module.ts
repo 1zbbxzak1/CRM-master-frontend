@@ -43,11 +43,11 @@ import {UpdateClientsComponent} from './pages/clients/children/update-clients/up
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {DeleteStageComponent} from './pages/orders/components/delete-stage/delete-stage.component';
 import {AddOrderComponent} from './pages/orders/components/add-order/add-order.component';
-import {TuiActiveZoneModule} from "@taiga-ui/cdk";
+import {TuiActiveZoneModule, TuiValueChangesModule} from "@taiga-ui/cdk";
 import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
 import {EditOrderComponent} from './pages/orders/children/edit-order/edit-order.component';
 import {InfoOrderComponent} from "./pages/orders/children/info-order/info-order.component";
-import { OrderHistoryStageComponent } from './pages/orders/components/order-history-stage/order-history-stage.component';
+import {OrderHistoryStageComponent} from './pages/orders/components/order-history-stage/order-history-stage.component';
 
 @NgModule({
     declarations: [
@@ -109,6 +109,7 @@ import { OrderHistoryStageComponent } from './pages/orders/components/order-hist
         TuiHostedDropdownModule,
         TuiActiveZoneModule,
         TuiSidebarModule,
+        TuiValueChangesModule,
     ],
     exports: [
         SidebarComponent,

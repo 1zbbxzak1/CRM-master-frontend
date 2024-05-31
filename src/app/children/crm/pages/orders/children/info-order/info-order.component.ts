@@ -105,8 +105,6 @@ export class InfoOrderComponent extends FormatterService {
         ).subscribe((order: Order | null): void => {
             this.order = order;
 
-            this._ordersManagerService
-
             this._changeDetectorRef.detectChanges();
         });
     }

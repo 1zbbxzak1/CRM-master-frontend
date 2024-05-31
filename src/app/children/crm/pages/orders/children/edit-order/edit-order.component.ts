@@ -12,6 +12,7 @@ import {OrderService} from "../../../../../../data/services/order/orders.service
 import {DataUpdateService} from "../../../../../services/data-update";
 import {StageOrderManagerService} from "../../../../../../data/services/order/stage-order/stage-order.manager.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {ProductsManagerService} from "../../../../../../data/services/products/products.manager.service";
 
 @Component({
     selector: 'app-edit-order',
@@ -21,24 +22,27 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 })
 export class EditOrderComponent extends FormatterService {
     protected orderId!: string;
-    protected order!: Order | null;
+    protected order!: Order;
     protected selectedStage: any;
     protected stages: IStageOrderResponseModel[] = [];
     protected stageItemForm: FormGroup = new FormGroup({
         stage: new FormControl(''),
     });
-    protected orders!: GetOrdersResponse;
     protected stagesList: string[] = [];
+    protected orders!: GetOrdersResponse;
+    protected selectStage!: number;
     protected formOrder: FormGroup = new FormGroup({
-        stageTab: new FormControl(''),
+        stage: new FormControl(''),
         totalAmount: new FormControl(''),
-        isCalculationAutomated: new FormControl(true),
         comment: new FormControl(''),
         address: new FormControl(''),
         fullName: new FormControl(''),
         email: new FormControl(''),
         phone: new FormControl(''),
     });
+    // protected products: IProductsResponseModel[] = [];
+    // protected productList: IProductsResponseModel[] = [];
+    // protected selectedProduct!: IProductsResponseModel;
     private stageMap: { [key: string]: number } = {};
 
     constructor(
@@ -47,6 +51,7 @@ export class EditOrderComponent extends FormatterService {
         protected readonly _destroyRef: DestroyRef,
         private readonly _changeDetectorRef: ChangeDetectorRef,
         protected readonly _ordersManagerService: OrderService,
+        private readonly _productManagerService: ProductsManagerService,
         private readonly _dataUpdateService: DataUpdateService,
         private readonly _stageOrderManagerService: StageOrderManagerService,
     ) {
@@ -91,7 +96,36 @@ export class EditOrderComponent extends FormatterService {
                     this.loadStages();
                 });
             });
+
+        // this._productManagerService.getAllProducts().pipe(
+        //     takeUntilDestroyed(this._destroyRef)
+        // ).subscribe((products: IProductsResponseModel[]) => {
+        //     this.products = products;
+        //
+        //     this.productList = this.products;
+        // });
     }
+
+    // onProductSelect(selectedProduct: IProductsResponseModel): void {
+    //     this.selectedProduct = selectedProduct;
+    //     this.addProductToOrderList(selectedProduct);
+    // }
+
+    // // Method to add the selected product to the order
+    // addProductToOrderList(selectedProduct: IProductsResponseModel): void {
+    //     if (selectedProduct && this.order) {
+    //         const newProduct: OrderProduct = {
+    //             id: selectedProduct.id,
+    //             productId: selectedProduct.id,
+    //             name: selectedProduct.name,
+    //             quantity: 1,
+    //             unitPrice: selectedProduct.price,
+    //             photo: selectedProduct.photos[0].url || 'assets/cap.svg'
+    //         };
+    //
+    //         this.order.products.push(newProduct);
+    //     }
+    // }
 
     loadStages() {
         this._stageOrderManagerService.getStages().pipe(
@@ -103,38 +137,61 @@ export class EditOrderComponent extends FormatterService {
         });
     }
 
-    getOrderForm(order: string | undefined): FormGroup {
-        return new FormGroup({
-            stage: new FormControl(order || ''),
-        });
-    }
-
     getOrderInfo(orderId: string) {
         this._ordersManagerService.getOrderById(orderId).pipe(
             takeUntilDestroyed(this._destroyRef)
-        ).subscribe((order: Order | null): void => {
+        ).subscribe((order: Order): void => {
             this.order = order;
 
-            this._ordersManagerService
+            this.formOrder.patchValue({
+                stage: order.stage,
+                totalAmount: order?.totalAmount,
+                comment: order?.comment,
+                address: order?.address,
+                fullName: order?.client?.fullName,
+                email: order?.client?.email,
+                phone: order?.client?.phone,
+            });
 
             this._changeDetectorRef.detectChanges();
         });
     }
 
-    updateOrder(orderId: string, newStage: string): void {
+    updateOrderStage(orderId: string, newStage: string): void {
         this._ordersManagerService.getOrderById(orderId).subscribe({
-            next: (order: Order): void => {
-                const stageNumber: number = this.stageMap[newStage];
+                next: (order: Order): void => {
+                    this.selectStage = this.stageMap[newStage];
+                }
+            }
+        );
+    }
+
+    updateOrder(orderId: string): void {
+        this._ordersManagerService.getOrderById(orderId).subscribe({
+            next: (order: ChangeOrderRequest): void => {
+                const totalAmount: number = parseInt(this.formOrder.get('totalAmount')?.value);
+                const comment: string = this.formOrder.get('comment')?.value;
+                const address: string = this.formOrder.get('address')?.value;
+                const fullName: string = this.formOrder.get('fullName')?.value;
+                const email: string = this.formOrder.get('email')?.value;
+                const phone: string = this.formOrder.get('phone')?.value;
+
 
                 const request: ChangeOrderRequest = {
-                    stageTab: stageNumber,
-                    totalAmount: order.totalAmount,
-                    isCalculationAutomated: order.isCalculationAutomated,
-                    comment: order.comment,
-                    address: order.address,
-                    client: order.client,
+                    stageTab: this.selectStage,
+                    totalAmount: totalAmount,
+                    isCalculationAutomated: true,
+                    comment: comment,
+                    address: address,
+                    client: {
+                        fullName: fullName,
+                        email: email,
+                        phone: phone,
+                    },
                     products: order.products,
                 };
+
+                console.log(request);
 
                 this._ordersManagerService.updateOrder(orderId, request).subscribe({
                     next: (): void => {
@@ -152,12 +209,8 @@ export class EditOrderComponent extends FormatterService {
         });
     }
 
-    protected navigateToPreviousPage(): void {
-        this._router.navigate(['crm/orders']);
-    }
-
-    protected navigateToUpdateInfoPage(id: string): void {
-        this._router.navigate(['crm/orders/edit-order', id]);
+    protected navigateToInfoPage(id: string): void {
+        this._router.navigate(['crm/orders/info-order', id]);
     }
 
     private loadOrdersByStage(stageId: number): void {

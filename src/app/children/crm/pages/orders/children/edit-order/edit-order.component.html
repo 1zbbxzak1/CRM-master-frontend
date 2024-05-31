@@ -10,7 +10,7 @@
                     waIntersectionRoot
                 >
                     <div class="content-product-header">
-                        <button (click)="navigateToPreviousPage()" class="back-to-products">
+                        <button (click)="navigateToInfoPage(order.id)" class="back-to-products">
                             <img alt="back" height="24" ngSrc="assets/chevron_left.svg" width="24">
                         </button>
                         <p class="content-crm-title">
@@ -22,89 +22,192 @@
                         <div>
                             <div class="header-info">
                                 <p class="product-add-title">Основное</p>
-                                <button (click)="navigateToUpdateInfoPage(order!.id)" class="info-product-button">
-                                    Изменить
+                                <button (click)="navigateToInfoPage(order!.id)" class="info-product-button">
+                                    Отменить
                                 </button>
                             </div>
 
                             <div class="profile-data">
                                 <div class="profile-data-list">
-                                    <div class="data-client">Статус заказа</div>
-                                    <p class="info-product">
-                                        <tui-root>
-                                            <form [formGroup]="getOrderForm(order!.stage)" class="profile-data">
-                                                <tui-combo-box
-                                                    [(ngModel)]="order!.stage"
-                                                    [tuiTextfieldCleaner]="true"
-                                                    [tuiTextfieldLabelOutside]="true"
-                                                    class="tui-input-name"
-                                                    formControlName="stage"
-                                                    tuiTextfieldSize="m"
-                                                >
-                                                    <tui-data-list-wrapper
-                                                        (itemClick)="updateOrder(order!.id, $event)"
-                                                        *tuiDataList
-                                                        [items]="stagesList | tuiFilterByInput"
-                                                        class="tui-data-list"
-                                                        size="m"
-                                                    ></tui-data-list-wrapper>
-                                                </tui-combo-box>
-                                            </form>
-                                        </tui-root>
-                                    </p>
+                                    <tui-root>
+                                        <form [formGroup]="formOrder" class="profile-data">
+                                            <div class="data-client">Статус заказа</div>
+                                            <tui-combo-box
+                                                [(ngModel)]="order!.stage"
+                                                [tuiTextfieldCleaner]="true"
+                                                [tuiTextfieldLabelOutside]="true"
+                                                class="tui-input-name"
+                                                formControlName="stage"
+                                                tuiTextfieldSize="m"
+                                            >
+                                                <tui-data-list-wrapper
+                                                    (itemClick)="updateOrderStage(order!.id, $event)"
+                                                    *tuiDataList
+                                                    [items]="stagesList | tuiFilterByInput"
+                                                    class="tui-data-list"
+                                                    size="m"
+                                                ></tui-data-list-wrapper>
+                                            </tui-combo-box>
 
-                                    <div class="data-client">Данные клиента</div>
-                                    <div class="profile-data-item-title">ФИО</div>
-                                    <p class="info-product">
-                                        {{ order!.client!.fullName }}
-                                    </p>
-                                    <p class="profile-data-item-title">Телефон</p>
-                                    <p class="info-product">
-                                        {{ formatPhoneNumber(order!.client!.phone) }}
-                                    </p>
-                                    <p class="profile-data-item-title">Электронная почта</p>
-                                    <p class="info-product">
-                                        {{ order!.client!.email }}
-                                    </p>
-                                    <p class="profile-data-item-title">Адрес доставки</p>
-                                    <p class="info-product">
-                                        {{ order!.address }}
-                                    </p>
+                                            <div class="data-client">Данные клиента</div>
+                                            <div class="profile-data-item-title">ФИО</div>
+                                            <tui-input
+                                                [tuiTextfieldCleaner]="true"
+                                                [tuiTextfieldLabelOutside]="true"
+                                                class="tui-input-name"
+                                                formControlName="fullName"
+                                                tuiTextfieldSize="m"
+                                            >
+                                                <input
+                                                    autocomplete="fullName"
+                                                    tuiTextfield
+                                                    type="text"
+                                                />
+                                            </tui-input>
+                                            <p class="profile-data-item-title">Телефон</p>
+                                            <tui-input
+                                                [tuiTextfieldCleaner]="true"
+                                                [tuiTextfieldLabelOutside]="true"
+                                                class="tui-input-name"
+                                                formControlName="phone"
+                                                tuiTextfieldSize="m"
+                                            >
+                                                <input
+                                                    autocomplete="phone"
+                                                    tuiTextfield
+                                                    type="text"
+                                                />
+                                            </tui-input>
+                                            <p class="profile-data-item-title">Электронная почта</p>
+                                            <tui-input
+                                                [tuiTextfieldCleaner]="true"
+                                                [tuiTextfieldLabelOutside]="true"
+                                                class="tui-input-name"
+                                                formControlName="email"
+                                                tuiTextfieldSize="m"
+                                            >
+                                                <input
+                                                    autocomplete="email"
+                                                    tuiTextfield
+                                                    type="text"
+                                                />
+                                            </tui-input>
+                                            <p class="profile-data-item-title">Адрес доставки</p>
+                                            <tui-input
+                                                [tuiTextfieldCleaner]="true"
+                                                [tuiTextfieldLabelOutside]="true"
+                                                class="tui-input-name"
+                                                formControlName="address"
+                                                tuiTextfieldSize="m"
+                                            >
+                                                <input
+                                                    autocomplete="address"
+                                                    tuiTextfield
+                                                    type="text"
+                                                />
+                                            </tui-input>
 
-                                    <div class="data-client">Товары</div>
-                                    <div *ngFor="let product of order!.products">
-                                        <div class="profile-data-item-title">
-                                            {{ product.quantity }} на сумму {{ order!.totalAmount }}
-                                        </div>
-                                        <div class="info-product-sec">
-                                            <img [src]="product!.photo || 'assets/cap.svg'"
-                                                 alt="Product Photo"
-                                                 class="photo-product"
-                                                 height="80"
-                                                 width="80">
-                                            <div class="info-product-sec-two">
-                                                <p class="info-sec-title">{{ product!.name }}</p>
-                                                <p class="info-sec-desc">{{ product.quantity }}</p>
+                                            <div class="data-client">Товары</div>
+                                            <div *ngFor="let product of order!.products">
+                                                <div class="profile-data-item-title">
+                                                    {{ product.quantity }} на
+                                                    сумму {{ product.unitPrice | number:'1.0-0' }} ₽
+                                                </div>
+                                                <div class="info-product-sec">
+                                                    <img [src]="product!.photo || 'assets/cap.svg'"
+                                                         alt="Product Photo"
+                                                         class="photo-product"
+                                                         height="80"
+                                                         width="80">
+                                                    <div class="info-product-section">
+                                                        <p class="info-sec-title">{{ product!.name }}</p>
+                                                        <p class="info-sec-desc">{{ product.unitPrice | number:'1.0-0' }}
+                                                            ₽</p>
+                                                    </div>
+                                                    <div class="info-product-sec-two">
+                                                        <div class="info-product-t">
+                                                            <div class="btn-section">
+                                                                <div class="count-pr">
+                                                                    <img
+                                                                        *ngIf="product.quantity !== 1"
+                                                                        class="pr-icon"
+                                                                        src="assets/min_icon_product.svg">
+                                                                    <img
+                                                                        *ngIf="product.quantity === 1"
+                                                                        class="pr-icon-disabled"
+                                                                        src="assets/min_icon_product_disabled.svg">
+                                                                    <div class="count-product">{{ product.quantity }}
+                                                                    </div>
+                                                                    <img class="pr-icon"
+                                                                         src="assets/plus_icon_product.svg">
+                                                                </div>
+                                                                <button class="delete_icon">
+                                                                    <img src="assets/trash_icon_product.svg">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                            <!--                                            <tui-root>-->
+                                            <!--                                                <tui-combo-box-->
+                                            <!--                                                    (tuiValueChanges)="onProductSelect($event)"-->
+                                            <!--                                                    [(ngModel)]="selectedProduct"-->
+                                            <!--                                                    [tuiTextfieldCleaner]="true"-->
+                                            <!--                                                    [tuiTextfieldLabelOutside]="true"-->
+                                            <!--                                                    class="tui-input-name"-->
+                                            <!--                                                    formControlName="product"-->
+                                            <!--                                                    tuiTextfieldSize="m">-->
+                                            <!--                                                    <tui-data-list-wrapper-->
+                                            <!--                                                        *tuiDataList-->
+                                            <!--                                                        [items]="productList | tuiFilterByInput"-->
+                                            <!--                                                        class="tui-data-list"-->
+                                            <!--                                                        size="m">-->
+                                            <!--                                                    </tui-data-list-wrapper>-->
+                                            <!--                                                </tui-combo-box>-->
+                                            <!--                                            </tui-root>-->
 
-                                    <div class="data-client">Сумма</div>
-                                    <p class="info-product-price">
-                                        {{ order!.totalAmount | number:'1.0-0' }} ₽
-                                    </p>
+                                            <div class="data-client">Сумма</div>
+                                            <tui-input
+                                                [tuiTextfieldCleaner]="true"
+                                                [tuiTextfieldLabelOutside]="true"
+                                                class="tui-input-name"
+                                                formControlName="totalAmount"
+                                                tuiTextfieldSize="m"
+                                            >
+                                                <input
+                                                    autocomplete='totalAmount'
+                                                    tuiTextfield
+                                                    type="text"
+                                                />
+                                            </tui-input>
 
-                                    <div class="data-client">Комментарий</div>
-                                    <p class="info-product">
-                                        {{ order!.comment }}
-                                    </p>
 
+                                            <div class="data-client">Комментарий</div>
+                                            <tui-textarea
+                                                [tuiTextfieldCleaner]="true"
+                                                [tuiTextfieldLabelOutside]="true"
+                                                class="tui-space_bottom-4 field-large tui-input-name"
+                                                formControlName="comment"
+                                            >
+                                            </tui-textarea>
+                                        </form>
+                                    </tui-root>
+
+                                    <section class="profile-finish-section">
+                                        <button (click)="updateOrder(order.id)" class="profile-save">
+                                            <p class="profile-logout-title">Сохранить</p>
+                                        </button>
+                                        <button (click)="navigateToInfoPage(order.id)" class="profile-cancel">
+                                            <p class="profile-logout-title">Отменить</p>
+                                        </button>
+                                    </section>
                                 </div>
                             </div>
                         </div>
                         <div>
                             <svg class="stroke" fill="none" width="2" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L1.00003 900" stroke="#2E313A" stroke-linecap="round"/>
+                                <path d="M1 1L1.00003 1150" stroke="#2E313A" stroke-linecap="round"/>
                             </svg>
                         </div>
                         <app-order-history-stage></app-order-history-stage>
