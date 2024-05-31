@@ -1,0 +1,117 @@
+<div class="main-content-crm">
+    <div class="main-content-crm-second">
+        <app-sidebar></app-sidebar>
+
+        <div class="main-content-crm-full">
+            <div class="content-crm">
+                <tui-scrollbar
+                    [hidden]="true"
+                    class="scrollbar"
+                    waIntersectionRoot
+                >
+                    <div class="content-product-header">
+                        <button (click)="navigateToPreviousPage()" class="back-to-products">
+                            <img alt="back" height="24" ngSrc="assets/chevron_left.svg" width="24">
+                        </button>
+                        <p class="content-crm-title">
+                            Заказ {{ shortenFullName(order!.client!.fullName) }}
+                        </p>
+                    </div>
+
+                    <div class="product-add-table">
+                        <div>
+                            <div class="header-info">
+                                <p class="product-add-title">Основное</p>
+                                <button (click)="navigateToUpdateInfoPage(order!.id)" class="info-product-button">
+                                    Изменить
+                                </button>
+                            </div>
+
+                            <div class="profile-data">
+                                <div class="profile-data-list">
+                                    <div class="data-client">Статус заказа</div>
+                                    <p class="info-product">
+                                        <tui-root>
+                                            <form [formGroup]="getOrderForm(order!.stage)" class="profile-data">
+                                                <tui-combo-box
+                                                    [(ngModel)]="order!.stage"
+                                                    [tuiTextfieldCleaner]="true"
+                                                    [tuiTextfieldLabelOutside]="true"
+                                                    class="tui-input-name"
+                                                    formControlName="stage"
+                                                    tuiTextfieldSize="m"
+                                                >
+                                                    <tui-data-list-wrapper
+                                                        (itemClick)="updateOrderStage(order!.id, $event)"
+                                                        *tuiDataList
+                                                        [items]="stagesList | tuiFilterByInput"
+                                                        class="tui-data-list"
+                                                        size="m"
+                                                    ></tui-data-list-wrapper>
+                                                </tui-combo-box>
+                                            </form>
+                                        </tui-root>
+                                    </p>
+
+                                    <div class="data-client">Данные клиента</div>
+                                    <div class="profile-data-item-title">ФИО</div>
+                                    <p class="info-product">
+                                        {{ order!.client!.fullName }}
+                                    </p>
+                                    <p class="profile-data-item-title">Телефон</p>
+                                    <p class="info-product">
+                                        {{ formatPhoneNumber(order!.client!.phone) }}
+                                    </p>
+                                    <p class="profile-data-item-title">Электронная почта</p>
+                                    <p class="info-product">
+                                        {{ order!.client!.email }}
+                                    </p>
+                                    <p class="profile-data-item-title">Адрес доставки</p>
+                                    <p class="info-product">
+                                        {{ order!.address }}
+                                    </p>
+
+                                    <div class="data-client">Товары</div>
+                                    <div *ngFor="let product of order!.products">
+                                        <div class="profile-data-item-title">
+                                            {{ product.quantity }} на сумму {{ order!.totalAmount }}
+                                        </div>
+                                        <div class="info-product-sec">
+                                            <img [src]="product!.photo || 'assets/cap.svg'"
+                                                 alt="Product Photo"
+                                                 class="photo-product"
+                                                 height="80"
+                                                 width="80">
+                                            <div class="info-product-sec-two">
+                                                <p class="info-sec-title">{{ product!.name }}</p>
+                                                <p class="info-sec-desc">{{ product.quantity }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="data-client">Сумма</div>
+                                    <p class="info-product-price">
+                                        {{ order!.totalAmount | number:'1.0-0' }} ₽
+                                    </p>
+
+                                    <div class="data-client">Комментарий</div>
+                                    <p class="info-product">
+                                        {{ order!.comment }}
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <svg class="stroke" fill="none" width="2" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L1.00003 900" stroke="#2E313A" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <app-order-history-stage></app-order-history-stage>
+                    </div>
+                </tui-scrollbar>
+            </div>
+            >
+        </div>
+    </div>
+</div>
