@@ -41,10 +41,11 @@ import {UpdateProductComponent} from './pages/products/children/update-product/u
 import {OrderHistoryComponent} from './pages/clients/components/order-history/order-history.component';
 import {UpdateClientsComponent} from './pages/clients/children/update-clients/update-clients.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
-// import {AddOrderComponent} from './pages/orders/components/add-order/add-order.component';
 import {DeleteStageComponent} from './pages/orders/components/delete-stage/delete-stage.component';
+import {AddOrderComponent} from './pages/orders/components/add-order/add-order.component';
 import {TuiActiveZoneModule} from "@taiga-ui/cdk";
 import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
+import {EditOrderComponent} from './pages/orders/children/edit-order/edit-order.component';
 import {InfoOrderComponent} from "./pages/orders/children/info-order/info-order.component";
 import { OrderHistoryStageComponent } from './pages/orders/components/order-history-stage/order-history-stage.component';
 
@@ -71,7 +72,9 @@ import { OrderHistoryStageComponent } from './pages/orders/components/order-hist
         OrdersComponent,
         SettingsComponent,
         DeleteStageComponent,
+        AddOrderComponent,
         InfoOrderComponent,
+        EditOrderComponent,
         OrderHistoryStageComponent,
     ],
     imports: [
@@ -113,6 +116,7 @@ import { OrderHistoryStageComponent } from './pages/orders/components/order-hist
         SettingsComponent,
         DeleteProductComponent,
         ProductPhotosComponent,
+
     ],
     providers: []
 })

@@ -24,6 +24,7 @@ import {
     ConstructorCartComponent
 } from "./children/crm/pages/shop/children/templates/children/template-preview/children/constructor/pages/constructor-cart/constructor-cart.component";
 import {InfoOrderComponent} from "./children/crm/pages/orders/children/info-order/info-order.component";
+import {EditOrderComponent} from "./children/crm/pages/orders/children/edit-order/edit-order.component";
 
 
 export const routes: Routes = [
@@ -57,6 +58,11 @@ export const routes: Routes = [
     {
         path: `crm/orders/info-order/:id`,
         component: InfoOrderComponent,
+        canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
+    },
+    {
+        path: `crm/orders/edit-order/:id`,
+        component: EditOrderComponent,
         canActivate: [(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AuthGuard).canActivate(router, state)],
     },
     {

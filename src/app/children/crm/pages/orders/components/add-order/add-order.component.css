@@ -1,0 +1,18 @@
+.pop-up-add-title {
+    border-bottom: 1px solid var(--stroke-dark-grey);
+    padding: 24px;
+
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    color: var(--text-white);
+}
+
+.order-add-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    color: var(--text-white);
+
+    margin-bottom: 24px;
+}
