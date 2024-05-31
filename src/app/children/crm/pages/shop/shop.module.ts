@@ -1,7 +1,10 @@
-import {NgModule} from "@angular/core";
 import {ShopComponent} from "./shop.component";
+import {NgModule} from "@angular/core";
 import {TemplatesComponent} from "./children/templates/templates.component";
-import {TemplatePreviewComponent} from "./children/templates/children/template-preview/template-preview.component";
+import {FirstTemplateComponent} from "./children/templates/components/first-template/first-template.component";
+import {
+    MainComponent
+} from "./children/templates/children/template-preview/children/constructor/pages/main/main.component";
 import {ConstructorMainComponent} from "./children/templates/children/template-preview/constructor-main.component";
 import {
     ConstructorCardComponent
@@ -9,16 +12,13 @@ import {
 import {
     ConstructorCartComponent
 } from "./children/templates/children/template-preview/children/constructor/pages/constructor-cart/constructor-cart.component";
-import {
-    MainComponent
-} from "./children/templates/children/template-preview/children/constructor/pages/main/main.component";
 import {CrmModule} from "../../crm.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TuiButtonModule, TuiRootModule, TuiScrollbarModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 import {TuiInputCopyModule, TuiInputModule} from "@taiga-ui/kit";
-import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {FirstTemplateComponent} from "./children/templates/components/first-template/first-template.component";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
+
 
 @NgModule({
     declarations: [

@@ -10,9 +10,6 @@ import {
 import {
     IProductsResponseModel
 } from "../../../../../../../../../../../../data/response-models/products/IProducts.response-model";
-import {
-    ProductsManagerService
-} from "../../../../../../../../../../../../data/services/products/products.manager.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {ShopService} from "../../../../../../../../../../../../data/services/shop/shop.service";
@@ -20,6 +17,9 @@ import {WebsiteDto} from "../../../../../../../../../../../../data/response-mode
 import {CartService} from "../../../../../../../services/cart.service";
 import {Subject, Subscription} from "rxjs";
 import {ProductCountService} from "../../../../../../../services/product-count.service";
+import {
+    ProductsManagerService
+} from "../../../../../../../../../../../../data/services/products/products.manager.service";
 
 @Component({
     selector: 'app-constructor-card',
@@ -87,18 +87,18 @@ export class ConstructorCardComponent implements OnInit, OnDestroy {
             });
         });
 
-        this._productManagerService.getAllProducts().pipe(
-            takeUntilDestroyed(this._destroyRef)
-        ).subscribe((products: IProductsResponseModel[]): void => {
-            this.products = products;
-
-            this._changeDetectorRef.detectChanges();
-        });
-
         this._shopService.getWebsiteInfo().pipe(
             takeUntilDestroyed(this._destroyRef)
         ).subscribe((web: WebsiteDto): void => {
             this.website = web;
+
+            this._shopService.getVisibleProducts(this.website.addressName).pipe(
+                takeUntilDestroyed(this._destroyRef)
+            ).subscribe((products: IProductsResponseModel[]): void => {
+                this.products = products;
+
+                this._changeDetectorRef.detectChanges();
+            });
 
             this._changeDetectorRef.detectChanges();
         });

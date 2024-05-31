@@ -1,22 +1,22 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, ViewChild} from '@angular/core';
-import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
-import {TuiDialogContext} from "@taiga-ui/core";
-import {SettingsComponent} from "./components/settings/settings.component";
-import {StageOrderManagerService} from "../../../../data/services/order/stage-order/stage-order.manager.service";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {IStageOrderResponseModel} from "../../../../data/response-models/stage-order/IStage-order.response-model";
-import {OrderService} from "../../../../data/services/order/orders.service";
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, ViewChild} from "@angular/core";
+import {FormatterService} from "../clients/services/formatter.service";
 import {
     ChangeOrderRequest,
     GetOrderItemResponse,
     GetOrdersResponse
 } from "../../../../data/response-models/orders/IOrders.response-model";
-import {FormatterService} from "../clients/services/formatter.service";
+import {IStageOrderResponseModel} from "../../../../data/response-models/stage-order/IStage-order.response-model";
 import {FormControl, FormGroup} from "@angular/forms";
-import {DataUpdateService} from "../../../services/data-update";
+import {SettingsComponent} from "./components/settings/settings.component";
 import {AddOrderComponent} from "./components/add-order/add-order.component";
-import {Order} from "../../../../data/request-models/orders/IOrders.request-model";
 import {Router} from "@angular/router";
+import {StageOrderManagerService} from "../../../../data/services/order/stage-order/stage-order.manager.service";
+import {OrderService} from "../../../../data/services/order/orders.service";
+import {DataUpdateService} from "../../../services/data-update";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {Order} from "../../../../data/request-models/orders/IOrders.request-model";
+import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
+import {TuiDialogContext} from "@taiga-ui/core";
 
 @Component({
     selector: 'app-orders',
