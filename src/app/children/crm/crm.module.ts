@@ -51,6 +51,7 @@ import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
         SidebarComponent,
 
         ClientsComponent,
+        OrderHistoryComponent,
         ClientDetailsComponent,
         UpdateClientsComponent,
 
@@ -67,7 +68,7 @@ import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
 
         OrdersComponent,
         SettingsComponent,
-        OrderHistoryComponent,
+        DeleteStageComponent,
     ],
     imports: [
         NgOptimizedImage,
@@ -96,6 +97,11 @@ import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
         TuiFilterByInputPipeModule,
         TuiDataListWrapperModule,
         TuiTextareaModule,
+
+        DragDropModule,
+        TuiHostedDropdownModule,
+        TuiActiveZoneModule,
+        TuiSidebarModule,
     ],
     exports: [
         SidebarComponent,

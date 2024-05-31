@@ -19,76 +19,111 @@
                     </div>
 
                     <div class="orders-title">
-                        <button class="add-orders-button">
+                        <button
+                            class="add-orders-button">
                             Добавить заказ
                         </button>
                         <p class="all-orders">
-                            Всего заказов: {{ 0 }}
+                            Всего заказов: {{ orders?.count }}
                         </p>
                     </div>
                 </div>
 
                 <div class="orders">
                     <div class="orders-sort-title">
-                        <button [class.orders-sort-item-click]="statesTabs['isAllOrders']"
-                                class="orders-sort-item"
-                                routerLink="/crm/orders/all-orders"
-                                routerLinkActive
-                        >
-                            Все заказы
-                        </button>
-
-                        <button [class.orders-sort-item-click]="statesTabs['isNewOrders']"
-                                class="orders-sort-item"
-                                routerLink="/crm/orders/new-orders"
-                                routerLinkActive
-                        >
-                            Новый заказ
-                        </button>
-
-                        <button [class.orders-sort-item-click]="statesTabs['isProgressOrders']"
-                                class="orders-sort-item"
-                                routerLink="/crm/orders/progress-orders"
-                                routerLinkActive
-                        >
-                            В работе
-                        </button>
-
-                        <button [class.orders-sort-item-click]="statesTabs['isDeliveryOrders']"
-                                class="orders-sort-item"
-                                routerLink="/crm/orders/delivery-orders"
-                                routerLinkActive
-                        >
-                            Доставка
-                        </button>
-
-
+                        <ng-container *ngFor="let stage of stages; let i = index;">
+                            <button (click)="selectStage(i)"
+                                    *ngIf="stage.name !== 'Архив'" [class.selected-stage]="stage === selectedStage"
+                                    class="orders-sort-item">
+                                {{ stage.name }}
+                            </button>
+                        </ng-container>
                     </div>
 
                     <div class="orders-sort-second-title">
-                        <button [class.orders-sort-item-click]="statesTabs['isArchiveOrders']"
-                                class="orders-sort-item"
-                                routerLink="/crm/orders/archive-orders"
-                                routerLinkActive
-                        >
-                            Архив
-                        </button>
+                        <ng-container *ngFor="let stage of stages; let i = index;">
+                            <button (click)="selectStage(i)"
+                                    *ngIf="stage.name === 'Архив'" [class.selected-stage]="stage === selectedStage"
+                                    class="orders-sort-item">
+                                {{ stage.name }}
+                            </button>
+                        </ng-container>
                         <button (click)="openDialogSettings(settings)" class="settings-orders">
-                            <tui-marker-icon [class.custom-active]="isSettingsClicked" class="custom"
-                                             size="xxs" src="tuiIconSettingsLarge"></tui-marker-icon>
+                            <img alt="Настройки" class="custom" height="44" ngSrc="assets/settings_icon.svg"
+                                 width="44">
                         </button>
                     </div>
                 </div>
 
-                <tui-root>
-                    <router-outlet></router-outlet>
-                </tui-root>
+                <tui-scrollbar
+                    [hidden]="true"
+                    class="scrollbar"
+                    waIntersectionRoot
+                >
+                    <div class="all-products-table">
+                        <table class="table">
+                            <thead>
+                            <tr class="table-th-full">
+                                <th class="table-th">Этап</th>
+                                <th>Клиент</th>
+                                <th>Сумма</th>
+                                <th>Электронная почта</th>
+                                <th>Дата</th>
+                                <th (click)="toggleSort()">
+                                    <button class="sort-button" type="button">
+                                        <img alt="Сортировка" class="img-sorted" height="25"
+                                             ngSrc="assets/sorted_icon.svg"
+                                             width="24">
+                                    </button>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr (click)="navigateToInfoOrderPage(order.id)"
+                                *ngFor="let order of filteredOrders; let i = index" class="table-td-full">
+                                <td>
+                                    <tui-root>
+                                        <form [formGroup]="getOrderForm(order)" class="profile-data">
+                                            <tui-combo-box
+                                                [(ngModel)]="order.stage"
+                                                [tuiTextfieldCleaner]="true"
+                                                [tuiTextfieldLabelOutside]="true"
+                                                class="tui-input-name"
+                                                formControlName="stage"
+                                                tuiTextfieldSize="m"
+                                            >
+                                                <tui-data-list-wrapper
+                                                    (itemClick)="updateOrderStage(order.id, $event)"
+                                                    *tuiDataList
+                                                    [items]="stagesList | tuiFilterByInput"
+                                                    class="tui-data-list"
+                                                    size="m"
+                                                ></tui-data-list-wrapper>
+                                            </tui-combo-box>
+                                        </form>
+                                    </tui-root>
+                                </td>
+                                <td>{{ shortenFullName(order.name) }}</td>
+                                <td>{{ order.totalAmount + ' ₽' }}</td>
+                                <td>{{ order.client.email }}</td>
+                                <td>{{ order.date | date: 'dd.MM.yyyy' }}</td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </tui-scrollbar>
             </div>
         </div>
     </div>
-    <ng-template #settings let-observer>
-        <app-settings [observer]="observer"></app-settings>
-    </ng-template>
+
 </div>
+
+<tui-root>
+    <ng-template #settings let-observer let-observerSettings>
+        <app-settings [observerSettings]="observerSettings" [observer]="observer"></app-settings>
+    </ng-template>
+
+</tui-root>
 
 <app-settings class="hidden-pop"></app-settings>

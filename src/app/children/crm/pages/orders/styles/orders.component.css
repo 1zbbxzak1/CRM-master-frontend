@@ -37,6 +37,20 @@
     font-size: 16px;
     line-height: 125%;
     color: var(--text-white);
+
+    cursor: pointer;
+}
+
+.add-orders-button:hover {
+    background: #28aaff;
+}
+
+.add-orders-button:active {
+    background: #005acd;
+}
+
+.side-add {
+    width: 300%;
 }
 
 .all-orders {
@@ -82,14 +96,10 @@
     color: var(--main-blue);
 }
 
-.orders-sort-item-click {
+.selected-stage {
     border-radius: 10px;
     padding: 10px 16px;
     background: var(--fields-form);
-
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 130%;
     color: var(--text-white);
 
     border: none;
@@ -97,66 +107,155 @@
 
 .settings-orders {
     background: none;
-    border: none;
+    border: 1px solid transparent;
+
+    cursor: pointer;
 }
 
 .custom {
     background: none;
     color: var(--text-white);
-    padding: 8px;
     margin-left: 8px;
+
+    border: 1px solid transparent;
+
+    cursor: pointer;
 }
 
 .custom:hover {
     border: 1px solid var(--main-blue);
     border-radius: 10px;
-    padding: 8px;
-    margin-left: 8px;
 }
 
-.custom-active {
+.custom:active {
     background: var(--main-blue);
     border-radius: 10px;
-    border: none;
+
+    border: 1px solid transparent;
 }
 
-/*.orders-list {*/
-/*    display: grid;*/
-/*    grid-template-columns: auto auto auto auto auto;*/
-/*    align-items: center;*/
-/*    justify-content: space-between;*/
-/*}*/
+.table {
+    width: 100%;
+    height: 100%;
 
-/*.thead-orders {*/
-/*    background: var(--fields-form);*/
-/*    border-radius: 10px;*/
-/*    padding: 16px;*/
-/*}*/
+    margin-bottom: 40px;
+}
 
-/*.thead-item {*/
-/*    font-weight: 700;*/
-/*    font-size: 18px;*/
-/*    line-height: 120%;*/
-/*    color: var(--text-white);*/
-/*}*/
+.table-th-full {
+    text-align: left;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--text-white);
 
-/*.tbody-orders {*/
+    position: relative;
+    top: 0;
+    z-index: 0;
+}
 
-/*    padding: 12px 8px;*/
-/*    align-items: center;*/
-/*}*/
+.table thead {
+    position: sticky;
+    top: 0;
+    z-index: 0;
 
-/*.tbody-orders-list {*/
-/*    border-bottom: 1px solid var(--stroke-dark-grey);*/
-/*    display: grid;*/
-/*    grid-template-columns: auto auto auto auto auto;*/
-/*    align-items: center;*/
-/*    justify-content: space-between;*/
-/*}*/
+    background: var(--fields-form);
+}
 
-/*.tbody-item {*/
-/*    font-weight: 400;*/
-/*    font-size: 16px;*/
-/*    line-height: 130%;*/
-/*    color: var(--text-white);*/
-/*}*/
+.table-th {
+    padding: 22px 16px;
+    border-radius: 10px 0 0 10px;
+}
+
+.table th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.table th:nth-child(1),
+.table th:nth-child(2),
+.table th:nth-child(4) {
+    width: 288px;
+}
+
+.table th:nth-child(3) {
+    width: 168px;
+}
+
+.table th:nth-child(5) {
+    width: 144px;
+}
+
+.img-sorted {
+    margin-left: auto;
+    margin-right: 16px;
+
+    cursor: pointer;
+}
+
+.table-td-full {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-light-grey);
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--stroke-dark-grey);
+}
+
+.table-td-full td:first-child {
+    padding: 22px 16px;
+}
+
+.tui-data-list {
+    max-height: 176px;
+}
+
+.scrollbar {
+    margin-top: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.all-products-table {
+    height: 100%;
+}
+
+.tui-input-name {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-light-grey);
+
+    margin-right: 10px;
+    margin-left: -7px;
+}
+
+.profile-data {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--text-light-grey);
+}
+
+.sort-button {
+    background: none;
+    border: 1px solid transparent;
+    padding: 8px;
+    width: 42px;
+
+    align-self: center;
+
+    cursor: pointer;
+}
+
+.sort-button:hover {
+    border: 1px solid var(--main-blue);
+    border-radius: 10px;
+}
+
+.sort-button:active {
+    background: var(--main-blue);
+    border-radius: 10px;
+
+    border: 1px solid transparent;
+}

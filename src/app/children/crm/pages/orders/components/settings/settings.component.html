@@ -3,10 +3,82 @@
         Настройки
     </div>
 
+    <div>
+        <div class="stages-title">Этапы</div>
+
+        <div (cdkDropListDropped)="drop($event)" cdkDropList class="stages-section">
+            <div *ngFor="let stage of stages; let i = index; let last = last"
+                 cdkDrag class="stages-list">
+                <button (click)="openDialogAddStage(addStage)" *ngIf="last" class="add-stage-button" type="button">
+                    Добавить этап
+                </button>
+                <div class="stages-item">
+                    {{ stage.name }} <span *ngIf="stage.name === 'Новый заказ' || stage.name === 'Архив'"
+                                           class="is-system">(системный этап)</span>
+
+                    <div class="stages-last-item">
+                        <img alt="Редактировать" class="custom" height="20" ngSrc="assets/edit_icon.svg"
+                             width="20">
+                        <img (click)="openDialogDelete(deleteStage)"
+                             *ngIf="stage.name !== 'Новый заказ' && stage.name !== 'Архив'"
+                             alt="Удалить" class="custom" height="20" ngSrc="assets/trash_icon.svg" width="20">
+                    </div>
+                </div>
+
+                <ng-template #addStage>
+                    <form [formGroup]="formStage" class="pop-up">
+                        <div class="pop-up-stage-title">Добавление этапа</div>
+                        <div>
+                            <div>
+                                <p class="input-title">Название</p>
+                                <tui-input
+                                    [tuiTextfieldCleaner]="true"
+                                    [tuiTextfieldLabelOutside]="true"
+                                    formControlName="stage"
+                                    tuiTextfieldSize="m"
+                                >
+                                    <input
+                                        autocomplete="stage"
+                                        tuiTextfield
+                                        type="text"
+                                    />
+                                </tui-input>
+                            </div>
+                        </div>
+
+                        <section class="finish-section">
+                            <button (click)="addStageFunc(formStage.get('stage')?.value)"
+                                    appearance="custom"
+                                    class="save-button" size="m"
+                                    tuiButton
+                                    type="button">
+                                Добавить
+                            </button>
+                            <button (click)="onCancelSettings()" appearance="custom-cancel"
+                                    class="cancel-button"
+                                    size="m" tuiButton
+                                    type="button">
+                                Отменить
+                            </button>
+                        </section>
+                    </form>
+                </ng-template>
+
+
+                <ng-template #deleteStage let-observer>
+                    <app-delete-stage [id]="i" [observer]="observer"></app-delete-stage>
+                </ng-template>
+            </div>
+        </div>
+
+
+    </div>
+
     <section class="finish-section">
-        <button appearance="custom"
-                class="save-button"
-                size="m" tuiButton
+        <button (click)="updateStages()"
+                appearance="custom"
+                class="save-button" size="m"
+                tuiButton
                 type="button">
             Сохранить
         </button>
@@ -17,4 +89,9 @@
             Отменить
         </button>
     </section>
+
+
 </form>
+
+<app-delete-stage class="hidden-pop"></app-delete-stage>
+
