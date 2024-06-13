@@ -9,7 +9,7 @@
                 </div>
             </div>
 
-            <div class="orders-container">
+            <div (click)="router.navigate(['crm/orders/info-order', order.id])" class="orders-container">
                 <div class="first-section-order">
                     <div class="client-fullName">{{ shortenFullName(client?.fullName) }}</div>
                     <div class="order-totalAmount">{{ order.totalAmount + ' ₽' }}</div>

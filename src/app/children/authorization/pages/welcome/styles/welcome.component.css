@@ -70,6 +70,18 @@
     background: transparent;
 
     width: 20%;
+
+    cursor: pointer;
+}
+
+.first-section-start-btn:hover {
+    background: #28aaff;
+    border: 2px solid #28aaff;
+}
+
+.first-section-start-btn:active {
+    background: #005acd;
+    border: 2px solid #005acd;
 }
 
 .hidden-pop {

@@ -170,7 +170,6 @@ export class OrdersComponent extends FormatterService {
         });
     }
 
-
     protected openDialogSettings(
         settings: PolymorpheusContent<TuiDialogContext>,
     ): void {

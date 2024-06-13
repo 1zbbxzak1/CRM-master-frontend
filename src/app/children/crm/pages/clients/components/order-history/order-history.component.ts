@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, Input} from '@angular/core';
 import {ClientDto} from "../../../../../../data/response-models/clients/IClients.response-model";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ClientsManagerService} from "../../../../../../data/services/clients/clients.manager.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {FormatterService} from "../../services/formatter.service";
@@ -18,6 +18,7 @@ export class OrderHistoryComponent extends FormatterService {
 
     constructor(
         private readonly _route: ActivatedRoute,
+        protected readonly router: Router,
         protected readonly _destroyRef: DestroyRef,
         private readonly _changeDetectorRef: ChangeDetectorRef,
         protected readonly _clientsManagerService: ClientsManagerService,

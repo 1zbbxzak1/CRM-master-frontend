@@ -96,6 +96,18 @@
     color: var(--main-blue);
 }
 
+.active-profile:hover {
+    color: var(--main-blue);
+}
+
+.sidebar-item:hover {
+    color: var(--main-blue);
+}
+
 .active .sidebar-item {
     color: var(--main-blue);
+}
+
+.sidebar-item-img:hover {
+    fill: var(--main-blue);
 }

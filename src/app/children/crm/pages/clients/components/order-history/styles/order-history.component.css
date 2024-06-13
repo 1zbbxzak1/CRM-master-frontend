@@ -74,6 +74,17 @@
     margin-right: 50px;
 
     margin-bottom: 24px;
+
+    cursor: pointer;
+}
+
+.orders-container:hover {
+    border: 1px solid var(--main-blue);
+}
+
+.orders-container:active {
+    background: var(--main-blue);
+    border: 1px solid var(--main-blue);
 }
 
 .first-section-order {

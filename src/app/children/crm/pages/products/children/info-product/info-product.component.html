@@ -2,6 +2,7 @@
     <div class="main-content-crm-second">
         <app-sidebar></app-sidebar>
         <div class="main-content-crm-full">
+
             <div class="content-crm">
                 <div class="content-product-header">
                     <button (click)="navigateToPreviousPage()" class="back-to-products">
@@ -10,12 +11,12 @@
                     <p class="content-crm-title">{{ product?.name }}</p>
                 </div>
 
-
                 <div class="product-add-table">
                     <div>
                         <div class="header-info">
                             <p class="product-add-title">Основное</p>
-                            <button (click)="navigateToUpdateInfoPage(product.id)" class="info-product-button">Изменить
+                            <button (click)="navigateToUpdateInfoPage(product.id)" class="info-product-button">
+                                Изменить
                             </button>
                         </div>
 

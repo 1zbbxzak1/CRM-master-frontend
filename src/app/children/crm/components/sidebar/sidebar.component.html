@@ -12,6 +12,7 @@
                     routerLinkActive
             >
                 <img alt="Заказы"
+                     class="sidebar-item-img"
                      height="24"
                      ngSrc="{{ statesSidebar['isOrdersClicked'] ? 'assets/orders-active.svg' : 'assets/orders-disabled.svg' }}"
                      width="24">
@@ -25,11 +26,11 @@
                     routerLink="/crm/clients"
                     routerLinkActive
             >
-                <img
-                    alt="Клиенты"
-                    height="24"
-                    ngSrc="{{ statesSidebar['isClientsClicked'] ? 'assets/clients-active.svg' : 'assets/clients-disabled.svg' }}"
-                    width="24">
+                <img alt="Клиенты"
+                     class="sidebar-item-img"
+                     height="24"
+                     ngSrc="{{ statesSidebar['isClientsClicked'] ? 'assets/clients-active.svg' : 'assets/clients-disabled.svg' }}"
+                     width="24">
                 <p class="sidebar-item">Клиенты</p>
             </button>
         </li>
@@ -40,11 +41,11 @@
                     routerLink="/crm/products"
                     routerLinkActive
             >
-                <img
-                    alt="Товары"
-                    height="24"
-                    ngSrc="{{ statesSidebar['isProductsClicked'] ? 'assets/products-active.svg' : 'assets/products-disabled.svg' }}"
-                    width="24">
+                <img alt="Товары"
+                     class="sidebar-item-img"
+                     height="24"
+                     ngSrc="{{ statesSidebar['isProductsClicked'] ? 'assets/products-active.svg' : 'assets/products-disabled.svg' }}"
+                     width="24">
                 <p class="sidebar-item">Товары</p>
             </button>
         </li>
@@ -56,6 +57,7 @@
                     routerLinkActive
             >
                 <img alt="Магазин"
+                     class="sidebar-item-img"
                      height="24"
                      ngSrc="{{ statesSidebar['isShopClicked'] ? 'assets/shop-active.svg' : 'assets/shop-disabled.svg' }}"
                      width="24">
@@ -71,7 +73,7 @@
                 routerLinkActive
         >
             <img alt="Профиль"
-                 class="sidebar-img"
+                 class="sidebar-item-img"
                  height="24"
                  ngSrc="{{ statesSidebar['isProfileClicked'] ? 'assets/user-active.svg' : 'assets/user-disabled.svg' }}"
                  width="24">

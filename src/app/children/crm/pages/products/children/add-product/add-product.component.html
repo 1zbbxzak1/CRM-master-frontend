@@ -1,107 +1,113 @@
 <div class="main-content-crm">
     <div class="main-content-crm-second">
         <app-sidebar></app-sidebar>
+
         <div class="main-content-crm-full">
             <div class="content-crm">
-                <div class="content-product-header">
-                    <button (click)="navigateToPreviousPage()" class="back-to-products">
-                        <img alt="back" height="24" ngSrc="assets/chevron_left.svg" width="24">
-                    </button>
-                    <p class="content-crm-title">Новый товар</p>
-                </div>
-
-                <div class="product-add-table">
-                    <div>
-                        <p class="product-add-title">Основное</p>
-                        <tui-root>
-                            <form [formGroup]="formProductInfo" class="profile-data">
-                                <div class="profile-data-list">
-                                    <div class="profile-data-item-title">Название</div>
-                                    <tui-input
-                                        [tuiTextfieldCleaner]="true"
-                                        [tuiTextfieldLabelOutside]="true"
-                                        class="tui-input-name"
-                                        formControlName="name"
-                                        tuiTextfieldSize="m"
-                                    >
-                                        <input
-                                            autocomplete="name"
-                                            tuiTextfield
-                                            type="text"
-                                        />
-                                    </tui-input>
-                                    <p class="profile-data-item-title">Цена</p>
-                                    <tui-input
-                                        [tuiTextfieldCleaner]="true"
-                                        [tuiTextfieldLabelOutside]="true"
-                                        class="tui-input-name"
-                                        formControlName="price"
-                                        tuiTextfieldSize="m"
-                                    >
-                                        <input
-                                            autocomplete="price"
-                                            tuiTextfield
-                                            type="text"
-                                        />
-                                    </tui-input>
-                                    <p class="profile-data-item-title">Материал</p>
-                                    <tui-combo-box
-                                        [(ngModel)]="material"
-                                        [tuiTextfieldCleaner]="true"
-                                        [tuiTextfieldLabelOutside]="true"
-                                        class="tui-input-name"
-                                        formControlName="material"
-                                        tuiTextfieldSize="m"
-                                    >
-                                        <tui-data-list-wrapper
-                                            *tuiDataList
-                                            [items]="materials | tuiFilterByInput"
-                                            class="tui-data-list"
-                                        ></tui-data-list-wrapper>
-                                    </tui-combo-box>
-                                    <p class="profile-data-item-title">Размер (ДхШхВ), см</p>
-                                    <tui-input
-                                        [tuiTextfieldCleaner]="true"
-                                        [tuiTextfieldLabelOutside]="true"
-                                        class="tui-input-name"
-                                        formControlName="dimensions"
-                                        tuiTextfieldSize="m"
-                                    >
-                                        <input
-                                            autocomplete="dimensions"
-                                            tuiTextfield
-                                            type="text"
-                                        />
-                                    </tui-input>
-                                    <p class="profile-data-item-title">Описание</p>
-                                    <p></p>
-                                    <tui-textarea
-                                        [tuiTextfieldCleaner]="true"
-                                        [tuiTextfieldLabelOutside]="true"
-                                        class="tui-space_bottom-4 field-large tui-input-name"
-                                        formControlName="description"
-                                    >
-                                    </tui-textarea>
-                                </div>
-                            </form>
-                        </tui-root>
-                        <section class="profile-finish-section">
-                            <button (click)="addProduct()" class="profile-save">
-                                <p class="profile-logout-title">Сохранить</p>
-                            </button>
-                            <button (click)="navigateToPreviousPage()" class="profile-cancel">
-                                <p class="profile-logout-title">Отменить</p>
-                            </button>
-                        </section>
+                <tui-scrollbar
+                    [hidden]="true"
+                    class="scrollbar"
+                    waIntersectionRoot
+                >
+                    <div class="content-product-header">
+                        <button (click)="navigateToPreviousPage()" class="back-to-products">
+                            <img alt="back" height="24" ngSrc="assets/chevron_left.svg" width="24">
+                        </button>
+                        <p class="content-crm-title">Новый товар</p>
                     </div>
 
-                    <div>
-                        <svg class="stroke" fill="none" width="2" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L1.00003 606" stroke="#2E313A" stroke-linecap="round"/>
-                        </svg>
-                    </div>
+                    <div class="product-add-table">
+                        <div>
+                            <p class="product-add-title">Основное</p>
+                            <tui-root>
+                                <form [formGroup]="formProductInfo" class="profile-data">
+                                    <div class="profile-data-list">
+                                        <div class="profile-data-item-title">Название</div>
+                                        <tui-input
+                                            [tuiTextfieldCleaner]="true"
+                                            [tuiTextfieldLabelOutside]="true"
+                                            class="tui-input-name"
+                                            formControlName="name"
+                                            tuiTextfieldSize="m"
+                                        >
+                                            <input
+                                                autocomplete="name"
+                                                tuiTextfield
+                                                type="text"
+                                            />
+                                        </tui-input>
+                                        <p class="profile-data-item-title">Цена</p>
+                                        <tui-input
+                                            [tuiTextfieldCleaner]="true"
+                                            [tuiTextfieldLabelOutside]="true"
+                                            class="tui-input-name"
+                                            formControlName="price"
+                                            tuiTextfieldSize="m"
+                                        >
+                                            <input
+                                                autocomplete="price"
+                                                tuiTextfield
+                                                type="text"
+                                            />
+                                        </tui-input>
+                                        <p class="profile-data-item-title">Материал</p>
+                                        <tui-combo-box
+                                            [(ngModel)]="material"
+                                            [tuiTextfieldCleaner]="true"
+                                            [tuiTextfieldLabelOutside]="true"
+                                            class="tui-input-name"
+                                            formControlName="material"
+                                            tuiTextfieldSize="m"
+                                        >
+                                            <tui-data-list-wrapper
+                                                *tuiDataList
+                                                [items]="materials | tuiFilterByInput"
+                                                class="tui-data-list"
+                                            ></tui-data-list-wrapper>
+                                        </tui-combo-box>
+                                        <p class="profile-data-item-title">Размер (ДхШхВ), см</p>
+                                        <tui-input
+                                            [tuiTextfieldCleaner]="true"
+                                            [tuiTextfieldLabelOutside]="true"
+                                            class="tui-input-name"
+                                            formControlName="dimensions"
+                                            tuiTextfieldSize="m"
+                                        >
+                                            <input
+                                                autocomplete="dimensions"
+                                                tuiTextfield
+                                                type="text"
+                                            />
+                                        </tui-input>
+                                        <p class="profile-data-item-title">Описание</p>
+                                        <p></p>
+                                        <tui-textarea
+                                            [tuiTextfieldCleaner]="true"
+                                            [tuiTextfieldLabelOutside]="true"
+                                            class="tui-space_bottom-4 field-large tui-input-name"
+                                            formControlName="description"
+                                        >
+                                        </tui-textarea>
+                                    </div>
+                                </form>
+                            </tui-root>
+                            <section class="profile-finish-section">
+                                <button (click)="addProduct()" class="profile-save">
+                                    <p class="profile-logout-title">Сохранить</p>
+                                </button>
+                                <button (click)="navigateToPreviousPage()" class="profile-cancel">
+                                    <p class="profile-logout-title">Отменить</p>
+                                </button>
+                            </section>
+                        </div>
 
-                    <tui-scrollbar>
+
+                        <div>
+                            <svg class="stroke" fill="none" width="2" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L1.00003 900" stroke="#2E313A" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+
                         <div>
                             <p class="product-add-title">Фотографии</p>
                             <div class="photos-list">
@@ -128,8 +134,8 @@
                                 </label>
                             </div>
                         </div>
-                    </tui-scrollbar>
-                </div>
+                    </div>
+                </tui-scrollbar>
             </div>
         </div>
     </div>

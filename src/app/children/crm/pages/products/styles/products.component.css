@@ -104,6 +104,8 @@
     color: var(--text-light-grey);
 
     border-bottom: 1px solid var(--stroke-dark-grey);
+
+    cursor: pointer;
 }
 
 .table-td {
