@@ -23,6 +23,10 @@
     background: #f0eef0;
 }
 
+.cart {
+    cursor: pointer;
+}
+
 .badge {
     font-size: 12px;
     color: var(--text-black);
@@ -55,6 +59,8 @@
     padding-top: 16px;
     padding-bottom: 16px;
     text-align: center;
+
+    cursor: pointer;
 }
 
 .image-container {
@@ -257,6 +263,7 @@
 .product-item {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 
     margin-bottom: 10px;
 }
@@ -283,6 +290,10 @@
     color: var(--text-black);
 
     max-width: 282px;
+}
+
+.product-item:hover .product-title {
+    color: var(--sample-grey);
 }
 
 .third-section-template {
@@ -333,6 +344,10 @@
     font-size: 18px;
     line-height: 130%;
     color: var(--text-black);
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .fourth-section-template {

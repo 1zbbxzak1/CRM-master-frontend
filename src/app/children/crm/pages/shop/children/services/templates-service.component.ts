@@ -108,15 +108,4 @@ export class TemplatesServiceComponent {
 
         return block?.properties?.imageUrl;
     }
-
-    protected setCaretPosition(el: HTMLElement, pos: number): void {
-        const range: Range = document.createRange();
-        const sel: Selection = window.getSelection()!;
-        if (el.childNodes.length > 0) {
-            range.setStart(el.childNodes[0], pos);
-            range.collapse(true);
-            sel.removeAllRanges();
-            sel.addRange(range);
-        }
-    }
 }

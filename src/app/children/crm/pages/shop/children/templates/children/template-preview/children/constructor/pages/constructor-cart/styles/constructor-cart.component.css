@@ -18,6 +18,14 @@
     color: var(--main-blue);
 }
 
+.back-to-shop:hover {
+    color: var(--text-black);
+}
+
+.back-title {
+    margin-left: 10px;
+}
+
 .template {
     height: 100%;
     background: #f0eef0;
@@ -48,7 +56,7 @@
 }
 
 .cart {
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
 .template-title {
@@ -59,6 +67,8 @@
     padding-top: 16px;
     padding-bottom: 16px;
     text-align: center;
+
+    cursor: pointer;
 }
 
 .back-to-shop {
@@ -407,4 +417,14 @@ label {
     border: none;
 
     margin-top: 24px;
+
+    cursor: pointer;
+}
+
+.empty-cart-button:hover {
+    background: #3f3f3f;
+}
+
+.empty-cart-button:active {
+    background: #030303;
 }

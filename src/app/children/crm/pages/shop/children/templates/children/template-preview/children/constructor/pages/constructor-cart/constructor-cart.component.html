@@ -24,7 +24,7 @@
     <tui-scrollbar>
         <div class="template">
             <div class="template-header">
-                <div class="template-title">
+                <div (click)="navigateToPreviousPage()" class="template-title">
                     {{ website?.title }}
                 </div>
                 <div (click)="navigateToCartPage()" class="cart">
@@ -34,8 +34,11 @@
             </div>
 
             <div (click)="navigateToPreviousPage()" class="back-to-shop">
-                <img alt="назад" src="assets/chevron_left.svg">
-                <p>Назад</p>
+                <svg fill="none" height="18" viewBox="0 0 10 18" width="10" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.75 16.5L1.25 9L8.75 1.5" stroke="#212121" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-opacity="0.7" stroke-width="1.5"/>
+                </svg>
+                <p class="back-title">Назад</p>
             </div>
 
             <div class="product-shop-title">

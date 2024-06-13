@@ -207,6 +207,34 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
         }
     }
 
+    protected updateTextSectionProperty(event: Event, property: keyof TextSectionDto, blockId: string, secIndex: number): void {
+        const element = event.target as HTMLElement;
+        if (element) {
+            const range: Range | undefined = window.getSelection()?.getRangeAt(0);
+            const start: number = range?.startOffset || 0;
+
+            const newText = element.textContent?.trim() || '';
+            this.updateBlockSectionProperty(blockId, property, newText, secIndex);
+
+            this._changeDetectorRef.detectChanges();
+            element.focus();
+            this.setCaretPosition(element, start);
+        }
+    }
+
+    protected updateBlockSectionProperty(blockId: string, property: keyof TextSectionDto, value: string, sectionIndex: number): void {
+        const block: BlockDto = this.blocks.find((b: BlockDto): boolean => b.id === blockId)!;
+        if (block && block.properties.textSections![sectionIndex]) {
+            block.properties.textSections![sectionIndex][property] = value;
+            this.saveBlock(block);
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+
+    protected backToMainPage(): void {
+        this._router.navigate(['crm/shop/shop-templates/templates-preview/constructor/main']);
+    }
+
     private loadMainSection(): void {
         this._shopService.getMainSection().pipe(
             takeUntilDestroyed(this._destroyRef)
