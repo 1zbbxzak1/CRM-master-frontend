@@ -4,11 +4,9 @@ import {catchError, NEVER, Observable} from "rxjs";
 import {
     BlockDto,
     ChangeBlockRequest,
-    ChangeGlobalStylesRequest,
     ChangeWebsiteInfoRequest,
     CreateWebsiteOrderRequest,
     CreateWebsiteRequest,
-    GlobalStylesDto,
     SelectTemplateRequest,
     WebsiteDto
 } from "../../response-models/shop/shop.response-model";
@@ -21,24 +19,6 @@ export class ShopService {
     private _apiUrl: string = `${environment.apiUrl}/website`;
 
     constructor(private http: HttpClient, private errorHandler: ErrorHandler) {
-    }
-
-    getGlobalStyles(): Observable<GlobalStylesDto> {
-        return this.http.get<GlobalStylesDto>(`${this._apiUrl}/constructor/global-styles`, {withCredentials: true}).pipe(
-            catchError(err => {
-                this.errorHandler.handleError(err);
-                return NEVER;
-            })
-        );
-    }
-
-    changeGlobalStyles(request: ChangeGlobalStylesRequest): Observable<GlobalStylesDto> {
-        return this.http.put<GlobalStylesDto>(`${this._apiUrl}/constructor/global-styles`, request, {withCredentials: true}).pipe(
-            catchError(err => {
-                this.errorHandler.handleError(err);
-                return NEVER;
-            })
-        );
     }
 
     getMainSection(): Observable<BlockDto[]> {
@@ -97,6 +77,24 @@ export class ShopService {
 
     selectTemplate(request: SelectTemplateRequest): Observable<WebsiteDto> {
         return this.http.post<WebsiteDto>(`${this._apiUrl}/select-template`, request, {withCredentials: true}).pipe(
+            catchError(err => {
+                this.errorHandler.handleError(err);
+                return NEVER;
+            })
+        );
+    }
+
+    getWebsiteInfoForUser(address: string): Observable<WebsiteDto> {
+        return this.http.get<WebsiteDto>(`${this._apiUrl}/${address}/info`, {withCredentials: true}).pipe(
+            catchError(err => {
+                this.errorHandler.handleError(err);
+                return NEVER;
+            })
+        );
+    }
+
+    getBlocksInfo(address: string): Observable<BlockDto[]> {
+        return this.http.get<BlockDto[]>(`${this._apiUrl}/${address}/blocks/main`, {withCredentials: true}).pipe(
             catchError(err => {
                 this.errorHandler.handleError(err);
                 return NEVER;

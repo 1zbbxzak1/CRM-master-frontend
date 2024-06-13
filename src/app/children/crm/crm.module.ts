@@ -48,6 +48,9 @@ import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
 import {EditOrderComponent} from './pages/orders/children/edit-order/edit-order.component';
 import {InfoOrderComponent} from "./pages/orders/children/info-order/info-order.component";
 import {OrderHistoryStageComponent} from './pages/orders/components/order-history-stage/order-history-stage.component';
+import {HomeComponent} from './pages/websites/home/home.component';
+import {ProductComponent} from './pages/websites/product/product.component';
+import {CartComponent} from './pages/websites/cart/cart.component';
 
 @NgModule({
     declarations: [
@@ -76,6 +79,10 @@ import {OrderHistoryStageComponent} from './pages/orders/components/order-histor
         InfoOrderComponent,
         EditOrderComponent,
         OrderHistoryStageComponent,
+
+        HomeComponent,
+        ProductComponent,
+        CartComponent,
     ],
     imports: [
         NgOptimizedImage,
@@ -117,7 +124,6 @@ import {OrderHistoryStageComponent} from './pages/orders/components/order-histor
         SettingsComponent,
         DeleteProductComponent,
         ProductPhotosComponent,
-
     ],
     providers: []
 })

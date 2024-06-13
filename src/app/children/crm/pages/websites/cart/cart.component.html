@@ -1,0 +1,135 @@
+<tui-root>
+    <tui-scrollbar>
+        <div class="template">
+            <div class="template-header">
+                <div (click)="navigateToPreviousPage()" class="template-title">
+                    {{ website?.title }}
+                </div>
+                <div (click)="navigateToCartPage()" class="cart">
+                    <p class="badge">{{ countProduct }}</p>
+                    <img alt="корзина" height="24" ngSrc="assets/shopping_bag.svg" width="24">
+                </div>
+            </div>
+
+            <div (click)="navigateToPreviousPage()" class="back-to-shop">
+                <svg fill="none" height="18" viewBox="0 0 10 18" width="10" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.75 16.5L1.25 9L8.75 1.5" stroke="#212121" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-opacity="0.7" stroke-width="1.5"/>
+                </svg>
+                <p class="back-title">Назад</p>
+            </div>
+
+            <div class="product-shop-title">
+                Оформление заказа
+            </div>
+
+            <div *ngIf="cartItems.length === 0" class="empty-cart">
+                <p class="empty-cart-title">Добавьте товары, чтобы оформить заказ</p>
+                <button (click)="navigateToPreviousPage()" class="empty-cart-button">Выбрать товар</button>
+            </div>
+
+            <div *ngIf="cartItems.length > 0" class="cart-section">
+                <div class="first-cart">
+                    <div *ngIf="cartItems.length > 0" class="first-cart-title">
+                        Корзина
+                    </div>
+                    <div *ngIf="cartItems.length > 0" class="cart-list">
+                        <div *ngIf="cartItems.length > 0" class="cart-items">
+                            <div *ngFor="let item of cartItems" class="cart-item">
+                                <div class="cart-item-info">
+                                    <img [src]="item.product.photos[0].url || 'assets/cap.svg'"
+                                         alt="Product Photo"
+                                         class="photo-product"
+                                         height="282"
+                                         width="282">
+
+                                    <div class="info-column">
+                                        <div class="product-title">{{ item.product.name }}</div>
+                                        <div class="cart-item-price">{{ item.product.price | number:'1.0-0' }} ₽</div>
+                                        <button (click)="clearCart()" class="delete_icon">
+                                            <img alt="delete" src="assets/delete_icon_cart.svg">
+                                        </button>
+                                    </div>
+                                    <div *ngIf="countProduct > 0" class="count-pr">
+                                        <img (click)="removeFromCart(item.product.id)" alt="min-count"
+                                             class="pr-icon" src="assets/min_icon.svg">
+                                        <div class="count-product">{{ countProduct }}</div>
+                                        <img (click)="addToCart(item.product)" alt="max-count"
+                                             class="pr-icon" src="assets/plus_icon.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="finish-price">
+                            <div class="price-title">Итого</div>
+                            <div class="price-count">{{ getTotalPrice() | number:'1.0-0' }} ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="cartItems.length > 0" class="form-order">
+                    <div class="first-cart-title">Форма заказа</div>
+                    <div class="form-order-list">
+                        <form (ngSubmit)="createOrder()" [formGroup]="formUserInfo">
+                            <div [class.error]="isControlError('fullName')"
+                                 [class.filled]="formUserInfo.get('fullName')?.value !== ''"
+                                 class="input-wrapper"
+                            >
+                                <input class="input-text" formControlName="fullName" id="fullName" type="text"/>
+                                <label for="fullName">ФИО</label>
+                            </div>
+                            <div *ngIf="isControlError('fullName')" class="error-message">
+                                <div *ngIf="isControlRequired('fullName')">Это поле обязательно</div>
+                                <div *ngIf="isCorrectFullName('fullName')">Неправильный формат ФИО</div>
+                            </div>
+
+                            <div [class.error]="isControlError('phone')"
+                                 [class.filled]="formUserInfo.get('phone')?.value !== ''"
+                                 class="input-wrapper"
+                            >
+                                <input class="input-text" formControlName="phone" id="phone" type="text"/>
+                                <label for="phone">Телефон</label>
+                            </div>
+                            <div *ngIf="isControlError('phone')" class="error-message">
+                                <div *ngIf="isControlRequired('phone')">Это поле обязательно</div>
+                                <div *ngIf="isCorrectPhoneNumber('phone')">Неправильный формат номера телефона</div>
+                            </div>
+
+                            <div [class.error]="isControlError('email')"
+                                 [class.filled]="formUserInfo.get('email')?.value !== ''"
+                                 class="input-wrapper"
+                            >
+                                <input class="input-text" formControlName="email" id="email" type="email"/>
+                                <label for="email">Электронная почта</label>
+                            </div>
+                            <div *ngIf="isControlError('email')" class="error-message">
+                                <div *ngIf="isControlRequired('email')">Это поле обязательно</div>
+                                <div *ngIf="isEmailInvalid('email')">Неправильный формат электронной почты</div>
+                            </div>
+
+                            <div [class.error]="isControlError('address')"
+                                 [class.filled]="formUserInfo.get('address')?.value !== ''"
+                                 class="input-wrapper"
+                            >
+                                <input class="input-text" formControlName="address" id="address" type="text"/>
+                                <label for="address">Адрес доставки</label>
+                            </div>
+                            <div *ngIf="isControlError('address')" class="error-message">
+                                <div *ngIf="isControlRequired('address')">Это поле обязательно</div>
+                            </div>
+
+                            <div [class.filled]="formUserInfo.get('comment')?.value !== ''"
+                                 class="input-wrapper"
+                            >
+                                <input class="input-text" formControlName="comment" id="comment">
+                                <label for="comment">Комментарий (необязательно)</label>
+                            </div>
+                            <button type="submit">Оплатить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tui-scrollbar>
+</tui-root>
