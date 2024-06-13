@@ -11,6 +11,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {DataUpdateService} from "../../../../../services/data-update";
 import {DeleteStageComponent} from "../delete-stage/delete-stage.component";
+import {AddStageComponent} from "../add-stage/add-stage.component";
 
 @Component({
     selector: 'app-settings',
@@ -26,6 +27,8 @@ export class SettingsComponent {
     });
     @ViewChild(DeleteStageComponent)
     private readonly _deleteStageComponent!: DeleteStageComponent;
+    @ViewChild(AddStageComponent)
+    private readonly _addStageComponent!: AddStageComponent;
 
     constructor(
         private readonly _router: Router,
@@ -81,19 +84,7 @@ export class SettingsComponent {
     public openDialogAddStage(
         stage: PolymorpheusContent<TuiDialogContext>,
     ): void {
-        this._dialogs.open(
-            stage,
-            {
-                size: "s",
-            })
-            .pipe(
-                takeUntilDestroyed(this._destroyRef)
-            )
-            .subscribe({
-                complete: (): void => {
-                    this._dialogForm.markAsPristine();
-                },
-            });
+        this._addStageComponent.openDialogAddStage(stage);
     }
 
     public onCancelSettings(): void {
@@ -129,15 +120,5 @@ export class SettingsComponent {
             this.onCancelSettings();
             this._dataUpdateService.updateData();
         });
-    }
-
-    protected addStageFunc(stageName: string): void {
-        const newStage: IStageOrderResponseModel = {
-            id: null,
-            name: stageName,
-            order: this.stages.length - 1, // Предполагается, что вы хотите добавить новый этап перед последним этапом
-            isSystem: false
-        };
-        this.stages.splice(this.stages.length - 1, 0, newStage); // Добавляем новый этап перед последним этапом
     }
 }

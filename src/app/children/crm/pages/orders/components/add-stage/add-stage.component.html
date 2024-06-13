@@ -1,0 +1,36 @@
+<form [formGroup]="formStage" class="pop-up">
+    <div class="pop-up-stage-title">Добавление этапа</div>
+    <div>
+        <div>
+            <p class="input-title">Название</p>
+            <tui-input
+                    [tuiTextfieldCleaner]="true"
+                    [tuiTextfieldLabelOutside]="true"
+                    formControlName="stage"
+                    tuiTextfieldSize="m"
+            >
+                <input
+                        autocomplete="stage"
+                        tuiTextfield
+                        type="text"
+                />
+            </tui-input>
+        </div>
+    </div>
+
+    <section class="finish-section">
+        <button (click)="addStageFunc(formStage.get('stage')?.value)"
+                appearance="custom"
+                class="save-button" size="m"
+                tuiButton
+                type="button">
+            Добавить
+        </button>
+        <button (click)="onCancelSettings()" appearance="custom-cancel"
+                class="cancel-button"
+                size="m" tuiButton
+                type="button">
+            Отменить
+        </button>
+    </section>
+</form>
