@@ -51,6 +51,7 @@ import {OrderHistoryStageComponent} from './pages/orders/components/order-histor
 import {HomeComponent} from './pages/websites/home/home.component';
 import {ProductComponent} from './pages/websites/product/product.component';
 import {CartComponent} from './pages/websites/cart/cart.component';
+import { AddStageComponent } from './pages/orders/components/add-stage/add-stage.component';
 
 @NgModule({
     declarations: [
@@ -83,6 +84,7 @@ import {CartComponent} from './pages/websites/cart/cart.component';
         HomeComponent,
         ProductComponent,
         CartComponent,
+        AddStageComponent,
     ],
     imports: [
         NgOptimizedImage,
