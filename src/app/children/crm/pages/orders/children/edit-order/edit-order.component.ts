@@ -176,9 +176,11 @@ export class EditOrderComponent extends FormatterService {
                 const email: string = this.formOrder.get('email')?.value;
                 const phone: string = this.formOrder.get('phone')?.value;
 
+                const stageTab = this.selectStage !== undefined ? this.selectStage : this.stageMap[this.order.stage];
+
 
                 const request: ChangeOrderRequest = {
-                    stageTab: this.selectStage,
+                    stageTab: stageTab,
                     totalAmount: totalAmount,
                     isCalculationAutomated: true,
                     comment: comment,
@@ -197,6 +199,8 @@ export class EditOrderComponent extends FormatterService {
                     next: (): void => {
                         this.getOrderInfo(this.orderId);
                         this.loadOrdersByStage(this.selectedStage.order);
+
+                        this._router.navigate(['crm/orders']);
                     },
                     error: (error): void => {
                         console.log(error);

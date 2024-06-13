@@ -111,7 +111,7 @@
                                             <div *ngFor="let product of order!.products">
                                                 <div class="profile-data-item-title">
                                                     {{ product.quantity }} на
-                                                    сумму {{ product.unitPrice | number:'1.0-0' }} ₽
+                                                    сумму {{ product.quantity * product.unitPrice | number:'1.0-0' }} ₽
                                                 </div>
                                                 <div class="info-product-sec">
                                                     <img [src]="product!.photo || 'assets/cap.svg'"

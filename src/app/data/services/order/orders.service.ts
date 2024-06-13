@@ -18,8 +18,11 @@ export class OrderService {
     constructor(private http: HttpClient, private readonly _errorHandler: ErrorHandler) {
     }
 
-    getOrders(tab?: number): Observable<GetOrdersResponse> {
-        const url = `${this.apiUrl}?tab=${tab}`;
+    getOrders(tab?: number | null): Observable<GetOrdersResponse> {
+        let url: string = `${this.apiUrl}`;
+        if (tab !== null && tab !== undefined) {
+            url += `?tab=${tab}`;
+        }
         return this.http.get<GetOrdersResponse>(url, {withCredentials: true})
             .pipe(
                 catchError(err => {

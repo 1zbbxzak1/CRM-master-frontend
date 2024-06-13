@@ -31,6 +31,11 @@
 
                 <div class="orders">
                     <div class="orders-sort-title">
+                        <button (click)="selectStage(null)" [class.selected-stage]="first === selectedStage"
+                                class="orders-sort-item">
+                            Все заказы
+                        </button>
+
                         <ng-container *ngFor="let stage of stages; let i = index;">
                             <button (click)="selectStage(i)"
                                     *ngIf="stage.name !== 'Архив'" [class.selected-stage]="stage === selectedStage"

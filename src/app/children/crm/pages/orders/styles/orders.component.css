@@ -90,6 +90,8 @@
 
     border: none;
     background: none;
+
+    cursor: pointer;
 }
 
 .orders-sort-item:hover {
@@ -200,6 +202,12 @@
     text-align: left;
 
     border-bottom: 1px solid var(--stroke-dark-grey);
+
+    cursor: pointer;
+}
+
+.table-td-full:hover {
+    background: rgba(0, 130, 245, 0.1);
 }
 
 .table-td-full td:first-child {

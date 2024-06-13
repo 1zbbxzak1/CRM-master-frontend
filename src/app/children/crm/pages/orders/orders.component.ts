@@ -26,9 +26,10 @@ import {TuiDialogContext} from "@taiga-ui/core";
 })
 export class OrdersComponent extends FormatterService {
     protected orders!: GetOrdersResponse;
+    protected first?: IStageOrderResponseModel;
     protected stages: IStageOrderResponseModel[] = [];
     protected search: string = '';
-    protected selectedStage: any;
+    protected selectedStage: any = null;
     protected stagesList: string[] = [];
     protected stageItemForm: FormGroup = new FormGroup({
         stage: new FormControl(''),
@@ -57,29 +58,15 @@ export class OrdersComponent extends FormatterService {
             .subscribe((stages: IStageOrderResponseModel[]): void => {
                 this.stages = stages;
 
-                if (this.selectedStage) {
-                    const selectedStageIndex = stages.findIndex(stage => stage === this.selectedStage);
-                    if (selectedStageIndex !== -1) {
-                        const selectedStageName = stages[selectedStageIndex].name;
-                        this.stageItemForm.patchValue({
-                            stage: selectedStageName
-                        });
-                    }
-                }
-
                 this.stagesList = stages.map((stage: IStageOrderResponseModel) => stage.name);
-
 
                 this.stageMap = {};
                 stages.forEach((stage: IStageOrderResponseModel) => {
                     this.stageMap[stage.name] = stage.order;
                 });
 
-                if (this.stages.length > 0) {
-                    this.selectedStage = this.stages[0];
-                    this.loadOrdersByStage(this.selectedStage.order);
-                }
-
+                this.selectedStage = this.first;
+                this.loadOrdersByStage(undefined);
 
                 this._dataUpdateService.onUpdateData().subscribe(() => {
                     this.loadStages();
@@ -129,9 +116,9 @@ export class OrdersComponent extends FormatterService {
         this._changeDetectorRef.detectChanges();
     }
 
-    selectStage(index: number): void {
+    selectStage(index: any): void {
         this.selectedStage = this.stages[index];
-        this.loadOrdersByStage(this.selectedStage.order);
+        this.loadOrdersByStage(this.selectedStage ? this.selectedStage.order : null);
     }
 
     getOrderForm(order: GetOrderItemResponse): FormGroup {
@@ -180,11 +167,11 @@ export class OrdersComponent extends FormatterService {
         this._router.navigate([`crm/orders/info-order/`, id]);
     }
 
-    private loadOrdersByStage(stageId: number): void {
+    private loadOrdersByStage(stageId: number | null | undefined): void {
         this._ordersManagerService.getOrders(stageId).pipe(
             takeUntilDestroyed(this._destroyRef)
         )
-            .subscribe((response: GetOrdersResponse) => {
+            .subscribe((response: GetOrdersResponse): void => {
                 this.orders = response;
                 this._changeDetectorRef.detectChanges();
             });
