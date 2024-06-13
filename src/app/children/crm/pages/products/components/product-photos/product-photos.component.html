@@ -14,6 +14,7 @@
                     [class.first-item]="i === 0"
                     class="photo-item"
                     draggable="true">
+                    <img alt="перетаскивать" class="img-drag" height="21" src="assets/dragndropdots.svg" width="9">
                     <img [src]="photo.url" alt="Product Image">
                     <button (click)="deleteProductPhoto(product.id, photo.id)" class="delete-button">
                         <img alt="Удалить" height="44" ngSrc="assets/delete-icon.svg" width="44">

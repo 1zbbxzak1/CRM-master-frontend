@@ -1,17 +1,19 @@
 @import "@taiga-ui/core/styles/taiga-ui-local.scss";
 
 [tuiWrapper][data-appearance='custom'] {
-    background: #0082F5;
+    background: var(--main-blue);
     border: 2px solid var(--main-blue);
     color: #fff;
     margin-top: 24px;
 
     .wrapper-hover {
-        background: #0082F5;
+        border: 2px solid #28aaff;
+        background: #28aaff;
     }
 
     .wrapper-active {
-        background: #0082F5;
+        border: 2px solid #005acd;
+        background: #005acd;
     }
 
     .wrapper-disabled {
@@ -106,4 +108,8 @@ img {
     --sample-lightgrey-hover: rgba(33, 33, 33, 0.1);
 
     --tui-font-text-s: 'Nunito Sans';
+}
+
+.pop-up-order {
+    --tui-elevation-01: white !important;
 }

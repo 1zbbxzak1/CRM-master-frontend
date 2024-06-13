@@ -13,6 +13,7 @@
                     Добавить этап
                 </button>
                 <div class="stages-item">
+                    <img alt="перетаскивать" class="img-drag" height="21" src="assets/dragndropdots.svg" width="9">
                     {{ stage.name }} <span *ngIf="stage.name === 'Новый заказ' || stage.name === 'Архив'"
                                            class="is-system">(системный этап)</span>
 

@@ -47,7 +47,7 @@
 .photos-list {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: start;
     margin-right: 50px;
     row-gap: 10px;
     margin-bottom: 20px;
@@ -55,7 +55,7 @@
 
 .photo-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     padding: 12px;
     background-color: var(--fields-stroke-input);
     border-radius: 10px;
@@ -88,6 +88,8 @@
     cursor: pointer;
 
     height: 50px;
+
+    margin-left: auto;
 }
 
 .delete-button:hover {
@@ -97,4 +99,8 @@
 
 .delete-button:active {
     background: var(--main-blue);
+}
+
+.img-drag {
+    margin-right: 16px;
 }
