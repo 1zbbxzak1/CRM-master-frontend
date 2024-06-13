@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="data-item-socials">
-                    <a href="{{ (user | async)?.vkLink || '' }}" target="_blank">
+                    <a href="{{ (user | async)?.vkLink || 'https://vk.com/' }}" target="_blank">
                         <img [src]="'assets/socials_vk.svg'" alt="ВКонтакте">
                     </a>
                     <a href="{{ 'https://t.me/' + ((user | async)?.telegramLink | slice:1) || '' }}" target="_blank">
