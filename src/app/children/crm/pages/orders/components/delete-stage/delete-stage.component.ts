@@ -9,7 +9,7 @@ import {SettingsComponent} from "../settings/settings.component";
 @Component({
     selector: 'app-delete-stage',
     templateUrl: './delete-stage.component.html',
-    styleUrl: './styles/delete-stage.component.css'
+    styleUrl: './delete-stage.component.css'
 })
 export class DeleteStageComponent {
     @Input() observer?: Observer<never>;

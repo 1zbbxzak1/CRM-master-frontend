@@ -38,6 +38,7 @@ export class SettingsComponent {
         private readonly _stageOrderManagerService: StageOrderManagerService,
         private readonly _dataUpdateService: DataUpdateService,
     ) {
+
         this.loadStages();
     }
 
