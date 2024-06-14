@@ -1,6 +1,12 @@
 .btn-section {
+    display: flex;
     background: var(--bg-dark-blue-2);
     padding: 34px 20%;
+}
+
+.tui-input-name {
+    max-width: 200px;
+    margin-left: auto;
 }
 
 .btn-back {
@@ -23,8 +29,14 @@
     background: #f0eef0;
 }
 
-.cart {
-    cursor: pointer;
+.template-header {
+    background: var(--text-black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 .badge {
@@ -41,14 +53,9 @@
     align-self: end;
 }
 
-.template-header {
-    background: var(--text-black);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding-left: 20%;
-    padding-right: 20%;
+.cart {
+    margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .template-title {

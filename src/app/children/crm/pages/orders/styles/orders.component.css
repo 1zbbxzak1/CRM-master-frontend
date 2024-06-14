@@ -61,20 +61,16 @@
 }
 
 .orders-sort-title {
-    display: grid;
+    display: flex;
     align-items: center;
-    grid-template-columns: auto auto auto auto;
-    width: 50vw;
 
     margin-top: 75px;
 }
 
 .orders-sort-second-title {
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     align-items: center;
-    width: 100%;
-    justify-content: end;
+    margin-left: auto;
 
     margin-top: 75px;
 }

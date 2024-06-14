@@ -20,6 +20,7 @@ import {ProductCountService} from "../../../../../../../services/product-count.s
 import {
     ProductsManagerService
 } from "../../../../../../../../../../../../data/services/products/products.manager.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'app-constructor-card',
@@ -31,8 +32,12 @@ export class ConstructorCardComponent implements OnInit, OnDestroy {
     currentSlideIndex = 0;
     currentIndex = 0;
     visibleItems = 4;
-
     countProduct = 0;
+
+    selectedItem: string = "Товар";
+    pagesList = ['Главная', 'Товар', 'Корзина'];
+    pageUrls: any = {};
+
     protected productId!: string;
     protected product!: IProductsResponseModel;
     protected website!: WebsiteDto;
@@ -83,6 +88,23 @@ export class ConstructorCardComponent implements OnInit, OnDestroy {
             ).subscribe((product: IProductsResponseModel): void => {
                 this.product = product;
 
+                if (this.products && this.products.length > 0) {
+                    const productId: string = this.products[0].id;
+                    this.pageUrls = [
+                        {label: 'Главная', url: 'crm/shop/shop-templates/templates-preview/constructor/main'},
+                        {
+                            label: 'Товар',
+                            url: `crm/shop/shop-templates/templates-preview/constructor/card/${productId}`
+                        },
+                        {label: 'Корзина', url: 'crm/shop/shop-templates/templates-preview/constructor/cart'}
+                    ];
+                } else {
+                    this.pageUrls = [
+                        {label: 'Главная', url: 'crm/shop/shop-templates/templates-preview/constructor/main'},
+                        {label: 'Корзина', url: 'crm/shop/shop-templates/templates-preview/constructor/cart'}
+                    ];
+                }
+
                 this._changeDetectorRef.detectChanges();
             });
         });
@@ -107,6 +129,19 @@ export class ConstructorCardComponent implements OnInit, OnDestroy {
     @HostListener('window:resize', ['$event'])
     onResize(event: any) {
         this.calculateVisibleItems();
+    }
+
+    onPageChange(selectedItem: string): void {
+        const page = this.pageUrls.find((page: { label: string; }): boolean => page.label === selectedItem);
+        if (page) {
+            this._router.navigate([page.url]);
+        }
+    }
+
+    getOrderForm(selectedItem: string): FormGroup {
+        return new FormGroup({
+            stage: new FormControl(selectedItem || ''),
+        });
     }
 
     calculateVisibleItems(): void {

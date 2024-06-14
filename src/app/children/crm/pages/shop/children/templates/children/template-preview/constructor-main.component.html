@@ -3,169 +3,176 @@
 <!--</div>-->
 
 <!--<ng-template #loadedContent>-->
+
 <div class="btn-section">
     <button (click)="_router.navigate(['crm/shop'])" class="btn-back">Назад</button>
-    <!--        <tui-root>-->
-    <!--            <tui-combo-box-->
-    <!--                (tuiValueChanges)="onPageChange($event)"-->
-    <!--                [(ngModel)]="selectedItem"-->
-    <!--                [tuiTextfieldCleaner]="true"-->
-    <!--                [tuiTextfieldLabelOutside]="true"-->
-    <!--                class="tui-input-name"-->
-    <!--                formControlName="stage"-->
-    <!--                tuiTextfieldSize="m"-->
-    <!--            >-->
-    <!--                <tui-data-list-wrapper-->
-    <!--                    *tuiDataList-->
-    <!--                    [items]="pagesList | tuiFilterByInput"-->
-    <!--                    class="tui-data-list"-->
-    <!--                    size="m"-->
-    <!--                ></tui-data-list-wrapper>-->
-    <!--            </tui-combo-box>-->
-    <!--        </tui-root>-->
+    <tui-root>
+        <form [formGroup]="getOrderForm(selectedItem)" class="profile-data">
+            <tui-combo-box
+                (click)="$event.stopPropagation()"
+                [(ngModel)]="selectedItem"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+                class="tui-input-name"
+                formControlName="stage"
+                tuiTextfieldSize="m"
+            >
+                <tui-data-list-wrapper
+                    (click)="$event.stopPropagation()"
+                    (itemClick)="onPageChange($event)"
+                    *tuiDataList
+                    [items]="pagesList | tuiFilterByInput"
+                    class="tui-data-list"
+                    size="m"
+                ></tui-data-list-wrapper>
+            </tui-combo-box>
+        </form>
+    </tui-root>
 </div>
 
-<div class="template">
-    <div class="template-header">
-        <div (click)="backToMainPage()" class="template-title">
-            {{ website?.title }}
-        </div>
-        <div (click)="navigateToCartPage()" class="cart">
-            <p class="badge">{{ countProduct }}</p>
-            <img height="24" ngSrc="assets/shopping_bag.svg" width="24">
-        </div>
-    </div>
-
-    <div *ngIf="blocks[1]" class="first-section-template">
-        <div class="image-container">
-            <img [src]="getBlockImageUrl(blocks[1]?.id!)"
-                 alt="Фото блока" class="responsive-img"
-                 contenteditable="true"
-                 title="Для изменения фонового изображения нажмите на текущее изображение и прикрепите новое">
-            <input (change)="handleFileInput($event, blocks[1]?.id!)"
-                   style="position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%;"
-                   title="Для изменения фонового изображения нажмите на текущее изображение и прикрепите новое"
-                   type="file">
-            <div class="inner-div">
-                <p #h1Text
-                   (input)="updateTextProperty(h1V, 'h1Text', blocks[1]?.id!)"
-                   class="template-title"
-                   contenteditable="true">
-                    {{ getBlockPropertyValue(blocks[1]?.id!, 'h1Text') }}
-                </p>
-                <p #pText
-                   (input)="updateTextProperty(pT, 'pText', blocks[1]?.id!)"
-                   class="inner-div-desc"
-                   contenteditable="true">
-                    {{ getBlockPropertyValue(blocks[1]?.id!, 'pText') }}
-                </p>
+<tui-root>
+    <div class="template">
+        <div class="template-header">
+            <div (click)="backToMainPage()" class="template-title">
+                {{ website?.title }}
+            </div>
+            <div (click)="navigateToCartPage()" class="cart">
+                <p class="badge">{{ countProduct }}</p>
+                <img alt="корзина" height="24" ngSrc="assets/shopping_bag.svg" width="24">
             </div>
         </div>
-    </div>
 
-    <div class="second-section-template">
-        <div class="catalog-title">
-            Каталог
-        </div>
-
-        <div class="search-product">
-            <img alt="поиск" height="24" src="assets/search.svg" width="24">
-            <input (ngModelChange)="searchProducts()" [(ngModel)]="search" class="search-input"
-                   placeholder="Найти товар" type="text">
-        </div>
-
-        <div (click)="toggleSort()" class="sort-product">
-            <img [src]="isSortedAsc ? 'assets/sort_product_down.svg' : 'assets/sort_product_top.svg'"
-                 alt="сортировка"
-                 height="24" width="24">
-            <p class="sort-product-title">По цене</p>
-        </div>
-
-        <div *ngIf="products.length < 1" class="products">
-            <div class="products-null">
-                <div class="product-not-found">
-                    Создайте свой первый сайт, чтобы его могли просматривать ваши клиенты
+        <div *ngIf="blocks[1]" class="first-section-template">
+            <div class="image-container">
+                <img [src]="getBlockImageUrl(blocks[1]?.id!)"
+                     alt="Фото блока" class="responsive-img"
+                     contenteditable="true"
+                     title="Для изменения фонового изображения нажмите на текущее изображение и прикрепите новое">
+                <input (change)="handleFileInput($event, blocks[1]?.id!)"
+                       style="position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%; z-index: 0"
+                       title="Для изменения фонового изображения нажмите на текущее изображение и прикрепите новое"
+                       type="file">
+                <div class="inner-div">
+                    <p #h1Text
+                       (input)="updateTextProperty(h1V, 'h1Text', blocks[1]?.id!)"
+                       class="template-title"
+                       contenteditable="true">
+                        {{ getBlockPropertyValue(blocks[1]?.id!, 'h1Text') }}
+                    </p>
+                    <p #pText
+                       (input)="updateTextProperty(pT, 'pText', blocks[1]?.id!)"
+                       class="inner-div-desc"
+                       contenteditable="true">
+                        {{ getBlockPropertyValue(blocks[1]?.id!, 'pText') }}
+                    </p>
                 </div>
-
-                <button (click)="_router.navigate(['crm/products'])" class="add-products">
-                    Добавить товары
-                </button>
             </div>
         </div>
 
-        <div *ngIf="products.length > 0" class="products-list">
-            <div
-                (click)="_router.navigate(['crm/shop/shop-templates/templates-preview/constructor/card', product?.id])"
-                *ngFor="let product of searchProducts()" class="product-item">
-                <img [src]="product.photos?.[0]?.url || 'assets/cap.svg'"
-                     alt="Product Photo"
-                     class="photo-product"
-                     height="282"
-                     width="282">
-
-                <p class="product-price">{{ product.price | number:'1.0-0' }} ₽</p>
-                <p class="product-title">{{ product.name }}</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="third-section-template">
-        <div class="advantages-title">
-            Преимущества
-        </div>
-
-        <div *ngIf="blocks[3]" class="advantages-list">
-            <div *ngFor="let section of blocks[3]?.properties?.textSections; let i = index" class="advantages-item">
-                <p #Title (input)="updateTextSectionProperty($event, 'title', blocks[3]?.id!, i)"
-                   class="advantages-item-title"
-                   contenteditable="true">
-                    {{ section.title }}
-                </p>
-                <p #Text (input)="updateTextSectionProperty($event, 'text', blocks[3]?.id!, i)"
-                   class="advantages-item-text"
-                   contenteditable="true">
-                    {{ section.text }}
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="fourth-section-template">
-        <div class="advantages-title">
-            Свяжитесь со мной
-        </div>
-
-        <div class="data-list">
-            <div class="data-item">
-                {{ (user | async)?.fullName }}
+        <div class="second-section-template">
+            <div class="catalog-title">
+                Каталог
             </div>
 
-            <div class="data-item-info">
-                <div>
-                    <span>Телефон: </span>
-                    {{ (user | async)?.phone }}
-                </div>
-                <div>
-                    <span>Почта: </span>
-                    {{ (user | async)?.email }}
+            <div class="search-product">
+                <img alt="поиск" height="24" src="assets/search.svg" width="24">
+                <input (ngModelChange)="searchProducts()" [(ngModel)]="search" class="search-input"
+                       placeholder="Найти товар" type="text">
+            </div>
+
+            <div (click)="toggleSort()" class="sort-product">
+                <img [src]="isSortedAsc ? 'assets/sort_product_down.svg' : 'assets/sort_product_top.svg'"
+                     alt="сортировка"
+                     height="24" width="24">
+                <p class="sort-product-title">По цене</p>
+            </div>
+
+            <div *ngIf="products.length < 1" class="products">
+                <div class="products-null">
+                    <div class="product-not-found">
+                        Создайте свой первый сайт, чтобы его могли просматривать ваши клиенты
+                    </div>
+
+                    <button (click)="_router.navigate(['crm/products'])" class="add-products">
+                        Добавить товары
+                    </button>
                 </div>
             </div>
 
-            <div class="data-item-socials">
-                <a href="{{ (user | async)?.vkLink || '' }}" target="_blank">
-                    <img [src]="'assets/socials_vk.svg'" alt="ВКонтакте">
-                </a>
-                <a href="{{ 'https://t.me/' + ((user | async)?.telegramLink | slice:1) || '' }}" target="_blank">
-                    <img [src]="'assets/socials_tg.svg'" alt="Telegram">
-                </a>
+            <div *ngIf="products.length > 0" class="products-list">
+                <div
+                    (click)="_router.navigate(['crm/shop/shop-templates/templates-preview/constructor/card', product?.id])"
+                    *ngFor="let product of searchProducts()" class="product-item">
+                    <img [src]="product.photos?.[0]?.url || 'assets/cap.svg'"
+                         alt="Product Photo"
+                         class="photo-product"
+                         height="282"
+                         width="282">
+
+                    <p class="product-price">{{ product.price | number:'1.0-0' }} ₽</p>
+                    <p class="product-title">{{ product.name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="third-section-template">
+            <div class="advantages-title">
+                Преимущества
+            </div>
+
+            <div *ngIf="blocks[3]" class="advantages-list">
+                <div *ngFor="let section of blocks[3]?.properties?.textSections; let i = index" class="advantages-item">
+                    <p #Title (input)="updateTextSectionProperty($event, 'title', blocks[3]?.id!, i)"
+                       class="advantages-item-title"
+                       contenteditable="true">
+                        {{ section.title }}
+                    </p>
+                    <p #Text (input)="updateTextSectionProperty($event, 'text', blocks[3]?.id!, i)"
+                       class="advantages-item-text"
+                       contenteditable="true">
+                        {{ section.text }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="fourth-section-template">
+            <div class="advantages-title">
+                Свяжитесь со мной
+            </div>
+
+            <div class="data-list">
+                <div class="data-item">
+                    {{ (user | async)?.fullName }}
+                </div>
+
+                <div class="data-item-info">
+                    <div>
+                        <span>Телефон: </span>
+                        {{ (user | async)?.phone }}
+                    </div>
+                    <div>
+                        <span>Почта: </span>
+                        {{ (user | async)?.email }}
+                    </div>
+                </div>
+
+                <div class="data-item-socials">
+                    <a href="{{ (user | async)?.vkLink || 'https://vk.com/' }}" target="_blank">
+                        <img [src]="'assets/socials_vk.svg'" alt="ВКонтакте">
+                    </a>
+                    <a href="{{ 'https://t.me/' + ((user | async)?.telegramLink | slice:1) || '' }}" target="_blank">
+                        <img [src]="'assets/socials_tg.svg'" alt="Telegram">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="last-section-template">
+            <div class="template-last-title">
+                {{ website?.title }}
             </div>
         </div>
     </div>
-
-    <div class="last-section-template">
-        <div class="template-last-title">
-            {{ website?.title }}
-        </div>
-    </div>
-</div>
+</tui-root>
 <!--</ng-template>-->

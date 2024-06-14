@@ -99,6 +99,7 @@
                                                 tuiTextfieldSize="m"
                                             >
                                                 <tui-data-list-wrapper
+                                                    (click)="$event.stopPropagation()"
                                                     (itemClick)="updateOrderStage(order.id, $event)"
                                                     *tuiDataList
                                                     [items]="stagesList | tuiFilterByInput"

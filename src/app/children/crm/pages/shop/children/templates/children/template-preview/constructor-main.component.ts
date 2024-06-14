@@ -10,7 +10,6 @@ import {
     ViewChild
 } from '@angular/core';
 import {Observable, Subject, Subscription, switchMap} from "rxjs";
-import {CartService} from "../../../services/cart.service";
 import {ProductCountService} from "../../../services/product-count.service";
 import {
     BlockDto,
@@ -23,6 +22,7 @@ import {IUserResponseModel} from "../../../../../../../../data/response-models/u
 import {Router} from "@angular/router";
 import {ShopService} from "../../../../../../../../data/services/shop/shop.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {FormControl, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -35,7 +35,8 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
     countProduct = 0;
     loading: boolean = true;
     selectedItem: string = "Главная";
-    pagesList = ['Page 1', 'Page 2', 'Page 3'];
+    pagesList = ['Главная', 'Товар', 'Корзина'];
+    pageUrls: any = {};
     @ViewChild('h1Text')
     protected h1V!: ElementRef;
     @ViewChild('pText')
@@ -45,16 +46,16 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
     @ViewChild('Text')
     protected text!: ElementRef;
     protected countProductSubscription!: Subscription;
-    protected textSections: TextSectionDto[] = [];
     protected uploadedImageUrl: string = '';
-    protected products: IProductsResponseModel[] = [];
-    protected pageUrls: Record<string, string> = {};
+
     protected search: string = '';
     protected isSortedAsc: boolean = true;
+
+    protected products: IProductsResponseModel[] = [];
+    protected textSections: TextSectionDto[] = [];
     protected blocks: BlockDto[] = [];
     protected user!: Observable<IUserResponseModel>;
-    protected website!: WebsiteDto;
-    private cartService: CartService = inject(CartService);
+    protected website?: WebsiteDto;
     private productCountService: ProductCountService = inject(ProductCountService);
     private destroy$ = new Subject<void>();
 
@@ -86,13 +87,6 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
         }
     }
 
-    onPageChange(selectedItem: string): void {
-        const url = this.pageUrls[selectedItem];
-        if (url) {
-            this._router.navigate([url]);
-        }
-    }
-
     ngOnDestroy(): void {
         this.countProductSubscription.unsubscribe();
         this.destroy$.next();
@@ -103,6 +97,19 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
         this.countProduct = this.productCountService.getCountProduct();
         this.countProductSubscription = this.productCountService.countProductChanged.subscribe((count: number) => {
             this.countProduct = count;
+        });
+    }
+
+    onPageChange(selectedItem: string): void {
+        const page = this.pageUrls.find((page: { label: string; }): boolean => page.label === selectedItem);
+        if (page) {
+            this._router.navigate([page.url]);
+        }
+    }
+
+    getOrderForm(selectedItem: string): FormGroup {
+        return new FormGroup({
+            stage: new FormControl(selectedItem || ''),
         });
     }
 
@@ -263,11 +270,19 @@ export class ConstructorMainComponent implements OnInit, OnDestroy {
         ).subscribe((products: IProductsResponseModel[]): void => {
             this.products = products;
 
-            this.pageUrls = {
-                'Главная': 'crm/shop/shop-templates/templates-preview/constructor/main',
-                'Товар': `crm/shop/shop-templates/templates-preview/constructor/card${this.products?.[0].id}`,
-                'Корзина': 'crm/shop/shop-templates/templates-preview/constructor/cart'
-            };
+            if (this.products && this.products.length > 0) {
+                const productId: string = this.products[0].id;
+                this.pageUrls = [
+                    {label: 'Главная', url: 'crm/shop/shop-templates/templates-preview/constructor/main'},
+                    {label: 'Товар', url: `crm/shop/shop-templates/templates-preview/constructor/card/${productId}`},
+                    {label: 'Корзина', url: 'crm/shop/shop-templates/templates-preview/constructor/cart'}
+                ];
+            } else {
+                this.pageUrls = [
+                    {label: 'Главная', url: 'crm/shop/shop-templates/templates-preview/constructor/main'},
+                    {label: 'Корзина', url: 'crm/shop/shop-templates/templates-preview/constructor/cart'}
+                ];
+            }
             this.sortProducts();
             this._changeDetectorRef.detectChanges();
         });

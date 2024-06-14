@@ -3,7 +3,7 @@ import {
     IProductsResponseModel
 } from "../../../../../../../../../../../../data/response-models/products/IProducts.response-model";
 import {CartService} from "../../../../../../../services/cart.service";
-import {Subscription} from "rxjs";
+import {Observable, Subscription, switchMap} from "rxjs";
 import {ProductCountService} from "../../../../../../../services/product-count.service";
 import {
     CreateWebsiteOrderRequest,
@@ -28,6 +28,12 @@ import {
 export class ConstructorCartComponent implements OnInit, OnDestroy {
     cartItems: { product: IProductsResponseModel, quantity: number }[] = [];
     countProduct = 0;
+
+    selectedItem: string = "Корзина";
+    pagesList = ['Главная', 'Товар', 'Корзина'];
+    pageUrls: any = {};
+
+    protected products: IProductsResponseModel[] = [];
     protected countProductSubscription!: Subscription;
     protected website!: WebsiteDto;
     protected formUserInfo: FormGroup = new FormGroup({
@@ -59,9 +65,32 @@ export class ConstructorCartComponent implements OnInit, OnDestroy {
         this.cartItems = this.cartService.getCartItems();
 
         this._shopService.getWebsiteInfo().pipe(
-            takeUntilDestroyed(this._destroyRef)
-        ).subscribe((web: WebsiteDto): void => {
-            this.website = web;
+            takeUntilDestroyed(this._destroyRef),
+            switchMap((web: WebsiteDto): Observable<IProductsResponseModel[]> => {
+                this.website = web;
+                return this._shopService.getVisibleProducts(this.website.addressName);
+            })
+        ).subscribe((products: IProductsResponseModel[]): void => {
+            this.products = products;
+
+            if (this.products && this.products.length > 0) {
+                const productId: string = this.products[0].id;
+                this.pageUrls = [
+                    {label: 'Главная', url: 'crm/shop/shop-templates/templates-preview/constructor/main'},
+                    {
+                        label: 'Товар',
+                        url: `crm/shop/shop-templates/templates-preview/constructor/card/${productId}`
+                    },
+                    {label: 'Корзина', url: 'crm/shop/shop-templates/templates-preview/constructor/cart'}
+                ];
+            } else {
+                this.pageUrls = [
+                    {label: 'Главная', url: 'crm/shop/shop-templates/templates-preview/constructor/main'},
+                    {label: 'Корзина', url: 'crm/shop/shop-templates/templates-preview/constructor/cart'}
+                ];
+            }
+
+            this._changeDetectorRef.detectChanges();
 
             this._changeDetectorRef.detectChanges();
         });
@@ -69,6 +98,19 @@ export class ConstructorCartComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.countProductSubscription.unsubscribe();
+    }
+
+    onPageChange(selectedItem: string): void {
+        const page = this.pageUrls.find((page: { label: string; }): boolean => page.label === selectedItem);
+        if (page) {
+            this._router.navigate([page.url]);
+        }
+    }
+
+    getOrderForm(selectedItem: string): FormGroup {
+        return new FormGroup({
+            stage: new FormControl(selectedItem || ''),
+        });
     }
 
     addToCart(product: IProductsResponseModel) {
@@ -109,14 +151,10 @@ export class ConstructorCartComponent implements OnInit, OnDestroy {
 
             this._shopService.createOrder(this.website.addressName, orderRequest).subscribe({
                 next: () => {
-                    console.log('Order created successfully');
                     this.formUserInfo.reset();
                     this.clearCart();
 
                     this._changeDetectorRef.detectChanges();
-                },
-                error: (err) => {
-                    console.error('Error creating order:', err);
                 }
             });
         }
