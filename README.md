@@ -34,9 +34,10 @@ Developed for the UrFU Project Practice 2024 (4th semester)
   cd CRM-master-frontend
   ```
 
-Next, two launch scenarios:
+### Next, two launch scenarios:
 
 **First:**
+
   3. Build Docker Image:
   ```bash
   docker build -t crm-master-frontend .
@@ -55,6 +56,7 @@ Next, two launch scenarios:
   ```
 
 **Second:**
+
   3. Install Angular: 
   ```bash
   npm install -g @angular/cli`
