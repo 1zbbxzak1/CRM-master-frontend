@@ -59,7 +59,7 @@ Developed for the UrFU Project Practice 2024 (4th semester)
 
   3. Install Angular: 
   ```bash
-  npm install -g @angular/cli`
+  npm install -g @angular/cli
   ```
   4. Install packages:
   ```bash
