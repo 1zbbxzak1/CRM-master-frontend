@@ -1,22 +1,77 @@
-# МастерскаЯ
-CRM для индивидуальных мастеров с функцией интернет-магазина.
+# MasterskaYa (Frontend)
+MasterskaYa is a web application where master craftsmen can upload their products, accept applications for them and maintain a customer base.
 
-## Содержание
+[Link to the Backend project](https://github.com/AnTaif/CRM-master-backend.git)
 
-1. <a href = "#start">Как запустить проект?</a>
-2. <a href = "#stack">Stack-технологий</a>
+Developed for the UrFU Project Practice 2024 (4th semester)
 
-<a name = start></a>
-## Как запустить проект?
-  1. Установить Angular (Открыть терминал и прописать `npm install -g @angular/cli`)
-  2. Скачать проект, открыть его и прописать в терминале `npm install`
-  3. После прописать в терминале `ng build` и `npx cap sync`
-  4. Прописать в терминале `npm start`
-  5. Перейти на сайт `http://localhost:4200`
-  
+## Contents
+
+1. <a href = "#stack">Tech Stack</a>
+2. <a href = "#start">Getting Started</a>
+
 <a name = stack></a>  
-## Stack-технологий
-- HTML/CSS
+## Tech Stack
+**Frameworks & Libraries:**
+- HTML
+- CSS
 - TypeScript
 - Angular
 - Taiga UI
+- VK API (for auth with vk)
+
+**Deployments:** Docker
+
+
+<a name = start></a>
+## Getting Started
+  1. Clone the repository:
+  ```bash 
+  git clone https://github.com/1zbbxzak1/CRM-master-frontend.git
+  ```
+  2. Navigate to the project directory:
+    ```bash
+    cd CRM-master-frontend
+    ```
+
+Next, two launch scenarios:
+
+**First:**
+  3. Build Docker Image:
+  ```bash
+  docker build -t crm-master-frontend .
+  ```
+  4. Running Docker Container:
+  ```bash
+  docker run --name crm-master-frontend --rm -p 4200:4200 crm-master-frontend
+  ```
+  5. Go to:
+  ```bash
+  http://localhost:4200
+  ```
+  6. To stop the application and remove the container, run:
+  ```bash
+  docker stop crm-master-frontend
+  ```
+
+**Second:**
+  3. Install Angular: 
+  ```bash
+  npm install -g @angular/cli`
+  ```
+  4. Install packages:
+  ```bash
+  npm install
+  ```
+  5. After that, start the project: 
+  ```bash
+  npm start
+  ```
+  4. Go to:
+  ```bash
+  http://localhost:4200
+  ```
+  5. To stop the application and remove the container, press in the terminal:
+  ```bash
+  Ctrl + C
+  ```
