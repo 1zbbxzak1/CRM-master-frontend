@@ -30,9 +30,9 @@ Developed for the UrFU Project Practice 2024 (4th semester)
   git clone https://github.com/1zbbxzak1/CRM-master-frontend.git
   ```
   2. Navigate to the project directory:
-    ```bash
-    cd CRM-master-frontend
-    ```
+  ```bash
+  cd CRM-master-frontend
+  ```
 
 Next, two launch scenarios:
 
