@@ -3,7 +3,7 @@ MasterskaYa is a web application where master craftsmen can upload their product
 
 [Link to the Backend project](https://github.com/AnTaif/CRM-master-backend.git)
 
-Developed for the UrFU Project Practice 2024 (4th semester)
+_Developed for the UrFU Project Practice 2024 (4th semester)_
 
 ## Contents
 
